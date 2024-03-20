@@ -2,19 +2,35 @@ header {
     display: flex;
     flex-direction: row;
     background-color: var(--main-color);
-    height: 5rem;
+    height: 4.5rem;
     align-items: center;
     justify-content: space-between;
-    padding: 0 3rem;
+    padding: 0 7rem;
+    
 }
 
 header img {
-    height: 3.5rem;
+    height: 3.2rem;
 }
 header button {
     background-color: var(--main-color);
+    outline: 0;
+    border: 0;
+    /* padding: 0 1rem; */
+    margin: 0 0.4rem;
+    color: #e6e6e6;
+    font-weight: bold;
+    font-size: 13px;
+    width: auto;
+    
 }
 
-.downarrow {
-    height: auto;
+.header--navbar--button-login {
+    background-color: var(--button-color);
+    color: var(--blue);
+    border-radius: 5px;
+    height: 2.5rem;
+    width: 7rem;
 }
+
+
