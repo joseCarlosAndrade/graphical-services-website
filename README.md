@@ -27,6 +27,7 @@ Se não ouver nenhuma alteração de configuração, o site será aberto no ende
 ## Desenvolvedores
 
 Feito por:
-    - José Carlos Andrade do Nascimento
-    - Shogo Shima
-    - Mateus Bernal Leffeck
+
+- José Carlos Andrade do Nascimento
+- Shogo Shima
+- Mateus Bernal Leffeck
