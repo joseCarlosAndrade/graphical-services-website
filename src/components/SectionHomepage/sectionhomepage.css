@@ -9,6 +9,7 @@ section {
 }
 
 .homepage--text {
+    padding-top: 3rem;
     width: 60%;
     text-align: justify;
     margin: 1rem auto;
