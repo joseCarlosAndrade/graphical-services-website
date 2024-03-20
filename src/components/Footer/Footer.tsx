@@ -1,48 +1,52 @@
 import React from 'react'
 import './footer.css'
+import { google, instagram, whatsapp, mainLogo } from '../../assets';
 
 function Footer() {
-  return (
-    <>
-    <footer>
-        <div className="footer--logo-left">
-            <img src="" alt="Logo preto e branco"/>
-            <p className="footer--logo-left--text">whitepace was created for the new ways we live and work. We make a better workspace around the world</p>
-        </div>
+    return (
+        <>
+            <footer>
+                <div className="footer--logo-left">
+                    <img src={mainLogo} alt="Logo preto e branco" />
+                    <p className="footer--logo-left--text">whitepace was created for the <br /> new ways we live and <br /> work. We make a better <br /> workspace around the world</p>
+                </div>
 
-        <div className="footer--produtos">
-            <p className="footer--produtos-produtos">Produtos</p>
-            <p className="footer--produtos-servicos">Serviços</p>
-            <p className="footer--produtos-cotiçar">Cotiçar</p>
-        </div>
+                <div className='footer--contents'>
+                    <div className="footer--produtos">
+                        <p className="footer--produtos-item">Produtos</p>
+                        <p className="footer--produtos-item">Serviços</p>
+                        <p className="footer--produtos-item">Cotiçar</p>
+                    </div>
 
-        <div className="footer--resources">
-            <div className="footer--resources-google">
-                <img className="footer--resources-google-icon" src="" alt=""/>
-                <p className="footer--resources-google-text">Correo</p>
-            </div>
+                    <div className="footer--resources">
+                        <p className='footer--resources-bold'>Resources</p>
+                        <div className="footer--resources-item">
+                            <img className="footer--resources-icon" src={google} alt="" />
+                            <p className="footer--resources-text">Correo</p>
+                        </div>
 
-            <div className="footer--resources-whatsapp">
-                <img className="footer--resources-whatsapp-icon" src="" alt=""/>
-                <p className="footer--resources-whatsapp-text">Whatsapp</p>
-            </div>
+                        <div className="footer--resources-item">
+                            <img className="footer--resources-icon" src={whatsapp} alt="" />
+                            <p className="footer--resources-text">Whatsapp</p>
+                        </div>
 
-            <div className="footer--resources-instagram">
-                <img className="footer--resources-instagram-icon" src="" alt=""/>
-                <p className="footer--resources-instagram-text">Instagram</p>
-            </div>
-        </div>
+                        <div className="footer--resources-item">
+                            <img className="footer--resources-icon" src={instagram} alt="" />
+                            <p className="footer--resources-text">Instagram</p>
+                        </div>
+                    </div>
 
-        <div className="footer--empresa">
-            <p className="footer--empresa-bold">Empresa</p>
-            <p>Quem somos</p>
-            <p>Missão</p>
-            <p>Visão</p>
-        </div>
+                    <div className="footer--empresa">
+                        <p className="footer--empresa-bold">Empresa</p>
+                        <p>Quem somos</p>
+                        <p>Missão</p>
+                        <p>Visão</p>
+                    </div>
+                </div>
 
-    </footer>
-    </>
-  )
+            </footer>
+        </>
+    )
 }
 
 export default Footer

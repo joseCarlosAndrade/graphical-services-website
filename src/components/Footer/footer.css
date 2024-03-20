@@ -1,0 +1,55 @@
+footer {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--footer-color);
+    height: 8rem;
+    padding: 4rem 10rem;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+.footer--contents {
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.footer--logo-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer--produtos {
+    font-weight: bold;
+}
+
+.footer--produtos-item {
+    margin-bottom: 5px;
+}
+
+.footer--resources-bold {
+    font-weight: bold;
+}
+
+.footer--resources-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.footer--resources-text {
+    margin: 8px;
+}
+
+.footer--resources-icon {
+    width: 32px;
+    height: 32px;
+    margin: 0px 10px;
+}
+
+.footer--empresa-bold {
+    font-weight: bold;
+}
