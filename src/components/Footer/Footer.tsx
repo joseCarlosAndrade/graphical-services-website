@@ -5,6 +5,7 @@ import { google, instagram, whatsapp, mainLogo } from '../../assets';
 function Footer() {
     return (
         <>
+        
             <footer>
                 <div className="footer--logo-left">
                     <img src={mainLogo} alt="Logo preto e branco" />
