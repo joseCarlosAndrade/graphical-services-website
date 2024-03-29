@@ -12,7 +12,7 @@ function Header() {
             <img src={mainLogo} alt="Graphical Services" />
 
             <div className="header--navbar">
-                <button className="header--navbar--button" >Produtos  <DownArrow/> </button>
+                <button className="header--navbar--button fill" >Produtos  <DownArrow/> </button>
                 <button className="header--navbar--button" >Serviços <DownArrow/> </button>
                 <button className="header--navbar--button" >Quem somos <DownArrow/></button>
                 <button className="header--navbar--button" >???? <DownArrow/> </button>
