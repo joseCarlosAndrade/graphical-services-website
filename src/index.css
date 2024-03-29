@@ -10,6 +10,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: var(--main-font);
   overflow-x: hidden;
+  overflow-y: scroll;
   background-color: rgb(238, 238, 238);
 
 }
