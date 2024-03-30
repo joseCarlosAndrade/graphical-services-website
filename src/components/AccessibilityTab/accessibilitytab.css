@@ -1,19 +1,61 @@
 .accessContainer {
+    /* TODO: ajustar medidas relativas para translação nao bugar em telas de computadores
+    diferentes */
     width: 30vw;
     height: 55vh; 
     position: fixed;
     top: 150px;
     left: 0px;
-    background-color: white;
+    background-color: #D9D9D9;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border-radius: 0px 30px 30px 0px;
+    transform: translateX(-25vw);
+    transition: transform 0.3s ease-in-out;
+    
 }
 
 .accessContainer--buttons {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-left: 4em;
+}
+
+
+.accessContainer--buttons button, img   {
+    cursor: pointer;
+}
+
+.signlLanguageIcon{
+    width: 17rem;
+    transition: transform 0.1s ease-in-out;
+}
+
+.accessContainer--buttons button {
+    width: 12rem;
+    height: 4rem;
+    border: solid black 3px;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+
+    font-size: 1.2rem;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+    transition: transform 0.1s ease-in-out, background-color 0.1s ease-in-out;
+}   
+
+.nightModeIcon{
+    height: 2rem;
+}
+
+.increaseFontIcon, .decreaseFontIcon {
+    height: 2rem;
 }
 
 .accessContainer--border {
@@ -26,4 +68,25 @@
 .accessContainer--border img {
     width: 4rem;
     margin: auto 0.6rem;
+    cursor: pointer;
+}
+
+.accessContainer:hover {
+    transform: translateX(0px)
+}
+
+/* interactions */
+
+.signlLanguageIcon:hover {
+    transform: scale(1.1);
+}
+
+.nightModeButton:hover {
+    background-color: #89C1F5;
+    transform: scale(1.1);
+}
+
+.increaseFontButton:hover,.decreaseFontButton:hover {
+    background-color: #FFE492;
+    transform: scale(1.1);
 }
