@@ -1,17 +1,17 @@
 .accessContainer {
     /* TODO: ajustar medidas relativas para translação nao bugar em telas de computadores
     diferentes */
-    width: 30vw;
-    height: 55vh; 
+    width: 21rem;
+    height:25rem; 
     position: fixed;
-    top: 150px;
+    top: 8rem;
     left: 0px;
     background-color: #D9D9D9;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-radius: 0px 30px 30px 0px;
-    transform: translateX(-25vw);
+    border-radius: 0px 0px 30px 0px;
+    transform: translateX(-21rem);
     transition: transform 0.3s ease-in-out;
     
 }
@@ -20,7 +20,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 4em;
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 
@@ -29,13 +30,13 @@
 }
 
 .signlLanguageIcon{
-    width: 17rem;
+    width: 15rem;
     transition: transform 0.1s ease-in-out;
 }
 
 .accessContainer--buttons button {
     width: 12rem;
-    height: 4rem;
+    height: 3rem;
     border: solid black 3px;
     border-radius: 15px;
     margin-bottom: 1rem;
@@ -60,7 +61,7 @@
 
 .accessContainer--border {
     background-color: #D75811;
-    height: inherit;
+    height: 5rem;
     display: flex;
     border-radius: 0px 20px 20px 0px;
 }

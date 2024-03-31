@@ -1,0 +1,122 @@
+.signup {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.signup__div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 50vw;
+}
+
+.signup__div_line {
+    border-bottom: 1px solid #888;
+    width: 25%;
+}
+
+.signup__social {
+    display: flex;
+    gap: 2rem;
+}
+
+.signup__social__icon {
+    width: 2.5rem;
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: white;
+}
+
+.signup__field {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 50vw;
+    font-weight: bold;
+}
+
+.signup__field__email_input {
+    font-size: medium;
+    width: 96.5%;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+}
+
+.signup__field__name {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between
+}
+
+.signup__field__name_first_input {
+    font-size:medium;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+    width: 22vw;
+}
+
+.signup__field__name_second_input {
+    font-size:medium;
+    width: 22vw;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+}
+
+.signup__field__password {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.signup__field__password_first_input {
+    font-size: medium;
+    width: 22vw;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+}
+
+.signup__field__password_second_input {
+    font-size: medium;
+    width: 22vw;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+}
+
+.signup__field__terms {
+    font-weight: normal;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.signup__button {
+    background-color: var(--main-color);
+    width: 30vw;
+    height: 4rem;
+    color: white;
+    border: 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: large;
+
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.signup__button:hover {
+    background-color: var(--button-color);
+    color: black;
+    border: 1px solid black;
+}

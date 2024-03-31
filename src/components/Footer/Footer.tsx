@@ -1,11 +1,11 @@
 import React from 'react'
 import './footer.css'
-import { google, instagram, whatsapp, mainLogo } from '../../assets';
+import { gmail, instagram, whatsapp, mainLogo } from '../../assets';
 
 function Footer() {
     return (
         <>
-        
+
             <footer>
                 <div className="footer--logo-left">
                     <img src={mainLogo} alt="Logo preto e branco" />
@@ -22,7 +22,7 @@ function Footer() {
                     <div className="footer--resources">
                         <p className='footer--resources-bold'>Resources</p>
                         <div className="footer--resources-item">
-                            <img className="footer--resources-icon" src={google} alt="" />
+                            <img className="footer--resources-icon" src={gmail} alt="" />
                             <p className="footer--resources-text">Correo</p>
                         </div>
 

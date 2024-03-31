@@ -11,6 +11,7 @@ function Homepage() {
         <SectionHomepage></SectionHomepage>
         
         <Footer></Footer>
+        
     </>
   )
 }
