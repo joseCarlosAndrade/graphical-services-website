@@ -6,6 +6,8 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0 7rem;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
     
 }
 

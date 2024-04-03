@@ -11,8 +11,9 @@ body {
   font-family: var(--main-font);
   overflow-x: hidden;
   overflow-y: scroll;
-  background-color: rgb(238, 238, 238);
-
+  background-color: var(--bg-color);
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
 }
 
 code {
@@ -22,6 +23,23 @@ code {
 
 
 :root {
+  --bg-light:rgb(243, 235, 235);
+  --bg-dark: rgb(85, 82, 82); 
+
+  --header-light: #F04B37;
+  --header-dark: #292525;
+
+  --button-light: #FFE492;
+  --button-dark: rgb(207, 88, 19);
+
+  --blue-light: #043873;
+  --blue-dark: #4f96e7;
+
+  --text-light: rgb(39, 39, 39);
+  --text-dark: rgb(212, 204, 157);
+
+  --main-text-color: rgb(39, 39, 39);
+  --bg-color: var(--bg-light);
   --main-font: "DM Sans", sans-serif;
   --section-font: "Inter", sans-serif;
   --main-color: #F04B37;

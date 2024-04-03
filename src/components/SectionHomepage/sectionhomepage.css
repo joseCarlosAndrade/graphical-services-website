@@ -13,7 +13,7 @@
     text-align: justify;
     margin: 1rem auto;
     font-family: var(--section-font);
-    color: rgb(39, 39, 39);
+    color: var(--main-text-color);
     font-weight: bold;
     font-size: 15px;
 }

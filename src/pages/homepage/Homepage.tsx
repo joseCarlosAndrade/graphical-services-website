@@ -5,7 +5,7 @@ import { Header, Footer, SectionHomepage, AccessibilityTab } from '../../compone
 function Homepage() {
   return (
     <>
-      
+        <AccessibilityTab></AccessibilityTab>
         <Header></Header>
         
         <SectionHomepage></SectionHomepage>

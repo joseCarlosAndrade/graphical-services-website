@@ -4,6 +4,7 @@ import { Header, Footer, AccessibilityTab, SignupPage } from '../../components'
 function SignUp() {
   return (
     <>
+      <AccessibilityTab></AccessibilityTab>
         <Header></Header>
         
         <SignupPage></SignupPage>

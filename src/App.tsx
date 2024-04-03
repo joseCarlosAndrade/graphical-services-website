@@ -6,13 +6,15 @@ import { AccessibilityTab } from './components';
 
 function App() {
   return (
-    <Router>
-      <AccessibilityTab></AccessibilityTab>
+    // <Router>
+    <>
+      
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
-    </Router>
+      </>
+    // </Router>
   );
 }
 
