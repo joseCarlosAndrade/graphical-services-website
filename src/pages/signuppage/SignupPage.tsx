@@ -1,13 +1,13 @@
 import React from 'react'
-import { Header, Footer, AccessibilityTab, SignupPage } from '../../components'
+import { Header, Footer, AccessibilityTab, SectionSignup } from '../../components'
 
-function SignUp() {
+function SignupPage() {
   return (
     <>
       <AccessibilityTab></AccessibilityTab>
         <Header></Header>
         
-        <SignupPage></SignupPage>
+        <SectionSignup></SectionSignup>
         
         <Footer></Footer>
         
@@ -15,4 +15,4 @@ function SignUp() {
   )
 }
 
-export default SignUp
+export default SignupPage

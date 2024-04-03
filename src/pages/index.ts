@@ -1,2 +1,2 @@
 export { default as Homepage } from './homepage/Homepage';
-export { default as SignUp } from './signup/SignUp';
+export { default as SignupPage } from './signuppage/SignupPage';
