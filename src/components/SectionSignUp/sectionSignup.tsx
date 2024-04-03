@@ -1,8 +1,8 @@
 import React from 'react'
-import './signuppage.css';
+import './sectionsignup.css';
 import { google, facebook, apple } from '../../assets';
 
-function SectionHomepage() {
+function SectionSignup() {
   return (
     <>
       <section className="signup">
@@ -61,4 +61,4 @@ function SectionHomepage() {
   )
 }
 
-export default SectionHomepage
+export default SectionSignup
