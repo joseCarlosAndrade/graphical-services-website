@@ -36,7 +36,7 @@ header button {
 
 header button:hover {
     background-color: var(--button-color);
-    color: orangered;
+    color: var(--button-red-hover);
     border-radius: 4px;
 }
 

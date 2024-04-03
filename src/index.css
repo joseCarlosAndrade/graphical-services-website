@@ -38,6 +38,7 @@ code {
   --text-light: rgb(39, 39, 39);
   --text-dark: rgb(212, 204, 157);
 
+  --button-red-hover: var(--header-light);
   --main-text-color: rgb(39, 39, 39);
   --bg-color: var(--bg-light);
   --main-font: "DM Sans", sans-serif;
