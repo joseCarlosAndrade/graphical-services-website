@@ -5,7 +5,7 @@ import { google, facebook, apple } from '../../assets';
 function SectionSignup() {
   return (
     <>
-      <section className="signup">
+      <section className="signup signupDark">
 
         <div className="signup__div">
           <div className="signup__div_line"></div>

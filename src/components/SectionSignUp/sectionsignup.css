@@ -6,6 +6,8 @@
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
+
+    color: var(--sign-text-color-var);
 }
 
 .signup__div {
@@ -40,6 +42,7 @@
     gap: 1rem;
     width: 50vw;
     font-weight: bold;
+    
 }
 
 .signup__field__email_input {
@@ -48,7 +51,10 @@
     padding: 0.6rem;
     border-radius: 0.5rem;
     border: 1px solid;
+
+    
 }
+
 
 .signup__field__name {
     display: flex;
@@ -64,12 +70,22 @@
     width: 22vw;
 }
 
+
+
 .signup__field__name_second_input {
     font-size:medium;
     width: 22vw;
     padding: 0.6rem;
     border-radius: 0.5rem;
     border: 1px solid;
+}
+
+.signup__field__name_first_text,
+.signup__field__email_text,
+.signup__field__name_second_text,
+.signup__field__password_first_text,
+.signup__field__password_second_text   {
+    color: var(--sign-textBold-color-var);
 }
 
 .signup__field__password {
@@ -121,3 +137,13 @@
     color: black;
     border: 1px solid black;
 }
+
+/*  */
+
+/* .signupDark {
+    color: rgb(189, 189, 189);
+}
+
+.signupDarkBold {
+    color: #c7610d;
+} */

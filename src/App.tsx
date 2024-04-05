@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import {  } from './components';
 import { Homepage, SignupPage } from './pages';
-import { AccessibilityTab } from './components';
 
 function App() {
 
