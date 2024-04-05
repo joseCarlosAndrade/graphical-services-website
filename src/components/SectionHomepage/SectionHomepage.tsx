@@ -2,12 +2,17 @@ import React from 'react'
 import './sectionhomepage.css';
 import { machine } from '../../assets';
 
-function SectionHomepage() {
+interface HomepageProps {
+  currentTheme : string
+}
+
+function SectionHomepage({currentTheme} :HomepageProps) {
   return (
     <>
      <section className="homepage">
         <div className="homepage--slide">
-            <img className="homepage--slide-image" src={machine} alt="Máquina usada pela empresa"/>
+            <img className= "homepage--slide-image" src={machine} alt="Máquina usada pela empresa"/>
+
             <div className="homepage--slide-leftbutton"></div>
             <div className="homepage--slide-rightbutton"></div>
         </div>

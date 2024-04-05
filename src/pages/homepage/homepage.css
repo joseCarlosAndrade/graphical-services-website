@@ -1,0 +1,12 @@
+
+:root{
+    /* --image-width-light: 100vw;
+    --image-width-dark: 50vw;
+
+    --image-width-var: var(--image-width-light); */
+    
+    --img-transparency-light: ;
+    --img-transparency-dark: ;
+    --img-transparency-var: var(var(--img-transparency-light)):
+}
+

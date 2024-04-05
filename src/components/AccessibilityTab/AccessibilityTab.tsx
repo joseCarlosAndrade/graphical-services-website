@@ -3,20 +3,27 @@ import './accessibilitytab.css';
 
 import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '../../assets';
 
-function AccessibilityTab() {
-  const [theme, setTheme] = useState('light');
+interface AccessibilityProps {
+  currentTheme: string,
+  setCurrentTheme : (args0: string) => void
+}
 
+function AccessibilityTab( { currentTheme, setCurrentTheme} : AccessibilityProps) {
+  // const [theme, setTheme] = useState('light');
+
+  // event handler do botao do modo noturno
   const changeTheme = () => {
-    // document.documentElement.style.setProperty('--main-color', '#000');
-    if (theme==='light') {
-      setTheme('dark');
+    if (currentTheme==='light') {
+      setCurrentTheme('dark');
     } else {
-      setTheme('light')
+      setCurrentTheme('light')
     }
   }
 
+  // troca de temas dos componentes genericos (header, background)
+  // deve ser feito nesta ordem, pois useEffect sempre executa uma vez no carregamento da pagina
   useEffect(()=> {
-    if (theme === 'dark') {
+    if (currentTheme === 'dark') {
       document.documentElement.style.setProperty('--main-color', 'var(--header-dark)');
       document.documentElement.style.setProperty('--button-color', 'var(--button-dark)');
       document.documentElement.style.setProperty('--blue', 'var(--button-light)');
@@ -31,7 +38,7 @@ function AccessibilityTab() {
       document.documentElement.style.setProperty('--main-text-color', 'var(--text-light)');
       document.documentElement.style.setProperty('--button-red-hover', 'var(--header-light)');
     }
-  }, [theme]);
+  }, [currentTheme]);
   
   return (
     <>

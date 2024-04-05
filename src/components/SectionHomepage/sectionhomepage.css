@@ -3,7 +3,12 @@
 }
 
 .homepage--slide-image {
+    /* width: var(--image-width-var); */
     width: 100vw;
+}
+
+.imgDark {
+    width: 50vw;
 }
 
 .homepage--text {
