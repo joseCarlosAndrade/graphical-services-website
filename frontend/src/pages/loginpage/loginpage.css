@@ -1,10 +1,10 @@
 :root {
 
-    --sing-text-color-light: var(--text-light);
+    --sign-text-color-light: var(--text-light);
     --sign-text-color-dark: rgb(238, 238, 238);
     --sign-text-color-var: var(--sign-text-color-light);
 
-    --sing-textBold-color-light: var(--text-light);
+    --sign-textBold-color-light: var(--text-light);
     --sign-textBold-color-dark: rgb(255, 163, 58);
-    --sign-textBold-color-var: var(--sing-textBold-color-light);
+    --sign-textBold-color-var: var(--sign-textBold-color-light);
 }

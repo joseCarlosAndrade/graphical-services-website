@@ -4,10 +4,12 @@ import { Header, Footer, SectionHomepage, AccessibilityTab } from '../../compone
 import './homepage.css';
 interface HomepageProps {
   theme : string,
-  setTheme : (args0: string) => void
+  setTheme: (args0: string) => void
+  action: string,
+  setAction: (args0: string) => void
 }
 
-function Homepage( {theme, setTheme} : HomepageProps) {
+function Homepage( {theme, setTheme, action, setAction} : HomepageProps) {
 
   // const [theme, setTheme] = useState('light');
 
@@ -26,7 +28,7 @@ function Homepage( {theme, setTheme} : HomepageProps) {
   return (
     <>
         <AccessibilityTab currentTheme={theme} setCurrentTheme={setTheme}></AccessibilityTab>
-        <Header></Header>
+        <Header currentAction='register' setCurrentAction={setAction}></Header>
         
         <SectionHomepage currentTheme={theme}></SectionHomepage>
         
