@@ -2,7 +2,7 @@ import React from 'react'
 import './sectionsignup.css';
 import { google, facebook, apple } from '../../assets';
 
-function SectionSignup() {
+function SectionSignup() { 
   return (
     <>
       <section className="signup signupDark">

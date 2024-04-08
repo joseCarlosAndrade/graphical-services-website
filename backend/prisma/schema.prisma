@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// The type keyword is used to define a composite type – allowing you 
+// to define a document inside the document. The benefit of using a 
+// composite type over a JSON type is that you get type-safety when querying documents.
+type Profile {
+  firstName String
+  lastName  String
+}
+
+// This will be where you define what a user should look like in the database.
+model User {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  email    String    @unique
+  password String
+  profile  Profile
+  requests Request[]
+}
+
+model Request {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  url       String
+  price     Int      @default(0)
+  author    User?    @relation(fields: [userId], references: [id])
+  userId    String?  @db.ObjectId
+}
