@@ -2,11 +2,13 @@ import React from 'react'
 import './footer.css'
 import { gmail, instagram, whatsapp, mainLogo } from '../../assets';
 
-function Footer() {
+
+
+function Footer( { footerFont} : {footerFont? :  number}) {
     return (
         <>
 
-            <footer>
+            <footer style={{fontSize: `${footerFont}rem`}} >
                 <div className="footer--logo-left">
                     <img src={mainLogo} alt="Logo preto e branco" />
                     <p className="footer--logo-left--text">whitepace was created for the <br /> new ways we live and <br /> work. We make a better <br /> workspace around the world</p>

@@ -3,21 +3,43 @@ import './accessibilitytab.css';
 
 import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '../../assets';
 
+interface fontSizes {
+  accessButtonFont : number,
+
+  headerFont : number,
+  homepageFont : number,
+  footerFont : number,
+
+  loginFont : number
+
+}
 interface AccessibilityProps {
   currentTheme: string,
-  setCurrentTheme : (args0: string) => void
+  setCurrentTheme : (args0: string) => void,
+  fontSizes : fontSizes,
+  setFontSizes : (args0 : number)=> void
+  
 }
 
-function AccessibilityTab( { currentTheme, setCurrentTheme} : AccessibilityProps) {
+function AccessibilityTab( { currentTheme, setCurrentTheme, fontSizes, setFontSizes} : AccessibilityProps) {
   // const [theme, setTheme] = useState('light');
 
   // event handler do botao do modo noturno
-  const changeTheme = () => {
+  const changeThemeCallback = () => {
     if (currentTheme==='light') {
       setCurrentTheme('dark');
     } else {
       setCurrentTheme('light')
     }
+  }
+
+  const increaseFontCallback = () => {
+    setFontSizes(1)    ;
+
+  }
+
+  const decreaseFontCallback = () => {
+    setFontSizes(0);
   }
 
   // troca de temas dos componentes genericos (header, background)
@@ -46,11 +68,11 @@ function AccessibilityTab( { currentTheme, setCurrentTheme} : AccessibilityProps
             <div className='accessContainer--buttons'>
                 <img className='signlLanguageIcon' src={signLanguageIcon} alt="Mãos indicando libras" />
 
-                <button className='nightModeButton' onClick={ changeTheme}> <img className='nightModeIcon' src={darkThemeIcon.toString()} alt="Simbolo modo noturno" /> Modo noturno</button>
+                <button className='nightModeButton' onClick={ changeThemeCallback}> <img className='nightModeIcon' src={darkThemeIcon.toString()} alt="Simbolo modo noturno" /> Modo noturno</button>
 
-                <button className='increaseFontButton'> <img className='increaseFontIcon' src={lensUp.toString()} alt="Lupa com aumento" />Aumentar fonte</button>
+                <button className='increaseFontButton' onClick={increaseFontCallback}> <img className='increaseFontIcon' src={lensUp.toString()} alt="Lupa com aumento" />Aumentar fonte</button>
 
-                <button className='decreaseFontButton'> <img className='decreaseFontIcon' src={lensDown.toString()} alt="Lupa com diminuição" />Diminuir fonte</button>
+                <button className='decreaseFontButton' onClick={decreaseFontCallback}> <img className='decreaseFontIcon' src={lensDown.toString()} alt="Lupa com diminuição" />Diminuir fonte</button>
 
             </div>
             <div className='accessContainer--border'>

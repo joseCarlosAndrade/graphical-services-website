@@ -4,12 +4,27 @@ import './loginpage.css';
 
 interface LoginProps {
   theme: string,
-  setTheme: (args0: string) => void
+  setTheme: (args0: string) => void,
   action: string,
-  setAction: (args0: string) => void
+  setAction: (args0: string) => void,
+  fontSizes : fontSizes,
+  setFontsSizes : (args0 : number) => void,
 }
 
-function LoginPage({ theme, setTheme, action, setAction }: LoginProps) {
+interface fontSizes {
+  accessButtonFont : number,
+
+  headerFont : number,
+  homepageFont : number,
+  footerFont : number,
+
+  loginFont : number,
+
+  
+
+}
+
+function LoginPage({ theme, setTheme, action, setAction, fontSizes , setFontsSizes}: LoginProps) {
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.style.setProperty('--sign-text-color-var', 'var(--sign-text-color-dark)');
@@ -22,8 +37,8 @@ function LoginPage({ theme, setTheme, action, setAction }: LoginProps) {
 
   return (
     <>
-      <AccessibilityTab currentTheme={theme} setCurrentTheme={setTheme}></AccessibilityTab>
-      <Header currentAction={action} setCurrentAction={setAction}></Header>
+      <AccessibilityTab currentTheme={theme} setCurrentTheme={setTheme} fontSizes={fontSizes} setFontSizes={setFontsSizes}></AccessibilityTab>
+      <Header currentAction={action} setCurrentAction={setAction} headerFontSize={fontSizes.headerFont}></Header>
 
       <SectionLogin currentAction={action} setCurrentAction={setAction}></SectionLogin>
 

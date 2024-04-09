@@ -6,10 +6,11 @@ import DownArrow from '../DownArrow/DownArrow';
 
 interface HeaderProps {
   currentAction: string,
-  setCurrentAction: (args0: string) => void
+  setCurrentAction: (args0: string) => void,
+  headerFontSize : number
 }
 
-function Header({ currentAction, setCurrentAction }: HeaderProps) {
+function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps) {
   const changeAction = () => {
     if (currentAction === 'login') {
       setCurrentAction('register');
@@ -17,6 +18,8 @@ function Header({ currentAction, setCurrentAction }: HeaderProps) {
       setCurrentAction('login')
     }
   }
+
+  
   return (
     <>
       <header>
@@ -25,14 +28,14 @@ function Header({ currentAction, setCurrentAction }: HeaderProps) {
           <img src={mainLogo} alt="Graphical Services" />
         </Link>
 
-        <div className="header--navbar">
-          <button className="header--navbar--button fill" >Produtos  <DownArrow /> </button>
-          <button className="header--navbar--button" >Serviços <DownArrow /> </button>
-          <button className="header--navbar--button" >Quem somos <DownArrow /></button>
-          <button className="header--navbar--button" >???? <DownArrow /> </button>
+        <div className={`header--navbar ` } >
+          <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button fill" >Produtos  <DownArrow /> </button>
+          <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button" >Serviços <DownArrow /> </button>
+          <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button" >Quem somos <DownArrow /></button>
+          <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button" >???? <DownArrow /> </button>
 
           <Link to='/login'>
-            <button className="header--navbar--button-login" onClick={changeAction} >
+            <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button-login" onClick={changeAction} >
               {currentAction === 'login' ? 'Sign Up' : 'Sign In'} </button>
           </Link>
         </div>
