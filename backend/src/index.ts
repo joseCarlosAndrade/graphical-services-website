@@ -1,28 +1,24 @@
-import { Prisma, PrismaClient } from '@prisma/client'
+import { Prisma } from '@prisma/client'
+import { prisma } from '../utils/prisma.server'
+import { login, register } from '../utils/auth.server'
 import express from 'express'
 
-const prisma = new PrismaClient()
+
+var cors = require('cors')
 const app = express()
+
+app.use(cors())
 app.use(express.json())
 
 // curl -d '{"email": "manafei", "password": "ewofiawj", "profile": {"firstName": "Shogo", "lastName": "Shima"}}' -H "Content-Type: application/json" http://localhost:8080/signup
 app.post(`/signup`, async (req, res) => {
-    const { email, password, profile, requests } = req.body
-    const requestData = requests?.map((request: Prisma.RequestCreateInput) => {
-        return { url: request?.url }
-    })
-    const result = await prisma.user.create({
-        data: {
-            email,
-            password,
-            profile,
-            requests: {
-                create: requestData,
-            }
-        },
-    })
-    res.json(result)
-    console.log('Got body: ', req.body)
+    const ans = await register(req.body)
+    res.json(ans)
+})
+
+app.post(`/login`, async (req, res) => {
+    const ans = await login(req.body)
+    res.json(ans)
 })
 
 // curl -d '{"url":"iewajfwo", "authorEmail": "lana@prisma.io"}' -H "Content-Type: application/json" http://localhost:8080/request

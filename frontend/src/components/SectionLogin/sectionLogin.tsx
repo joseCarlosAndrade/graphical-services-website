@@ -3,6 +3,7 @@ import './sectionlogin.css';
 import { google, facebook, apple } from '../../assets';
 import { useEffect, useState } from 'react';
 import { FormField } from '../../components'
+import { setCookie, getCookie, deleteCookie } from '../../utils/cookie';
 
 interface SectionLoginProps {
   currentAction: string
@@ -10,6 +11,9 @@ interface SectionLoginProps {
 }
 
 function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
+  const [errors, setErrors] = useState({})
+  const [formError, setFormError] = useState('')
+  const [formSuccess, setFormSuccess] = useState('')
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -17,20 +21,99 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
     firstName: '',
     lastName: '',
   })
+
+  // when input changes, update formData
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, field: string) => {
     setFormData(form => ({ ...form, [field]: event.target.value }))
-    console.log(formData)
   }
+
+  // if action (login or register) changes, reset the form
+  useEffect(() => {
+    const newState = {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      firstName: '',
+      lastName: ''
+    }
+    setErrors(newState)
+    setFormError('')
+    setFormSuccess('')
+    setFormData(newState)
+  }, [currentAction])
+
+  // if the user starts writing in form, then erases error
+  useEffect(() => {
+    setFormError('')
+    setFormSuccess('')
+  }, [formData])
+
+  const register = async (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    if (formData.password != formData.confirmPassword) {
+      setFormError('The two passwords do not match')
+      return
+    }
+    try {
+      const body = {
+        email: formData.email,
+        password: formData.password,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+      }
+      const res = await fetch(`http://localhost:8080/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+      const resObject = JSON.parse(await res.json())
+      if (resObject.status === 200) {
+        setCookie('auth', resObject.id)
+        setFormSuccess('Success registering!')
+      } else {
+        setFormError(resObject.error)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const login = async (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    try {
+      const body = {
+        email: formData.email,
+        password: formData.password,
+      }
+      const res = await fetch(`http://localhost:8080/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
+      const resObject = JSON.parse(await res.json())
+      if (resObject.status === 200) {
+        setCookie('auth', resObject.id)
+        setFormSuccess('Success with Login!')
+      } else {
+        setFormError(resObject.error)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <>
-      <form className="login">
+      <form className="login" onSubmit={
+        currentAction === 'register' ? register : login
+      }>
 
         <div className="login__div">
           <div className="login__div_line"></div>
           <div className="login__div_text">{currentAction === 'login' ? <>
             Sign In with your Social Network
           </> : <>
-            Sign Up with you Social Network
+            Sign Up with your Social Network
           </>}
           </div>
           <div className="login__div_line"></div>
@@ -98,7 +181,7 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
                   label='Confirmar Senha'
                   placeholder='Confirm your password'
                   value={formData.confirmPassword}
-                  onChange={e => handleInputChange(e, 'password')}
+                  onChange={e => handleInputChange(e, 'confirmPassword')}
                 />
               </div>
               <div className='register__field__terms'>
@@ -122,6 +205,8 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
               </>
           }
         </div>
+        {formError ? <div className="errorMessage">{formError}</div> : <div className="hide"></div>}
+        {formSuccess ? <div className="successMessage">{formSuccess}</div> : <div className="hide"></div>}
         <button type="submit" className='login__button'>{currentAction === 'login' ? "Sign In" : "Sign Up"}</button>
       </form>
     </>

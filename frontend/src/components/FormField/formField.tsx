@@ -18,7 +18,7 @@ function FormField({ action, type, label, placeholder, onChange = () => { }, val
                 <input className={action + "__field__" + type + "_input"} placeholder={placeholder}
                     onChange={e => {
                         onChange(e)
-                    }} value={value}></input>
+                    }} value={value} type={(label === 'Senha' || label === 'Confirmar Senha') ? 'password' : ''}></input>
             </div>
         </>
     )

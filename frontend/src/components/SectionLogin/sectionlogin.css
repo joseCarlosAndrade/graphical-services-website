@@ -83,11 +83,12 @@
     border: 1px solid;
 }
 
+.login__field__email_text,
 .register__field__name_first_text,
-.register__field__email_text,
 .register__field__name_second_text,
 .register__field__password_first_text,
-.register__field__password_second_text {
+.register__field__password_second_text,
+.login__field__password_text {
     color: var(--sign-textBold-color-var);
 }
 
@@ -139,4 +140,16 @@
     background-color: var(--button-color);
     color: black;
     border: 1px solid black;
+}
+
+.errorMessage {
+    color: red;
+}
+
+.successMessage {
+    color: green
+}
+
+.hide {
+    display: none
 }
