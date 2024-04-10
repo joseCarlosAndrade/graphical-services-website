@@ -1,24 +1,56 @@
-import { Prisma } from '@prisma/client'
 import { prisma } from '../utils/prisma.server'
 import { login, register } from '../utils/auth.server'
 import express from 'express'
+import { requireJwtMiddleware } from '../utils/middleware.server'
+import { encodeSession } from '../utils/token.server'
+import { Session } from '../utils/types.server'
+import dotenv from 'dotenv'
 
+dotenv.config()
+const TOKEN_SECRET = process.env.TOKEN_SECRET || ''
 
 var cors = require('cors')
 const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use("/protected", requireJwtMiddleware);
 
 // curl -d '{"email": "manafei", "password": "ewofiawj", "profile": {"firstName": "Shogo", "lastName": "Shima"}}' -H "Content-Type: application/json" http://localhost:8080/signup
 app.post(`/signup`, async (req, res) => {
     const ans = await register(req.body)
-    res.json(ans)
+    if (ans.status === 200) {
+        const session = encodeSession(TOKEN_SECRET, {
+            id: ans.userId || 'err',
+            username: ans.userName || 'err',
+            dateCreated: new Date().getTime()
+        })
+        res.status(201).json(session)
+    } else {
+        res.status(ans.status).json(ans.message)
+    }
 })
+
+// Set up an HTTP Get listener at /protected. The request can only access it if they have a valid JWT token
+app.get("/protected", (req, res) => {
+    // The auth middleware protects this route and sets res.locals.session which can be accessed here
+    const session: Session = res.locals.session;
+
+    res.status(200).json({ message: `Hello, ${session.username}!` });
+});
 
 app.post(`/login`, async (req, res) => {
     const ans = await login(req.body)
-    res.json(ans)
+    if (ans.status === 200) {
+        const session = encodeSession(TOKEN_SECRET, {
+            id: ans.userId || 'err',
+            username: ans.userName || 'err',
+            dateCreated: new Date().getTime()
+        })
+        res.status(201).json(session)
+    } else {
+        res.status(ans.status).json(ans.message)
+    }
 })
 
 // curl -d '{"url":"iewajfwo", "authorEmail": "lana@prisma.io"}' -H "Content-Type: application/json" http://localhost:8080/request

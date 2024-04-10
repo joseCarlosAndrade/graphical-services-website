@@ -4,10 +4,6 @@ import { RegisterForm, LoginForm } from "./types.server"
 import { validateEmail, validateName, validatePassword } from './validators.server'
 import bcrypt from 'bcryptjs'
 
-export async function createUserSession(userId: string) {
-
-}
-
 export async function register(user: RegisterForm) {
     const errors = {
         email: validateEmail(user.email),
@@ -16,32 +12,27 @@ export async function register(user: RegisterForm) {
         lastName: validateName(user.lastName),
     }
     if (errors.email || errors.password) {
-        return JSON.stringify({ error: 'Please enter a valid email or a password at least 8 characters long', status: 400 })
+        return { message: 'Please enter a valid email or a password at least 8 characters long', status: 400 }
     }
     if (errors.firstName || errors.lastName) {
-        return JSON.stringify({ error: 'Please enter values in the name fields', status: 400 })
+        return { message: 'Please enter values in the name fields', status: 400 }
     }
 
     const exists = await prisma.user.count({ where: { email: user.email } })
     if (exists) {
-        return JSON.stringify({ error: `User already exists with that email`, status: 400 })
+        return { message: `User already exists with that email`, status: 400 }
     }
 
     const newUser = await createUser(user)
     if (!newUser) {
-        return JSON.stringify(
-            {
-                error: `Something went wrong trying to create a new user.`,
-                fields: { email: user.email, password: user.password },
-                status: 400
-            },
-        )
+        return {
+            message: `Something went wrong trying to create a new user.`,
+            fields: { email: user.email, password: user.password },
+            status: 400
+        }
     }
 
-    // create user session with cookie
-    createUserSession(newUser.id);
-
-    return JSON.stringify({ name: 'user-session', id: newUser.id, status: 200 })
+    return { userName: user.firstName, userId: newUser.id, status: 200 }
 }
 
 export async function login({ email, password }: LoginForm) {
@@ -53,13 +44,10 @@ export async function login({ email, password }: LoginForm) {
     // returns a null value if no user is found or 
     // the password provided doesn't match the hashed value in the database.
     if (!user || !(await bcrypt.compare(password, user.password))) {
-        return JSON.stringify({ error: `Incorrect login`, status: 400 })
+        return { message: `Incorrect login`, status: 400 }
     }
 
-    // creates user session with cookie if all goes well
-    createUserSession(user.id);
-
-    return JSON.stringify({ name: 'user-session', id: user.id, status: 200 })
+    return { userName: user.profile.firstName, userId: user.id, status: 200 }
 }
 
 // This is a lot of new functionality.Here is what the functions above will do:

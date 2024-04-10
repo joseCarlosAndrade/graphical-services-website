@@ -11,7 +11,6 @@ interface SectionLoginProps {
 }
 
 function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
-  const [errors, setErrors] = useState({})
   const [formError, setFormError] = useState('')
   const [formSuccess, setFormSuccess] = useState('')
   const [formData, setFormData] = useState({
@@ -21,6 +20,11 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
     firstName: '',
     lastName: '',
   })
+
+  // gets user session on reload
+  useEffect(() => {
+    fetchData(); // Immediately invoke the async function
+  }, [])
 
   // when input changes, update formData
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, field: string) => {
@@ -36,7 +40,6 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
       firstName: '',
       lastName: ''
     }
-    setErrors(newState)
     setFormError('')
     setFormSuccess('')
     setFormData(newState)
@@ -50,7 +53,7 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
 
   const register = async (e: React.SyntheticEvent) => {
     e.preventDefault()
-    if (formData.password != formData.confirmPassword) {
+    if (formData.password !== formData.confirmPassword) {
       setFormError('The two passwords do not match')
       return
     }
@@ -66,9 +69,9 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      const resObject = JSON.parse(await res.json())
+      const resObject = await res.json()
       if (resObject.status === 200) {
-        setCookie('auth', resObject.id)
+        setCookie('token', resObject.id)
         setFormSuccess('Success registering!')
       } else {
         setFormError(resObject.error)
@@ -90,17 +93,34 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      const resObject = JSON.parse(await res.json())
-      if (resObject.status === 200) {
-        setCookie('auth', resObject.id)
+      if (res.status === 201) {
+        const session = await res.json()
+        setCookie('token', session.token)
+        // console.log('Cookie set to token: ', session.token)
         setFormSuccess('Success with Login!')
       } else {
-        setFormError(resObject.error)
+        const message = await res.json()
+        setFormError(message)
       }
     } catch (error) {
       console.error(error)
     }
   }
+
+  const fetchData = async () => {
+    try {
+      const token = getCookie('token')
+      // console.log('testing for token: ', token)
+      const res = await fetch(`http://localhost:8080/protected`, {
+        method: 'GET',
+        headers: { 'X-JWT-Token': token || '' },
+      });
+      const resObject = await res.json();
+      console.log(resObject.message)
+    } catch (error) {
+      console.error('Error fetching data: ', error);
+    }
+  };
 
   return (
     <>
