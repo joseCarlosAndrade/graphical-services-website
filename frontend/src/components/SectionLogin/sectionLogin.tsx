@@ -3,7 +3,8 @@ import './sectionlogin.css';
 import { google, facebook, apple } from '../../assets';
 import { useEffect, useState } from 'react';
 import { FormField } from '../../components'
-import { setCookie, getCookie, deleteCookie } from '../../utils/cookie';
+import { setCookie } from '../../utils/cookie';
+import { fetchData } from '../../services';
 
 interface SectionLoginProps {
   currentAction: string
@@ -24,6 +25,7 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
   // gets user session on reload
   useEffect(() => {
     fetchData(); // Immediately invoke the async function
+    
   }, [])
 
   // when input changes, update formData
@@ -69,12 +71,14 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      const resObject = await res.json()
-      if (resObject.status === 200) {
-        setCookie('token', resObject.id)
+      if (res.status === 201) {
+        const resObject = await res.json()
+        setCookie('token', resObject.token)
+        // console.log('Cookie set to token: ', session.token)
         setFormSuccess('Success registering!')
       } else {
-        setFormError(resObject.error)
+        const message = await res.json()
+        setFormError(message)
       }
     } catch (error) {
       console.error(error)
@@ -106,21 +110,6 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
       console.error(error)
     }
   }
-
-  const fetchData = async () => {
-    try {
-      const token = getCookie('token')
-      // console.log('testing for token: ', token)
-      const res = await fetch(`http://localhost:8080/protected`, {
-        method: 'GET',
-        headers: { 'X-JWT-Token': token || '' },
-      });
-      const resObject = await res.json();
-      console.log(resObject.message)
-    } catch (error) {
-      console.error('Error fetching data: ', error);
-    }
-  };
 
   return (
     <>

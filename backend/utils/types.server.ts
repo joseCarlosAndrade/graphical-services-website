@@ -13,13 +13,6 @@ export type LoginForm = {
     password: string
 }
 
-export interface User {
-    id: string;
-    dateCreated: number;
-    username: string;
-    password: string;
-}
-
 export interface Session {
     id: string;
     dateCreated: number;

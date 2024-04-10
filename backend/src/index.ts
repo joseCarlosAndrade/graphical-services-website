@@ -36,7 +36,7 @@ app.get("/protected", (req, res) => {
     // The auth middleware protects this route and sets res.locals.session which can be accessed here
     const session: Session = res.locals.session;
 
-    res.status(200).json({ message: `Hello, ${session.username}!` });
+    res.status(200).json({ message: `Hello, ${session.id}!` });
 });
 
 app.post(`/login`, async (req, res) => {

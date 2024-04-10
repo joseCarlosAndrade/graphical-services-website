@@ -28,6 +28,10 @@ footer {
     flex-direction: column;
 }
 
+.footer--logo {
+    width: 18vw;
+}
+
 .footer--produtos {
     font-weight: bold;
 }

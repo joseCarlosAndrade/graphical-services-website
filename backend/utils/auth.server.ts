@@ -28,7 +28,7 @@ export async function register(user: RegisterForm) {
         return {
             message: `Something went wrong trying to create a new user.`,
             fields: { email: user.email, password: user.password },
-            status: 400
+            status: 500
         }
     }
 

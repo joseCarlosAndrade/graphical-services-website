@@ -1,9 +1,6 @@
 import { encode, decode, TAlgorithm } from "jwt-simple";
 import { Session, PartialSession, EncodeResult, DecodeResult, ExpirationStatus} from "./types.server";
 
-export const SECRET_KEY = process.env["TOKEN_SECRET"]
-
-
 export function encodeSession(secretKey: string, partialSession: PartialSession): EncodeResult {
     // Always use HS512 to sign the token
     const algorithm: TAlgorithm = "HS512";

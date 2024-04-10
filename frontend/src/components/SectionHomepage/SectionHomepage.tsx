@@ -1,8 +1,8 @@
 import React from 'react'
 import './sectionhomepage.css';
 import { machine } from '../../assets';
-import { getCookie } from '../../utils/cookie';
 import { useEffect } from 'react';
+import { fetchData } from '../../services';
 
 interface HomepageProps {
   currentTheme : string,
@@ -13,20 +13,6 @@ function SectionHomepage({ currentTheme, homepageFont }: HomepageProps) {
   useEffect(() => {
     fetchData(); // Immediately invoke the async function
   }, [])
-  const fetchData = async () => {
-    try {
-      const token = getCookie('token')
-      // console.log('testing for token: ', token)
-      const res = await fetch(`http://localhost:8080/protected`, {
-        method: 'GET',
-        headers: { 'X-JWT-Token': token || '' },
-      });
-      const resObject = await res.json();
-      console.log(resObject.message)
-    } catch (error) {
-      console.error('Error fetching data: ', error);
-    }
-  };
   return (
     <>
      <section className="homepage">
