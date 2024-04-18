@@ -21,11 +21,11 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
     firstName: '',
     lastName: '',
   })
+  const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
 
   // gets user session on reload
   useEffect(() => {
     fetchData(); // Immediately invoke the async function
-    
   }, [])
 
   // when input changes, update formData
@@ -73,9 +73,15 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
       })
       if (res.status === 201) {
         const resObject = await res.json()
-        setCookie('token', resObject.token)
-        // console.log('Cookie set to token: ', session.token)
+
+        // setCookie('token', resObject.token)
+        // console.log('Registered with token: ', resObject.token)
+
+        console.log('By registering, We are not creating cookie yet.')
+
         setFormSuccess('Success registering!')
+        await delay(1500);
+        window.location.href = "/graphical-services-website#/";
       } else {
         const message = await res.json()
         setFormError(message)
@@ -99,9 +105,14 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
       })
       if (res.status === 201) {
         const session = await res.json()
+
         setCookie('token', session.token)
-        // console.log('Cookie set to token: ', session.token)
+        console.log('Cookie set to token: ', session.token)
+
         setFormSuccess('Success with Login!')
+
+        await delay(1500);
+        window.location.href = "/graphical-services-website#/";
       } else {
         const message = await res.json()
         setFormError(message)

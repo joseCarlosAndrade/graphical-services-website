@@ -16,13 +16,21 @@ app.use(cors())
 app.use(express.json())
 app.use("/protected", requireJwtMiddleware);
 
+// Set up an HTTP Get listener at /protected. The request can only access it if they have a valid JWT token
+app.get("/protected", (req, res) => {
+    // The auth middleware protects this route and sets res.locals.session which can be accessed here
+    const session: Session = res.locals.session;
+
+    res.status(200).json({ message: `Hello, ${session.email}!` });
+});
+
 // curl -d '{"email": "manafei", "password": "ewofiawj", "profile": {"firstName": "Shogo", "lastName": "Shima"}}' -H "Content-Type: application/json" http://localhost:8080/signup
 app.post(`/signup`, async (req, res) => {
     const ans = await register(req.body)
     if (ans.status === 200) {
         const session = encodeSession(TOKEN_SECRET, {
             id: ans.userId || 'err',
-            username: ans.userName || 'err',
+            email: ans.email || 'err',
             dateCreated: new Date().getTime()
         })
         res.status(201).json(session)
@@ -31,20 +39,12 @@ app.post(`/signup`, async (req, res) => {
     }
 })
 
-// Set up an HTTP Get listener at /protected. The request can only access it if they have a valid JWT token
-app.get("/protected", (req, res) => {
-    // The auth middleware protects this route and sets res.locals.session which can be accessed here
-    const session: Session = res.locals.session;
-
-    res.status(200).json({ message: `Hello, ${session.id}!` });
-});
-
 app.post(`/login`, async (req, res) => {
     const ans = await login(req.body)
     if (ans.status === 200) {
         const session = encodeSession(TOKEN_SECRET, {
             id: ans.userId || 'err',
-            username: ans.userName || 'err',
+            email: ans.email || 'err',
             dateCreated: new Date().getTime()
         })
         res.status(201).json(session)

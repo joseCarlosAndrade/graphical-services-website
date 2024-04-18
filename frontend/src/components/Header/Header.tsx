@@ -1,6 +1,6 @@
 import React from 'react'
 import './header.css';
-import { mainLogo } from './../../assets';
+import { mainLogoWhite } from './../../assets';
 import { Link } from 'react-router-dom'
 import DownArrow from '../DownArrow/DownArrow';
 
@@ -25,7 +25,7 @@ function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps
       <header>
         {/* <div className="header--logo">Logo</div> */}
         <Link to='/'>
-          <img src={mainLogo} alt="Graphical Services" />
+          <img src={mainLogoWhite} alt="Graphical Services" />
         </Link>
 
         <div className={`header--navbar ` } >

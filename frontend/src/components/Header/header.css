@@ -12,9 +12,10 @@ header {
 }
 
 header img {
-    height: 3.2rem;
+    height: 3.5rem;
     cursor: pointer;
 }
+
 header button {
     background-color: var(--main-color);
     outline: 0;

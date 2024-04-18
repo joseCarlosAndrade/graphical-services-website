@@ -1,54 +1,113 @@
-import { prisma } from "./prisma.server"
-import { createUser } from "./user.server"
 import { RegisterForm, LoginForm } from "./types.server"
-import { validateEmail, validateName, validatePassword } from './validators.server'
+
+import { validateName } from './validators.server'
 import bcrypt from 'bcryptjs'
 
+import { firebaseConfig } from "../firebase";
+import { initializeApp } from "firebase/app";
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    getAuth,
+    sendEmailVerification,
+    signOut,
+    updateProfile,
+} from "firebase/auth";
+
+// Initialize Firebase
+initializeApp(firebaseConfig);
+const auth = getAuth()
+
 export async function register(user: RegisterForm) {
-    const errors = {
-        email: validateEmail(user.email),
-        password: validatePassword(user.password),
-        firstName: validateName(user.firstName),
-        lastName: validateName(user.lastName),
-    }
-    if (errors.email || errors.password) {
-        return { message: 'Please enter a valid email or a password at least 8 characters long', status: 400 }
-    }
-    if (errors.firstName || errors.lastName) {
+
+    if (validateName(user.firstName) || validateName(user.lastName)) {
         return { message: 'Please enter values in the name fields', status: 400 }
     }
 
-    const exists = await prisma.user.count({ where: { email: user.email } })
-    if (exists) {
-        return { message: `User already exists with that email`, status: 400 }
-    }
+    try {
+        // create a new user with email and password
+        const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            user.email,
+            user.password
+        )
 
-    const newUser = await createUser(user)
-    if (!newUser) {
-        return {
-            message: `Something went wrong trying to create a new user.`,
-            fields: { email: user.email, password: user.password },
-            status: 500
+        const newUser = userCredential.user
+        await updateProfile(newUser, {
+            displayName: user.firstName + ' ' + user.lastName
+        })
+
+        await sendEmailVerification(userCredential.user)
+        .then(() => {
+            console.log('Email verification sent!');
+        })
+        .catch(error => {
+            console.error('Error sending email verification', error);
+        })
+        
+        return { userId: newUser.uid, email:newUser.email, status: 200 }
+
+    } catch (err: any) {
+        // Handle errors here
+        const errorMessage = err.message;
+        const errorCode = err.code;
+
+        switch (errorCode) {
+            case "auth/weak-password":
+                return { message: "The password is too weak.", status: 400 }
+            case "auth/email-already-in-use":
+                return { message: "This email address is already in use by another account.", status: 400 }
+            case "auth/invalid-email":
+                return { message: "This email address is invalid.", status: 400 }
+            case "auth/operation-not-allowed":
+                return { message: "Email/password accounts are not enabled.", status: 400 }
+            default:
+                return { message: errorMessage, status: 400 };
         }
     }
-
-    return { userName: user.firstName, userId: newUser.id, status: 200 }
 }
 
 export async function login({ email, password }: LoginForm) {
-    // queries for a user with a matching email.
-    const user = await prisma.user.findUnique({
-        where: { email },
-    })
+    // // returns a null value if no user is found or 
+    // // the password provided doesn't match the hashed value in the database.
+    // if (!user || !(await bcrypt.compare(password, user.password))) {
+    //     return { message: `Incorrect login`, status: 400 }
+    // }
+    
+    try {
+        // create a new user with email and password
+        const userCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        )
+        const user = userCredential.user
+        return { userId: user.uid, email: user.email, status: 200 }
 
-    // returns a null value if no user is found or 
-    // the password provided doesn't match the hashed value in the database.
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-        return { message: `Incorrect login`, status: 400 }
+    } catch (err: any) {
+        // Handle errors here
+        const errorMessage = err.message;
+        const errorCode = err.code;
+
+        switch (errorCode) {
+            case "auth/invalid-email":
+                return { message: "This email address is invalid.", status: 400 }
+            case "auth/user-disabled":
+                return { message: "This email address is disabled by the administrator.", status: 400 }
+            case "auth/user-not-found":
+                return { message: "This email address is not registered.", status: 400 }
+            case "auth/invalid-credential":
+                return { message: "The password is invalid or the user does not have a password.", status: 400 }
+            default:
+                return { message: errorMessage, status: 400 };
+        }
     }
-
-    return { userName: user.profile.firstName, userId: user.id, status: 200 }
 }
+
+export async function logout() {
+    signOut(auth)
+}
+
 
 // This is a lot of new functionality.Here is what the functions above will do:
 // requireUserId checks for a user's session. If one exists, it is a success and just returns the userId. If it fails, however, it will redirect the user to the login screen.
@@ -87,10 +146,4 @@ export async function login({ email, password }: LoginForm) {
 //     } catch {
 //         throw logout()
 //     }
-// }
-
-// export async function logout() {
-//     const expirationTime = new Date(new Date().getTime())
-//     setCookie('auth', JSON.stringify({}), { expires: expirationTime })
-//     // return redirect('/signup')
 // }

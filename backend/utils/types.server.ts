@@ -16,7 +16,7 @@ export type LoginForm = {
 export interface Session {
     id: string;
     dateCreated: number;
-    username: string;
+    email: string;
     /**
      * Timestamp indicating when the session was created, in Unix milliseconds.
      */
