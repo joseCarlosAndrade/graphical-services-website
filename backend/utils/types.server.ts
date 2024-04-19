@@ -13,17 +13,15 @@ export type LoginForm = {
     password: string
 }
 
-export interface User {
-    id: string;
-    dateCreated: number;
-    username: string;
-    password: string;
+export type UserData = {
+    email: string
+    displayName: string
 }
 
 export interface Session {
     id: string;
     dateCreated: number;
-    username: string;
+    email: string;
     /**
      * Timestamp indicating when the session was created, in Unix milliseconds.
      */

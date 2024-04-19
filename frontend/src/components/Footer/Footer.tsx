@@ -10,7 +10,7 @@ function Footer( { footerFont} : {footerFont? :  number}) {
 
             <footer style={{fontSize: `${footerFont}rem`}} >
                 <div className="footer--logo-left">
-                    <img src={mainLogo} alt="Logo preto e branco" />
+                    <img src={mainLogo} alt="Logo preto e branco" className="footer--logo" />
                     <p className="footer--logo-left--text">whitepace was created for the <br /> new ways we live and <br /> work. We make a better <br /> workspace around the world</p>
                 </div>
 

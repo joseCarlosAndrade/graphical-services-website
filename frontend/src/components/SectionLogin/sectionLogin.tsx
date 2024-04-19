@@ -3,7 +3,8 @@ import './sectionlogin.css';
 import { google, facebook, apple } from '../../assets';
 import { useEffect, useState } from 'react';
 import { FormField } from '../../components'
-import { setCookie, getCookie, deleteCookie } from '../../utils/cookie';
+import { setCookie } from '../../utils/cookie';
+import { fetchData } from '../../services';
 
 interface SectionLoginProps {
   currentAction: string
@@ -20,6 +21,7 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
     firstName: '',
     lastName: '',
   })
+  const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
 
   // gets user session on reload
   useEffect(() => {
@@ -69,12 +71,15 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
-      const resObject = await res.json()
-      if (resObject.status === 200) {
-        setCookie('token', resObject.id)
-        setFormSuccess('Success registering!')
+      if (res.status === 201) {
+        console.log('By registering, We are not creating cookie yet.')
+
+        setFormSuccess('Please check your email to verify it!')
+        await delay(1500);
+        window.location.href = "/graphical-services-website#/";
       } else {
-        setFormError(resObject.error)
+        const message = await res.json()
+        setFormError(message)
       }
     } catch (error) {
       console.error(error)
@@ -95,9 +100,14 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
       })
       if (res.status === 201) {
         const session = await res.json()
+
         setCookie('token', session.token)
         // console.log('Cookie set to token: ', session.token)
+
         setFormSuccess('Success with Login!')
+
+        await delay(1500);
+        window.location.href = "/graphical-services-website#/";
       } else {
         const message = await res.json()
         setFormError(message)
@@ -106,21 +116,6 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
       console.error(error)
     }
   }
-
-  const fetchData = async () => {
-    try {
-      const token = getCookie('token')
-      // console.log('testing for token: ', token)
-      const res = await fetch(`http://localhost:8080/protected`, {
-        method: 'GET',
-        headers: { 'X-JWT-Token': token || '' },
-      });
-      const resObject = await res.json();
-      console.log(resObject.message)
-    } catch (error) {
-      console.error('Error fetching data: ', error);
-    }
-  };
 
   return (
     <>

@@ -2,27 +2,27 @@ header {
     display: flex;
     flex-direction: row;
     background-color: var(--main-color);
-    height: 4.5rem;
+    height: auto;
     align-items: center;
     justify-content: space-between;
-    padding: 0 7rem;
+    padding: 0 8%;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
-    
 }
 
 header img {
-    height: 3.2rem;
+    height: 3.5rem;
     cursor: pointer;
 }
+
 header button {
     background-color: var(--main-color);
     outline: 0;
     border: 0;
     /* border: 2px; */
     /* border-style: solid; */
-    padding: 0.7rem 1rem;
-    margin: 0 0.4rem;
+    padding: 0.7rem;
+    margin: 1rem 0.4rem;
     color: #e6e6e6;
     font-weight: bold;
     /* font-size: 13px; */

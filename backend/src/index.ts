@@ -1,11 +1,13 @@
+import express from 'express'
 import { prisma } from '../utils/prisma.server'
 import { login, register } from '../utils/auth.server'
-import express from 'express'
 import { requireJwtMiddleware } from '../utils/middleware.server'
 import { encodeSession } from '../utils/token.server'
 import { Session } from '../utils/types.server'
-import dotenv from 'dotenv'
+import { verify } from '../utils/email.server'
+import { createUser } from '../utils/user.server'
 
+import dotenv from 'dotenv'
 dotenv.config()
 const TOKEN_SECRET = process.env.TOKEN_SECRET || ''
 
@@ -16,13 +18,30 @@ app.use(cors())
 app.use(express.json())
 app.use("/protected", requireJwtMiddleware);
 
+// Set up an HTTP Get listener at /protected. The request can only access it if they have a valid JWT token
+app.get("/protected", (req, res) => {
+    // The auth middleware protects this route and sets res.locals.session which can be accessed here
+    const session: Session = res.locals.session;
+
+    res.status(200).json({ message: `Hello, ${session.email}!` });
+});
+
 // curl -d '{"email": "manafei", "password": "ewofiawj", "profile": {"firstName": "Shogo", "lastName": "Shima"}}' -H "Content-Type: application/json" http://localhost:8080/signup
 app.post(`/signup`, async (req, res) => {
     const ans = await register(req.body)
     if (ans.status === 200) {
+        res.status(201)
+    } else {
+        res.status(ans.status).json(ans.message)
+    }
+})
+
+app.post(`/login`, async (req, res) => {
+    const ans = await login(req.body)
+    if (ans.status === 200) {
         const session = encodeSession(TOKEN_SECRET, {
             id: ans.userId || 'err',
-            username: ans.userName || 'err',
+            email: ans.email || 'err',
             dateCreated: new Date().getTime()
         })
         res.status(201).json(session)
@@ -31,25 +50,25 @@ app.post(`/signup`, async (req, res) => {
     }
 })
 
-// Set up an HTTP Get listener at /protected. The request can only access it if they have a valid JWT token
-app.get("/protected", (req, res) => {
-    // The auth middleware protects this route and sets res.locals.session which can be accessed here
-    const session: Session = res.locals.session;
+app.post(`/verify-email`, async (req, res) => {
+    const { oobCode } = req.body
+    // console.log('oobCode received: ', oobCode)
+    const userData = await verify(oobCode)
+    if (userData.status === 200) {
+        const ans = await createUser({
+            email: userData.email || '', 
+            displayName: userData.displayName || ''
+        })
 
-    res.status(200).json({ message: `Hello, ${session.username}!` });
-});
-
-app.post(`/login`, async (req, res) => {
-    const ans = await login(req.body)
-    if (ans.status === 200) {
         const session = encodeSession(TOKEN_SECRET, {
-            id: ans.userId || 'err',
-            username: ans.userName || 'err',
+            id: userData.id || 'err',
+            email: userData.email || 'err',
             dateCreated: new Date().getTime()
         })
+
         res.status(201).json(session)
     } else {
-        res.status(ans.status).json(ans.message)
+        res.status(userData.status).json(userData.message)
     }
 })
 
