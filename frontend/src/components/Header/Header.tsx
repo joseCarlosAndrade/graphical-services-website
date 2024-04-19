@@ -1,4 +1,7 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
+import { fetchData } from '../../services';
+import { deleteCookie } from '../../utils/cookie';
 import './header.css';
 import { mainLogoWhite } from './../../assets';
 import { Link } from 'react-router-dom'
@@ -7,7 +10,7 @@ import DownArrow from '../DownArrow/DownArrow';
 interface HeaderProps {
   currentAction: string,
   setCurrentAction: (args0: string) => void,
-  headerFontSize : number
+  headerFontSize: number
 }
 
 function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps) {
@@ -18,6 +21,24 @@ function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps
       setCurrentAction('login')
     }
   }
+
+  const [loggedIn, setLoggedIn] = useState(false)
+  useEffect(() => {
+    const fetchDataAsync = async () => {
+      const logged = await fetchData()
+      console.log(logged)
+      setLoggedIn(logged)
+    }
+
+    fetchDataAsync()
+  }, [])
+
+  const logOut = () => {
+    deleteCookie('token')
+    setLoggedIn(false)
+    window.location.reload()
+  }
+
   
   return (
     <>
@@ -31,12 +52,23 @@ function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps
           <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button fill" >Produtos  <DownArrow /> </button>
           <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button" >Serviços <DownArrow /> </button>
           <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button" >Quem somos <DownArrow /></button>
-          <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button" >???? <DownArrow /> </button>
 
-          <Link to='/login'>
-            <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button-login" onClick={changeAction} >
-              {currentAction === 'login' ? 'Sign Up' : 'Sign In'} </button>
-          </Link>
+          {
+            loggedIn === true ?
+              <>
+                <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Perfil <DownArrow /></button>
+                <Link to='/'>
+                  <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button-login" onClick={logOut} >
+                    Log Out </button>
+                </Link>
+              </> :
+              <>
+                <Link to='/login'>
+                  <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button-login" onClick={changeAction} >
+                    {currentAction === 'login' ? 'Sign Up' : 'Sign In'} </button>
+                </Link>
+              </>
+          }
         </div>
       </header>
 

@@ -1,8 +1,6 @@
 import React from 'react'
 import './sectionhomepage.css';
 import { machine } from '../../assets';
-import { useEffect } from 'react';
-import { fetchData } from '../../services';
 
 interface HomepageProps {
   currentTheme : string,
@@ -10,9 +8,6 @@ interface HomepageProps {
 }
 
 function SectionHomepage({ currentTheme, homepageFont }: HomepageProps) {
-  useEffect(() => {
-    fetchData(); // Immediately invoke the async function
-  }, [])
   return (
     <>
      <section className="homepage">

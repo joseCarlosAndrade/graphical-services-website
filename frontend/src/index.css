@@ -23,8 +23,10 @@ code {
 
 
 :root {
-  --bg-light:rgb(243, 235, 235);
-  --bg-dark: rgb(85, 82, 82); 
+  width: 100vw;
+
+  --bg-light: rgb(243, 235, 235);
+  --bg-dark: rgb(85, 82, 82);
 
   --header-light: #F04B37;
   --header-dark: #292525;

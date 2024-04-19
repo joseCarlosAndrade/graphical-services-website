@@ -8,9 +8,13 @@ const fetchData = async () => {
             method: 'GET',
             headers: { 'X-JWT-Token': token || '' },
         });
-        const resObject = await res.json();
-        console.log(resObject.message)
-        return true
+        if (res.status === 200) {
+            const resObject = await res.json();
+            console.log(resObject.message)
+            return true
+        } else {
+            return false
+        }
     } catch (error) {
         console.error('Error fetching data: ', error);
         return false
