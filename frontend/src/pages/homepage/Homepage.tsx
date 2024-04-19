@@ -38,7 +38,6 @@ function Homepage( {theme, setTheme, action, setAction, fontSizes, setFontsSizes
 
     }
   }, [theme])
-
   
   return (
     <>
@@ -46,7 +45,7 @@ function Homepage( {theme, setTheme, action, setAction, fontSizes, setFontsSizes
         <Header currentAction='register' setCurrentAction={setAction} headerFontSize={fontSizes.headerFont}></Header>
         
         <SectionHomepage currentTheme={theme} homepageFont={fontSizes.homepageFont}></SectionHomepage>
-        
+
         <Footer footerFont={fontSizes.footerFont}></Footer>
         
     </>
@@ -54,3 +53,4 @@ function Homepage( {theme, setTheme, action, setAction, fontSizes, setFontsSizes
 }
 
 export default Homepage
+
