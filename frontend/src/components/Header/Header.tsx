@@ -18,7 +18,6 @@ function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps
       setCurrentAction('login')
     }
   }
-
   
   return (
     <>

@@ -1,11 +1,13 @@
+import express from 'express'
 import { prisma } from '../utils/prisma.server'
 import { login, register } from '../utils/auth.server'
-import express from 'express'
 import { requireJwtMiddleware } from '../utils/middleware.server'
 import { encodeSession } from '../utils/token.server'
 import { Session } from '../utils/types.server'
-import dotenv from 'dotenv'
+import { verify } from '../utils/email.server'
+import { createUser } from '../utils/user.server'
 
+import dotenv from 'dotenv'
 dotenv.config()
 const TOKEN_SECRET = process.env.TOKEN_SECRET || ''
 
@@ -28,12 +30,7 @@ app.get("/protected", (req, res) => {
 app.post(`/signup`, async (req, res) => {
     const ans = await register(req.body)
     if (ans.status === 200) {
-        const session = encodeSession(TOKEN_SECRET, {
-            id: ans.userId || 'err',
-            email: ans.email || 'err',
-            dateCreated: new Date().getTime()
-        })
-        res.status(201).json(session)
+        res.status(201)
     } else {
         res.status(ans.status).json(ans.message)
     }
@@ -50,6 +47,28 @@ app.post(`/login`, async (req, res) => {
         res.status(201).json(session)
     } else {
         res.status(ans.status).json(ans.message)
+    }
+})
+
+app.post(`/verify-email`, async (req, res) => {
+    const { oobCode } = req.body
+    // console.log('oobCode received: ', oobCode)
+    const userData = await verify(oobCode)
+    if (userData.status === 200) {
+        const ans = await createUser({
+            email: userData.email || '', 
+            displayName: userData.displayName || ''
+        })
+
+        const session = encodeSession(TOKEN_SECRET, {
+            id: userData.id || 'err',
+            email: userData.email || 'err',
+            dateCreated: new Date().getTime()
+        })
+
+        res.status(201).json(session)
+    } else {
+        res.status(userData.status).json(userData.message)
     }
 })
 

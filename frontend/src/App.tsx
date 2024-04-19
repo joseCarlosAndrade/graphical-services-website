@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import {  } from './components';
-import { Homepage, LoginPage } from './pages';
+import { Homepage, LoginPage, VerifyEmailPage } from './pages';
 
 interface fontSizes {
   accessButtonFont : number,
@@ -43,27 +43,14 @@ function App() {
 
 
   const changeFont = (i : number) => {
-    const changeFactor : number = 0.2
-    if (i === 1) {
-      setFontSizesHolder( {
-        accessButtonFont : fontSizesHolder.accessButtonFont + changeFactor,
-        headerFont : fontSizesHolder.headerFont + changeFactor,
-        homepageFont : fontSizesHolder.homepageFont + changeFactor,
-        footerFont : fontSizesHolder.footerFont + changeFactor,
-  
-        loginFont : fontSizesHolder.loginFont + changeFactor,
-      })
-    } else {
-      setFontSizesHolder( {
-        accessButtonFont : fontSizesHolder.accessButtonFont -changeFactor,
-        headerFont : fontSizesHolder.headerFont - changeFactor,
-        homepageFont : fontSizesHolder.homepageFont - changeFactor,
-        footerFont : fontSizesHolder.footerFont -changeFactor,
-  
-        loginFont : fontSizesHolder.loginFont -changeFactor,
-      })
-    }
-    
+    const changeFactor: number = 0.2
+    setFontSizesHolder(prevState => ({
+      accessButtonFont: prevState.accessButtonFont + (i === 1 ? changeFactor : -changeFactor),
+      headerFont: prevState.headerFont + (i === 1 ? changeFactor : -changeFactor),
+      homepageFont: prevState.homepageFont + (i === 1 ? changeFactor : -changeFactor),
+      footerFont: prevState.footerFont + (i === 1 ? changeFactor : -changeFactor),
+      loginFont: prevState.loginFont + (i === 1 ? changeFactor : -changeFactor),
+    }));
   }
 
   return (
@@ -84,6 +71,14 @@ function App() {
             theme={theme} 
             setTheme={setTheme} 
             action={action} 
+            setAction={setAction}
+            fontSizes={fontSizesHolder}
+            setFontsSizes={changeFont} />} />
+        <Route path="/verify-email" element={
+          <VerifyEmailPage
+            theme={theme}
+            setTheme={setTheme}
+            action={action}
             setAction={setAction}
             fontSizes={fontSizesHolder}
             setFontsSizes={changeFont} />} />

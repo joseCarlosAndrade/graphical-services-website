@@ -72,14 +72,9 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
         body: JSON.stringify(body),
       })
       if (res.status === 201) {
-        const resObject = await res.json()
-
-        // setCookie('token', resObject.token)
-        // console.log('Registered with token: ', resObject.token)
-
         console.log('By registering, We are not creating cookie yet.')
 
-        setFormSuccess('Success registering!')
+        setFormSuccess('Please check your email to verify it!')
         await delay(1500);
         window.location.href = "/graphical-services-website#/";
       } else {
@@ -107,7 +102,7 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
         const session = await res.json()
 
         setCookie('token', session.token)
-        console.log('Cookie set to token: ', session.token)
+        // console.log('Cookie set to token: ', session.token)
 
         setFormSuccess('Success with Login!')
 

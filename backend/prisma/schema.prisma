@@ -13,21 +13,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// The type keyword is used to define a composite type – allowing you 
-// to define a document inside the document. The benefit of using a 
-// composite type over a JSON type is that you get type-safety when querying documents.
-type Profile {
-  firstName String
-  lastName  String
-}
-
 // This will be where you define what a user should look like in the database.
 model User {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  email    String    @unique
-  password String
-  profile  Profile
-  requests Request[]
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  email       String    @unique
+  displayName String
+  requests    Request[]
 }
 
 model Request {

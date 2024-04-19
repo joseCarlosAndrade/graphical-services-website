@@ -13,6 +13,11 @@ export type LoginForm = {
     password: string
 }
 
+export type UserData = {
+    email: string
+    displayName: string
+}
+
 export interface Session {
     id: string;
     dateCreated: number;

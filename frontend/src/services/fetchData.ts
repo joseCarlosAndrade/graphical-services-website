@@ -10,8 +10,10 @@ const fetchData = async () => {
         });
         const resObject = await res.json();
         console.log(resObject.message)
+        return true
     } catch (error) {
         console.error('Error fetching data: ', error);
+        return false
     }
 };
 

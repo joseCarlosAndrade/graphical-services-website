@@ -38,14 +38,14 @@ export async function register(user: RegisterForm) {
         })
 
         await sendEmailVerification(userCredential.user)
-        .then(() => {
-            console.log('Email verification sent!');
-        })
-        .catch(error => {
-            console.error('Error sending email verification', error);
-        })
-        
-        return { userId: newUser.uid, email:newUser.email, status: 200 }
+            .then(() => {
+                console.log('Email verification sent!');
+            })
+            .catch(error => {
+                console.error('Error sending email verification', error);
+            })
+
+        return { userId: newUser.uid, email: newUser.email, status: 200 }
 
     } catch (err: any) {
         // Handle errors here
@@ -73,7 +73,7 @@ export async function login({ email, password }: LoginForm) {
     // if (!user || !(await bcrypt.compare(password, user.password))) {
     //     return { message: `Incorrect login`, status: 400 }
     // }
-    
+
     try {
         // create a new user with email and password
         const userCredential = await signInWithEmailAndPassword(
@@ -82,7 +82,11 @@ export async function login({ email, password }: LoginForm) {
             password
         )
         const user = userCredential.user
-        return { userId: user.uid, email: user.email, status: 200 }
+        // console.log('user has verified email: ', user.emailVerified)
+        if (!user.emailVerified)
+            return { message: "Please verify your email first!", status: 400 }
+        else
+            return { userId: user.uid, email: user.email, status: 200 }
 
     } catch (err: any) {
         // Handle errors here
