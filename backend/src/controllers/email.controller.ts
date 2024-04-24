@@ -1,5 +1,5 @@
 import { applyActionCode } from 'firebase/auth'
-import { auth } from '../services/auth.services'
+import { auth } from '../services/firebase.service'
 
 export async function verify(oobCode: string) {
     const user = auth.currentUser

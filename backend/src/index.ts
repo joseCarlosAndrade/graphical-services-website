@@ -1,5 +1,5 @@
 import express from 'express'
-import { prisma } from './services/prisma.services'
+import { prisma } from './services/prisma.service'
 import { login, register } from './controllers/auth.controller'
 import { requireJwtMiddleware } from './server/middleware.server'
 import { encodeSession } from './server/token.server'

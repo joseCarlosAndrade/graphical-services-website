@@ -10,7 +10,7 @@ import {
     signOut,
     updateProfile,
 } from "firebase/auth";
-import { auth } from "../services/auth.services";
+import { auth } from "../services/firebase.service";
 
 export async function register(user: RegisterForm) {
 
