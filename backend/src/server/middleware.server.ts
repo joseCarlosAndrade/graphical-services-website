@@ -1,9 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import { DecodeResult, ExpirationStatus, Session } from "./types.server";
+import { DecodeResult, ExpirationStatus, Session } from "../models/session.models";
 import { decodeSession, checkExpirationStatus, encodeSession } from "./token.server";
-import dotenv from 'dotenv'
 
-dotenv.config()
 const TOKEN_SECRET = process.env.TOKEN_SECRET || ''
 
 /**
@@ -22,7 +20,7 @@ export function requireJwtMiddleware(request: Request, response: Response, next:
     const requestHeader = "X-JWT-Token";
     const responseHeader = "X-Renewed-JWT-Token";
     const header = request.header(requestHeader);
-    
+
     if (!header) {
         unauthorized(`Required ${requestHeader} header not found.`);
         return;

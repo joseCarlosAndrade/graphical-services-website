@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs'
-import type { UserData } from './types.server'
-import { prisma } from './prisma.server'
+import type { UserData } from '../models/form.models'
+import { prisma } from '../services/prisma.services'
 
 // 1. It hashes the password provided in the registration form because you should not store it as plain-text.
 // 2. It stores the new User document using Prisma.

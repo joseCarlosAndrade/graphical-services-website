@@ -1,5 +1,5 @@
 import { encode, decode, TAlgorithm } from "jwt-simple";
-import { Session, PartialSession, EncodeResult, DecodeResult, ExpirationStatus} from "./types.server";
+import { Session, PartialSession, EncodeResult, DecodeResult, ExpirationStatus } from "../models/session.models";
 
 export function encodeSession(secretKey: string, partialSession: PartialSession): EncodeResult {
     // Always use HS512 to sign the token

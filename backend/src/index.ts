@@ -1,14 +1,12 @@
 import express from 'express'
-import { prisma } from '../utils/prisma.server'
-import { login, register } from '../utils/auth.server'
-import { requireJwtMiddleware } from '../utils/middleware.server'
-import { encodeSession } from '../utils/token.server'
-import { Session } from '../utils/types.server'
-import { verify } from '../utils/email.server'
-import { createUser } from '../utils/user.server'
+import { prisma } from './services/prisma.services'
+import { login, register } from './controllers/auth.controller'
+import { requireJwtMiddleware } from './server/middleware.server'
+import { encodeSession } from './server/token.server'
+import { Session } from './models/session.models'
+import { verify } from './controllers/email.controller'
+import { createUser } from './controllers/user.controller'
 
-import dotenv from 'dotenv'
-dotenv.config()
 const TOKEN_SECRET = process.env.TOKEN_SECRET || ''
 
 var cors = require('cors')
@@ -56,7 +54,7 @@ app.post(`/verify-email`, async (req, res) => {
     const userData = await verify(oobCode)
     if (userData.status === 200) {
         const ans = await createUser({
-            email: userData.email || '', 
+            email: userData.email || '',
             displayName: userData.displayName || ''
         })
 
