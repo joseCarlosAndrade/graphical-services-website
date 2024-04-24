@@ -71,6 +71,7 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       })
+      console.log(res);
       if (res.status === 201) {
         console.log('By registering, We are not creating cookie yet.')
 

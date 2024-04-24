@@ -28,7 +28,7 @@ app.get("/protected", (req, res) => {
 app.post(`/signup`, async (req, res) => {
     const ans = await register(req.body)
     if (ans.status === 200) {
-        res.status(201)
+        res.status(201).json()
     } else {
         res.status(ans.status).json(ans.message)
     }

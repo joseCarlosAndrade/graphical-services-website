@@ -38,9 +38,7 @@ export async function register(user: RegisterForm) {
             .catch(error => {
                 console.error('Error sending email verification', error);
             })
-
-        return { userId: newUser.uid, email: newUser.email, status: 200 }
-
+        return { userId: newUser.uid, email: newUser.email, status: 200 };
     } catch (err: any) {
         // Handle errors here
         const errorMessage = err.message;
