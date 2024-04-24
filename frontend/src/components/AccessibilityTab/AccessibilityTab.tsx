@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './accessibilitytab.css';
 
 import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '../../assets';
 
-interface fontSizes {
-  accessButtonFont : number,
+import {  fontSizes } from '../../types/interfacePageProps'
 
-  headerFont : number,
-  homepageFont : number,
-  footerFont : number,
 
-  loginFont : number
 
-}
 interface AccessibilityProps {
-  currentTheme: string,
+  currentTheme?: string,
   setCurrentTheme : (args0: string) => void,
-  fontSizes : fontSizes,
+  fontSizes ?: fontSizes,
   setFontSizes : (args0 : number)=> void
   
 }

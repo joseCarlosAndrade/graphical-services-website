@@ -1,34 +1,17 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {  Routes, Route } from 'react-router-dom';
 // import {  } from './components';
-import { Homepage, LoginPage, VerifyEmailPage } from './pages';
+import { fontSizes } from './types/interfacePageProps';
+import { Homepage, LoginPage, VerifyEmailPage, SendFileClientPage} from './pages';
 
-interface fontSizes {
-  accessButtonFont : number,
 
-  headerFont : number,
-  homepageFont : number,
-  footerFont : number,
-
-  loginFont : number
-
-}
 
 function App() {
 
   const [theme, setTheme] = useState('light');
   const [action, setAction] = useState('login')
 
-  // const fontSizesHolder : fontSizes = { // rem sizes
-  //   accessButtonFont: 1.2,
-
-  //   headerFont : 0.8,
-  //   homepageFont : 0.9,
-  //   footerFont : 1,
-
-  //   loginFont : 1
-
-  // }
+ 
 
   const [fontSizesHolder, setFontSizesHolder] = useState<fontSizes>( {
     accessButtonFont: 1.2,
@@ -82,6 +65,18 @@ function App() {
             setAction={setAction}
             fontSizes={fontSizesHolder}
             setFontsSizes={changeFont} />} />
+
+        <Route path='/sendfile' element={
+          <SendFileClientPage 
+            theme={theme}
+            setTheme={setTheme}
+            action={action}
+            setAction={setAction}
+            fontSizes={fontSizesHolder}
+            setFontsSizes={changeFont}
+          
+          />
+        }></Route>
       </Routes>
       </>
     // </Router>

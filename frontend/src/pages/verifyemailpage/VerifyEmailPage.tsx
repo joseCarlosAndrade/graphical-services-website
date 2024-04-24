@@ -1,27 +1,11 @@
 import React, { useEffect } from 'react';
 import { Header, Footer, AccessibilityTab, SectionVerifyEmail } from '../../components';
+import { PageProps } from '../../types/interfacePageProps';
 import './verifyemailpage.css';
 
-interface VerifyEmailProps {
-    theme: string,
-    setTheme: (args0: string) => void,
-    action: string,
-    setAction: (args0: string) => void,
-    fontSizes: fontSizes,
-    setFontsSizes: (args0: number) => void,
-}
 
-interface fontSizes {
-    accessButtonFont: number,
 
-    headerFont: number,
-    homepageFont: number,
-    footerFont: number,
-
-    loginFont: number,
-}
-
-function VerifyEmailPage({ theme, setTheme, action, setAction, fontSizes, setFontsSizes }: VerifyEmailProps) {
+function VerifyEmailPage({ theme, setTheme, action, setAction, fontSizes, setFontsSizes }: PageProps) {
     useEffect(() => {
         if (theme === 'dark') {
             document.documentElement.style.setProperty('--sign-text-color-var', 'var(--sign-text-color-dark)');
