@@ -1,0 +1,87 @@
+.sendFileContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    margin: 4rem;
+    margin-left: 7rem;
+}
+
+.sendFile--boldText-box {
+    font-family: var(--font-family);
+    font-weight: bold;
+    text-align: left;
+    font-size: 3rem;
+    width: 30vw;
+    margin-right: 1rem;
+}
+
+.sendFile--productType-dropbox {
+    text-align: justify;
+    width: 10rem;
+    /* width: ; */
+}
+
+.sendFile--productType-dropbox-contents button {
+    display: none;
+}
+
+/* .sendFile--productType-dropbox-contents:nth-child(1) {
+    display: block;
+} */
+
+.sendFile--divider {
+    /* width: 3px; */
+    height: 50vh;
+    border: 1px dashed rgb(185, 185, 185);
+    margin: 0 1rem;
+}
+
+.sendFile--loadfile {
+    /* width: 30%; */
+    width: 30vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.sendFile--loadfile-button {
+    background-color: var(--button-light);
+    font-weight: 600;
+    color: rgb(77, 77, 77);
+    border: 0;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.dragndrop {
+    width: 80%;
+    height: 20vh;
+    background-color: rgb(190, 190, 190);
+    border: 2px dashed black;
+}
+
+.sendFile--loadfile-drag {
+    border-radius: 5px;
+}
+
+.sendFile--send {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sendFile--send-button {
+    padding: 1rem;
+    background-color: var(--main-color);
+    border: 0;
+    border-radius: 5px;
+    color: var(--bg-light);
+    font-weight: bold;
+    font-size: 1rem;
+    width: 8rem;
+    margin-top: 3rem;
+}
