@@ -12,6 +12,7 @@ interface SectionLoginProps {
 }
 
 function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
+  const [useCookie, setUseCookie] = useState(true);
   const [formError, setFormError] = useState('')
   const [formSuccess, setFormSuccess] = useState('')
   const [formData, setFormData] = useState({
@@ -102,7 +103,8 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
       if (res.status === 201) {
         const session = await res.json()
 
-        setCookie('token', session.token)
+        if (useCookie)
+          setCookie('token', session.token)
         // console.log('Cookie set to token: ', session.token)
 
         setFormSuccess('Success with Login!')
@@ -215,7 +217,9 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
                   onChange={e => handleInputChange(e, 'password')}
                 />
                 <div className='register__field__terms'>
-                  <input className='register__field__terms_checkbox' type='checkbox'></input>
+                  <input className='register__field__terms_checkbox' type='checkbox' checked onChange={() => {
+                    useCookie === true ? setUseCookie(true) : setUseCookie(false);
+                  }}></input>
                   <div className='register__field__terms_text'>Remember me</div>
                 </div>
               </>

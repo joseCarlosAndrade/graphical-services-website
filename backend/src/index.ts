@@ -1,11 +1,12 @@
 import express from 'express'
 import { prisma } from './services/prisma.service'
 import { login, register } from './controllers/auth.controller'
-import { requireJwtMiddleware } from './server/middleware.server'
+import { requireJwtMiddleware } from './server/requiteJwt.middleware'
 import { encodeSession } from './server/token.server'
 import { Session } from './models/session.models'
 import { verify } from './controllers/email.controller'
 import { createUser } from './controllers/user.controller'
+import { requireAdminMiddleWare } from './server/requireAdmin.middleware'
 
 const TOKEN_SECRET = process.env.TOKEN_SECRET || ''
 
@@ -14,15 +15,19 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
-app.use("/protected", requireJwtMiddleware);
 
-// Set up an HTTP Get listener at /protected. The request can only access it if they have a valid JWT token
+app.use("/protected", requireJwtMiddleware);
 app.get("/protected", (req, res) => {
+    // Set up an HTTP Get listener at /protected. The request can only access it if they have a valid JWT token
     // The auth middleware protects this route and sets res.locals.session which can be accessed here
     const session: Session = res.locals.session;
-
     res.status(200).json({ message: `Hello, ${session.email}!` });
 });
+
+app.use("/admin/dashboard", requireJwtMiddleware, requireAdminMiddleWare)
+app.get("/admin/dashboard", (req, res) => {
+    res.status(200).json({ message: "Hello, admin!" });
+})
 
 // curl -d '{"email": "manafei", "password": "ewofiawj", "profile": {"firstName": "Shogo", "lastName": "Shima"}}' -H "Content-Type: application/json" http://localhost:8080/signup
 app.post(`/signup`, async (req, res) => {

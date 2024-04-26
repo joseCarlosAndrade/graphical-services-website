@@ -13,5 +13,12 @@ export type LoginForm = {
 export type UserData = {
     email: string
     displayName: string
-    id: string
+    id: String
+}
+
+export type UserDBData = {
+    email: string
+    displayName: string
+    id: String
+    role: String
 }

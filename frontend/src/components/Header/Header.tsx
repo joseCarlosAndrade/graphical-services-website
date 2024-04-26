@@ -36,9 +36,8 @@ function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps
   const logOut = () => {
     deleteCookie('token')
     setLoggedIn(false)
-    window.location.reload()
+    // window.location.reload()
   }
-
   
   return (
     <>
@@ -51,18 +50,24 @@ function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps
         <div className={`header--navbar ` } >
           <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button fill" >Produtos  <DownArrow /> </button>
           <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button" >Serviços <DownArrow /> </button>
-          <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button" >Quem somos <DownArrow /></button>
+          <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Quem somos <DownArrow /></button>
 
           {
             loggedIn === true ?
               <>
-                <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Perfil <DownArrow /></button>
+                <Link to='/sendfile'>
+                  <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Enviar arquivo</button>
+                </Link>
+                <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Perfil</button>
                 <Link to='/'>
                   <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button-login" onClick={logOut} >
                     Log Out </button>
                 </Link>
               </> :
               <>
+                <Link to='/login'>
+                  <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Enviar arquivo</button>
+                </Link>
                 <Link to='/login'>
                   <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button-login" onClick={changeAction} >
                     {currentAction === 'login' ? 'Sign Up' : 'Sign In'} </button>
