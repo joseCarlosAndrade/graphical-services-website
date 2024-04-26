@@ -54,6 +54,7 @@ app.post(`/verify-email`, async (req, res) => {
     const userData = await verify(oobCode)
     if (userData.status === 200) {
         const ans = await createUser({
+            id: userData.id || '',
             email: userData.email || '',
             displayName: userData.displayName || ''
         })

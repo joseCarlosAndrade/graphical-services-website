@@ -11,7 +11,7 @@ function Footer( { footerFont} : {footerFont? :  number}) {
             <footer style={{fontSize: `${footerFont}rem`}} >
                 <div className="footer--logo-left">
                     <img src={mainLogo} alt="Logo preto e branco" className="footer--logo" />
-                    <p className="footer--logo-left--text">whitepace was created for the <br /> new ways we live and <br /> work. We make a better <br /> workspace around the world</p>
+                    <p className="footer--logo-left--text"></p>
                 </div>
 
                 <div className='footer--contents'>
@@ -41,9 +41,9 @@ function Footer( { footerFont} : {footerFont? :  number}) {
 
                     <div className="footer--empresa">
                         <p className="footer--empresa-bold">Empresa</p>
-                        <p>Quem somos</p>
-                        <p>Missão</p>
-                        <p>Visão</p>
+                        <p className="footer--empresa-item">Quem somos</p>
+                        <p className="footer--empresa-item">Missão</p>
+                        <p className="footer--empresa-item">Visão</p>
                     </div>
                 </div>
 

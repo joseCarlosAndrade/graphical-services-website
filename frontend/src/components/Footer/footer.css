@@ -6,14 +6,11 @@ footer {
     display: flex;
     flex-direction: row;
     background-color: var(--footer-color);
-    height: 8rem;
-    padding: 4rem 10rem;
+    height: 4.5rem;
+    padding: 2rem 6rem 2rem 4rem;
     align-items: center;
     justify-content: space-between;
     color: white;
-
-    font-size: 1rem;
-    
 }
 
 .footer--contents {
@@ -22,7 +19,7 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     align-items: start;
-    
+    font-size: smaller;
 }
 
 .footer--logo-left {
@@ -39,12 +36,12 @@ footer {
 }
 
 .footer--produtos-item {
-    margin-bottom: 5px;
     cursor: pointer;
 }
 
 .footer--resources-bold {
     font-weight: bold;
+    margin-bottom: 0.4rem;
 }
 
 .footer--resources-item {
@@ -54,18 +51,24 @@ footer {
 }
 
 .footer--resources-text {
+    font-size: small;
     cursor: pointer;
-    margin: 8px;
+    margin: 5px;
 }
 
 .footer--resources-icon {
     cursor: pointer;
-    width: 32px;
-    height: 32px;
-    margin: 0px 10px;
+    width: 16px;
+    height: 16px;
+    margin: 0px 0px;
 }
 
 .footer--empresa-bold {
     cursor: pointer;
     font-weight: bold;
+}
+
+.footer--empresa-item {
+    cursor: pointer;
+    margin-top: -0.3rem;
 }
