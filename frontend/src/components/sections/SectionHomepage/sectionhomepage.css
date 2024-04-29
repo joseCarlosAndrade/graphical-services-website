@@ -1,4 +1,5 @@
 .homepage {
+    padding-bottom: 9rem;
     width: 100%;
 }
 
@@ -12,9 +13,9 @@
 }
 
 .homepage--text {
-    padding: 4rem 0;
+    padding: 4rem;
     
-    width: 60%;
+    width: 60vw;
     text-align: justify;
     margin: 1rem auto;
     font-family: var(--section-font);

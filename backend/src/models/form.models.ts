@@ -13,12 +13,12 @@ export type LoginForm = {
 export type UserData = {
     email: string
     displayName: string
-    id: String
+    id: string
 }
 
 export type UserDBData = {
     email: string
     displayName: string
-    id: String
-    role: String
+    id: string
+    role: string
 }

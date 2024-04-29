@@ -1,10 +1,10 @@
 import React from 'react'
 import './sectionlogin.css';
-import { google, facebook, apple } from '../../assets';
+import { google, facebook, apple } from '../../../assets';
 import { useEffect, useState } from 'react';
-import { FormField } from '../../components'
-import { setCookie } from '../../utils/cookie';
-import { fetchData } from '../../services';
+import { FormField } from '../..'
+import { setCookie } from '../../../utils/cookie';
+import { fetchData } from '../../../services';
 
 interface SectionLoginProps {
   currentAction: string

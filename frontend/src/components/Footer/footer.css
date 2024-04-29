@@ -1,20 +1,23 @@
 footer {
-    /* position: absolute; */
+    position: absolute;
+    bottom: 0rem;
+    width: 100vw;
+    height: 9rem;
+
     margin-top: auto;
-    /* bottom: 0; */
-    /* right: 0; */
+
     display: flex;
     flex-direction: row;
     background-color: var(--footer-color);
-    height: 4.5rem;
-    padding: 2rem 18vw 2rem 15vw;
     align-items: center;
-    justify-content: space-between;
+    justify-content:center;
+    gap: 15vw;
     color: white;
 }
 
 .footer--contents {
-    width: 40vw;
+    min-width: 17rem;
+    width: 35vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -22,13 +25,8 @@ footer {
     font-size: smaller;
 }
 
-.footer--logo-left {
-    display: flex;
-    flex-direction: column;
-}
-
 .footer--logo {
-    width: 18vw;
+    width: 15rem;
 }
 
 .footer--produtos {
@@ -53,7 +51,7 @@ footer {
 .footer--resources-text {
     font-size: small;
     cursor: pointer;
-    margin: 5px;
+    margin: 4px;
 }
 
 .footer--resources-icon {
@@ -70,5 +68,5 @@ footer {
 
 .footer--empresa-item {
     cursor: pointer;
-    margin-top: -0.3rem;
+    margin-top: -0.4rem;
 }

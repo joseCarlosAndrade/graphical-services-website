@@ -11,7 +11,6 @@ function Footer( { footerFont} : {footerFont? :  number}) {
             <footer style={{fontSize: `${footerFont}rem`}} >
                 <div className="footer--logo-left">
                     <img src={mainLogo} alt="Logo preto e branco" className="footer--logo" />
-                    <p className="footer--logo-left--text"></p>
                 </div>
 
                 <div className='footer--contents'>

@@ -1,7 +1,7 @@
 import React from 'react'
 import './sectionverifyemail.css';
 import { useEffect } from 'react';
-import { verifyEmail } from '../../services';
+import { verifyEmail } from '../../../services';
 
 interface HomepageProps {
     currentTheme: string,

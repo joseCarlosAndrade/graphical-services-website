@@ -1,9 +1,9 @@
 .sendFileContainer {
+    padding-bottom: 9rem;
     display: flex;
     flex-direction: row;
     align-items: start;
-    margin: 4rem;
-    margin-left: 7rem;
+    margin: 4rem 3rem 3rem 7rem;
 }
 
 .sendFile--boldText-box {
@@ -31,7 +31,7 @@
 
 .sendFile--divider {
     /* width: 3px; */
-    height: 50vh;
+    height: 55vh;
     border: 1px dashed rgb(185, 185, 185);
     margin: 0 1rem;
 }

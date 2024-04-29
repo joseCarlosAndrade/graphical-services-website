@@ -8,6 +8,8 @@ import { verify } from './controllers/email.controller'
 import { createUser } from './controllers/user.controller'
 import { requireAdminMiddleWare } from './server/requireAdmin.middleware'
 
+import * as dotenv from 'dotenv';
+dotenv.config();
 const TOKEN_SECRET = process.env.TOKEN_SECRET || ''
 
 var cors = require('cors')
