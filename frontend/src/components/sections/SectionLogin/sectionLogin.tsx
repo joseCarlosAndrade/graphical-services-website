@@ -9,9 +9,10 @@ import { fetchData } from '../../../services';
 interface SectionLoginProps {
   currentAction: string
   setCurrentAction: (args0: string) => void
+  loginFont: number
 }
 
-function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
+function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLoginProps) {
   const [useCookie, setUseCookie] = useState(true);
   const [formError, setFormError] = useState('')
   const [formSuccess, setFormSuccess] = useState('')
@@ -122,7 +123,7 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
 
   return (
     <>
-      <form className="login" onSubmit={
+      <form className="login" style={{ fontSize: `${loginFont}rem` }} onSubmit={
         currentAction === 'register' ? register : login
       }>
 
@@ -227,7 +228,7 @@ function SectionLogin({ currentAction, setCurrentAction }: SectionLoginProps) {
         </div>
         {formError ? <div className="errorMessage">{formError}</div> : <div className="hide"></div>}
         {formSuccess ? <div className="successMessage">{formSuccess}</div> : <div className="hide"></div>}
-        <button type="submit" className='login__button'>{currentAction === 'login' ? "Sign In" : "Sign Up"}</button>
+        <button style={{ fontSize: `${loginFont}rem` }}  type="submit" className='login__button'>{currentAction === 'login' ? "Sign In" : "Sign Up"}</button>
       </form>
     </>
   )

@@ -3,14 +3,18 @@ import { RegisterForm, LoginForm } from "../models/form.models"
 import { validateName } from './validators.controller'
 import bcrypt from 'bcryptjs'
 
+import { auth } from "../services/firebase.service";
+
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     sendEmailVerification,
     signOut,
     updateProfile,
+    signInWithPopup,
+    GoogleAuthProvider,
+    AuthProvider
 } from "firebase/auth";
-import { auth } from "../services/firebase.service";
 
 export async function register(user: RegisterForm) {
 
@@ -81,13 +85,13 @@ export async function login({ email, password }: LoginForm) {
 
         switch (errorCode) {
             case "auth/invalid-email":
-                return { message: "This email address is invalid.", status: 400 }
+                return { message: "This email address is invalid.", status: 400 };
             case "auth/user-disabled":
-                return { message: "This email address is disabled by the administrator.", status: 400 }
+                return { message: "This email address is disabled by the administrator.", status: 400 };
             case "auth/user-not-found":
-                return { message: "This email address is not registered.", status: 400 }
+                return { message: "This email address is not registered.", status: 400 };
             case "auth/invalid-credential":
-                return { message: "The password is invalid or the user does not have a password.", status: 400 }
+                return { message: "The password is invalid or the user does not have a password.", status: 400 };
             default:
                 return { message: errorMessage, status: 400 };
         }
@@ -98,8 +102,48 @@ export async function logout() {
     signOut(auth)
 }
 
-// This is a lot of new functionality.Here is what the functions above will do:
-// requireUserId checks for a user's session. If one exists, it is a success and just returns the userId. If it fails, however, it will redirect the user to the login screen.
-// getUserId returns the current user's id from the session storage.
-// getUser returns the whole user document associated with the current session.If one is not found, the user is logged out.
-// logout destroys the current session and redirects the user to the login screen.
+export async function loginGoogle(provider: AuthProvider) {
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            let token;
+            if (credential != null) {
+                token = credential.accessToken;
+            } else {
+                return { message: "Authentication with Google refused.", status: 400 };
+            }
+            // The signed-in user info.
+            const user = result.user;
+            // IdP data available using getAdditionalUserInfo(result)
+            // ...
+            
+
+            return { googleToken: token, userInfo: user, status: 200 };
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+
+            if (errorCode === "auth/account-exists-with-different-credential") {
+                // The pending Google credential.
+                let pendingCred = error.credential;
+
+                // Step 3: Save the pending credential in temporary storage,
+
+                return { message: `email account: ${email} exists with different credential. Please try another way of signing in.`, status: 400 };
+                // Step 4: Let the user know that they already have an account
+                // but with a different provider, and let them choose another
+                // sign-in method.
+            }
+
+
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+
+            return { message: errorMessage, status: 400 };
+        });
+}

@@ -4,7 +4,7 @@ import { gmail, instagram, whatsapp, mainLogo } from '../../assets';
 
 
 
-function Footer( { footerFont} : {footerFont? :  number}) {
+function Footer({ footerFont }: { footerFont?: number }) {
     return (
         <>
 
@@ -24,17 +24,17 @@ function Footer( { footerFont} : {footerFont? :  number}) {
                         <p className='footer--resources-bold'>Resources</p>
                         <div className="footer--resources-item">
                             <img className="footer--resources-icon" src={gmail} alt="" />
-                            <p className="footer--resources-text">Correo</p>
+                            <p className="footer--resources-text" style={{ fontSize: `${footerFont ? (footerFont < 1 ? 1 : footerFont - 0.3) : 1}rem` }} >Correo</p>
                         </div>
 
                         <div className="footer--resources-item">
                             <img className="footer--resources-icon" src={whatsapp} alt="" />
-                            <p className="footer--resources-text">Whatsapp</p>
+                            <p className="footer--resources-text" style={{ fontSize: `${footerFont ? (footerFont < 1 ? 1 : footerFont - 0.3) : 1}rem` }} >Whatsapp</p>
                         </div>
 
                         <div className="footer--resources-item">
                             <img className="footer--resources-icon" src={instagram} alt="" />
-                            <p className="footer--resources-text">Instagram</p>
+                            <p className="footer--resources-text" style={{ fontSize: `${footerFont ? (footerFont < 1 ? 1 : footerFont - 0.3) : 1}rem` }} >Instagram</p>
                         </div>
                     </div>
 

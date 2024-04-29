@@ -2,7 +2,8 @@ footer {
     position: absolute;
     bottom: 0rem;
     width: 100vw;
-    height: 9rem;
+    min-height: 9rem;
+    height: auto;
 
     margin-top: auto;
 
@@ -49,7 +50,6 @@ footer {
 }
 
 .footer--resources-text {
-    font-size: small;
     cursor: pointer;
     margin: 4px;
 }

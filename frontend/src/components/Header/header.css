@@ -11,7 +11,7 @@ header {
 }
 
 header img {
-    height: 3.5rem;
+    height: 4rem;
     cursor: pointer;
 }
 
@@ -44,9 +44,10 @@ header button:hover {
 .header--navbar--button-login {
     background-color: var(--button-color);
     color: var(--blue);
+    padding: 1rem 2rem;
     border-radius: 5px;
-    height: 2.5rem;
-    width: 7rem;
+    height: auto;
+    width: auto;
 }
 
 /* .header--navbar--button-login:hover {
