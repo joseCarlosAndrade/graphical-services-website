@@ -11,12 +11,9 @@ function SectionProductsPage ({bottomText, sourceImage}: SectionServicePageProps
     
     return(
         <>
-        <form>
-            
-        </form>
-        <article className='container'>
-            <img src={`${sourceImage}`} className='imagem'/>
-            <p className='childText'>{bottomText}</p>
+        <article className='container--products'>
+            <img src={`${sourceImage}`} className='container--image'/>
+            <p className='container--childText'>{bottomText}</p>
         </article>
         </>
     )

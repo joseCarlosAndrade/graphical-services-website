@@ -1,0 +1,35 @@
+.productspage {
+    padding-bottom: 12rem;
+}
+
+.titleProducts {
+    padding: 0;
+    margin: 2rem;
+}
+
+.sectionProducts {
+    margin: 5rem;
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    gap: 5rem;
+    grid-template: 1fr 1fr / 1fr 1fr;
+}
+
+.imageSearch {
+    width: 4.5%;
+    height: 4.5%;
+}
+
+.searchBarContainer {
+    margin-left: 16vw;
+    width: 30vw;
+    border: 2px solid black;
+    display: flex;
+    border-radius: 20px;
+    flex-flow: row nowrap;
+    justify-content: center;
+    background: white;
+    align-items: center;
+    margin-bottom: 3rem;
+}

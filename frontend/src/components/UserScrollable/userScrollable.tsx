@@ -1,24 +1,30 @@
 import React from 'react'
 import './userscrollable.css';
 
-interface FormFieldProps {
-    action: string
-    type: string
-    label: string
-    placeholder: string
-    value: any
+interface UserScrollableProps {
+    className: string
+    search: string
     onChange?: (...args: any) => any
 }
 
-function UserScrollable({ action, type, label, placeholder, onChange = () => { }, value }: FormFieldProps) {
+
+function UserScrollable({ className, search, onChange = () => { } }: UserScrollableProps) {
+    let exampleList = [
+        "Shogo", "JC", "Gabriel Barbosa", "Thiago Zero", "Lázaro Vinaud", "Rafael Mansur", "Arthur Ernesto de Carvalho"
+    ]
     return (
         <>
-            <div className={action + "__field__" + type}>
-                <div className={action + "__field__" + type + "_text"}>{label}</div>
-                <input className={action + "__field__" + type + "_input"} placeholder={placeholder}
-                    onChange={e => {
-                        onChange(e)
-                    }} value={value} type={(label === 'Senha' || label === 'Confirmar Senha') ? 'password' : ''}></input>
+            <div className={className}>
+                <input className="scrollableSearchBar" type="text" placeholder="search names" value={search} onChange={e => { onChange(e) }} ></input>
+                <div className="scrollableList">
+                    <ul className="scrollableList--container">
+                        {exampleList.map(name => {
+                            return (
+                                <li className="scrollableList--item">{name}</li>
+                            )
+                        })}
+                    </ul>
+                </div>
             </div>
         </>
     )

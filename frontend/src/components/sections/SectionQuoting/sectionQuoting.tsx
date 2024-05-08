@@ -3,6 +3,7 @@ import './sectionquoting.css';
 import { useEffect, useState } from 'react';
 import { fetchData } from '../../../services';
 import { download, upload } from '../../../assets';
+import { UserScrollable } from '../../index';
 
 interface SectionQuotingProps {
     currentAction: string
@@ -12,7 +13,12 @@ interface SectionQuotingProps {
 
 function SectionQuoting({ currentAction, setCurrentAction, pageFont }: SectionQuotingProps) {
     const [useCookie, setUseCookie] = useState(true);
+    const [searchValue, setSearchValue] = useState("");
     const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchValue(event.target.value)
+    }
 
     // gets user session on reload
     useEffect(() => {
@@ -21,8 +27,8 @@ function SectionQuoting({ currentAction, setCurrentAction, pageFont }: SectionQu
 
     return (
         <>
-            <div className="container">
-                <div className="scrollableList"></div>
+            <div className="fileQuoting--container">
+                <UserScrollable className="fileQuoting--scrollableList" search={searchValue} onChange={e => handleInputChange(e)} />
                 <div className="fileQuoting">
                     <div className="fileQuoting--text">Solicitação de orçamento de molde</div>
                     <button className="fileQuoting--button">
