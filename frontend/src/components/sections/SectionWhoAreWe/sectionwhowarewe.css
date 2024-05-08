@@ -1,0 +1,36 @@
+
+.imageSomos
+{
+    width: 20vw;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid;
+    border-color: #ccc;
+}
+
+.containerSomos
+{
+    margin-bottom: 10vw;
+    margin-top: 10vw;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerText
+{
+    width: 40%;
+    display: flex;
+    padding: 20px;
+}
+
+.tittleSomos
+{
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+    font-size: 3vw;
+    margin-top: 2%;
+    margin-bottom: -15%;
+}

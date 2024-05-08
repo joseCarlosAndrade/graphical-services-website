@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import {  Routes, Route } from 'react-router-dom';
 // import {  } from './components';
 import { fontSizes } from './types/interfacePageProps';
-import { Homepage, LoginPage, VerifyEmailPage, SendFileClientPage} from './pages';
-
+import { Homepage, LoginPage, VerifyEmailPage, SendFileClientPage, ServicePage, WhoAreWe, ProductsPage} from './pages';
 
 
 function App() {
@@ -19,9 +18,9 @@ function App() {
     headerFont : 0.8,
     homepageFont : 0.9,
     footerFont : 1,
-
-    loginFont : 1
-
+    servicePageFont: 1,
+    loginFont : 1,
+    whoAreWePageFont: 1.3
   });
 
 
@@ -31,8 +30,10 @@ function App() {
       accessButtonFont: prevState.accessButtonFont + (i === 1 ? changeFactor : -changeFactor),
       headerFont: prevState.headerFont + (i === 1 ? changeFactor : -changeFactor),
       homepageFont: prevState.homepageFont + (i === 1 ? changeFactor : -changeFactor),
+      servicePageFont: prevState.accessButtonFont + (i === 1 ? changeFactor: -changeFactor),
       footerFont: prevState.footerFont + (i === 1 ? changeFactor : -changeFactor),
       loginFont: prevState.loginFont + (i === 1 ? changeFactor : -changeFactor),
+      whoAreWePageFont: prevState.loginFont + (i === 1 ? changeFactor : -changeFactor)
     }));
   }
 
@@ -49,6 +50,39 @@ function App() {
             fontSizes={fontSizesHolder} 
             setFontsSizes={changeFont}/>
           } />
+        <Route path='/service-page' element={
+          <ServicePage
+          theme={theme}
+          setTheme={setTheme}
+          fontSizes={fontSizesHolder}
+          setFontsSizes={changeFont}
+          action={action}
+          setAction={setAction}
+          />
+        }/>
+        <Route path='/products-page' element={
+          <ProductsPage
+          theme={theme}
+          setTheme={setTheme}
+          fontSizes={fontSizesHolder}
+          setFontsSizes={changeFont}
+          action={action}
+          setAction={setAction}
+          />
+        }/>
+
+        <Route path='/quem-somos-page' element=
+        {
+          <WhoAreWe
+          theme={theme}
+          setTheme={setTheme}
+          fontSizes={fontSizesHolder}
+          setFontsSizes={changeFont}
+          action={action}
+          setAction={setAction}
+          />
+        }
+        />
         <Route path="/login" element={
           <LoginPage 
             theme={theme} 

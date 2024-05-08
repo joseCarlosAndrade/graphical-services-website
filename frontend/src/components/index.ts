@@ -6,4 +6,7 @@ export { default as SectionLogin } from './sections/SectionLogin/sectionLogin';
 export { default as SectionVerifyEmail } from './sections/SectionVerifyEmail/sectionVerifyEmail'
 export { default as FormField } from './FormField/formField';
 export { default as AccessibilityTab } from './AccessibilityTab/AccessibilityTab';
+export { default as SectionServicePage} from './sections/SectionServicePage/SectionServicePage';
+export { default as SectionProductsPage } from './sections/SectionProductsPage/SectionProductsPage';
+export {default as SectionWhoAreWePage} from './sections/SectionWhoAreWe/SectionWhoAreWe';
 // export {default as }

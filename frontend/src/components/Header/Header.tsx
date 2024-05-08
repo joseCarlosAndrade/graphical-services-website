@@ -48,9 +48,15 @@ function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps
         </Link>
 
         <div className={`header--navbar ` } >
-          <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button fill" >Produtos  <DownArrow /> </button>
-          <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button" >Serviços <DownArrow /> </button>
+          <Link to='/products-page'>
+            <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button fill" >Produtos  <DownArrow /> </button>
+          </Link>
+          <Link to='/service-page'>
+            <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button" >Serviços <DownArrow /> </button>
+          </Link>
+          <Link to='/quem-somos-page'>
           <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Quem somos <DownArrow /></button>
+          </Link>
 
           {
             loggedIn === true ?
