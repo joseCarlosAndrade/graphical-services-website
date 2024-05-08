@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {  Routes, Route } from 'react-router-dom';
 // import {  } from './components';
 import { fontSizes } from './types/interfacePageProps';
-import { Homepage, LoginPage, VerifyEmailPage, SendFileClientPage, ServicePage, WhoAreWe, ProductsPage} from './pages';
+import { Homepage, LoginPage, VerifyEmailPage, SendFileClientPage, QuotingPage, ServicePage, WhoAreWe, ProductsPage} from './pages';
 
 
 function App() {
@@ -108,9 +108,20 @@ function App() {
             setAction={setAction}
             fontSizes={fontSizesHolder}
             setFontsSizes={changeFont}
-          
           />
         }></Route>
+
+        <Route path='/quoting' element={
+          <QuotingPage
+            theme={theme}
+            setTheme={setTheme}
+            action={action}
+            setAction={setAction}
+            fontSizes={fontSizesHolder}
+            setFontsSizes={changeFont}
+          />
+        }></Route>
+
       </Routes>
       </>
     // </Router>

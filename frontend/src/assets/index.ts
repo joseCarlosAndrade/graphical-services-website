@@ -23,3 +23,5 @@ export { default as caja} from './caja.png';
 export { default as cajaTorta} from './caja_torta.png';
 export { default as baseTorta} from './base_torta.jpg';
 export { default as search} from './magnifying-glass-search.png';
+export { default as download } from './download.png';
+export { default as upload } from './upload.png';
