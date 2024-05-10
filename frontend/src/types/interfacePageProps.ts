@@ -15,6 +15,8 @@ export interface fontSizes {
 
   headerFont : number,
   homepageFont : number,
+  servicePageFont: number,
+  whoAreWePageFont: number,
   footerFont : number,
 
   loginFont : number,

@@ -1,0 +1,32 @@
+/*
+@font-face {
+    font-family: 'Avengeance';
+    src: url('/frontend/src/assets/AVENGEANCE\ MIGHTIEST\ AVENGER.ttf') format('truetype');
+}
+*/
+.container--products {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.container--image 
+{
+    height: 25vw;
+    border-radius: 5px;
+}
+
+.container--childText
+{
+    padding-top: 5px;
+    margin: auto;
+    font-size: 1rem;
+}
+
+input[type="search"] {
+    font-size: 100%;
+    border: none;
+    outline: none;
+    width: 90%;
+    height: 2rem;
+    border-radius: 20px;
+}
