@@ -29,10 +29,6 @@ header button {
     /* font-size: 0.8rem; */
     width: auto;
     cursor: pointer;
-
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-    
 }
 
 header button:hover {
@@ -48,10 +44,12 @@ header button:hover {
     border-radius: 5px;
     height: auto;
     width: auto;
+
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
 }
 
 /* .header--navbar--button-login:hover {
     border: 2px solid var(--button-color);
 
 } */
-

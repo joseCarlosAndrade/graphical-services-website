@@ -11,4 +11,5 @@ export { default as UserScrollable } from './UserScrollable/userScrollable';
 export { default as SectionServicePage } from './sections/SectionServicePage/SectionServicePage';
 export { default as SectionProductsPage } from './sections/SectionProductsPage/SectionProductsPage';
 export { default as SectionWhoAreWePage } from './sections/SectionWhoAreWe/SectionWhoAreWe';
+export { default as SectionProfile } from './sections/SectionProfile/sectionProfile'
 // export {default as }

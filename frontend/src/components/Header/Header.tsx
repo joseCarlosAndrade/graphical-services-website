@@ -10,7 +10,7 @@ import DownArrow from '../DownArrow/DownArrow';
 interface HeaderProps {
   currentAction: string,
   setCurrentAction: (args0: string) => void,
-  headerFontSize: number
+  headerFontSize: number,
 }
 
 function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps) {
@@ -18,27 +18,28 @@ function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps
     if (currentAction === 'login') {
       setCurrentAction('register');
     } else {
-      setCurrentAction('login')
+      setCurrentAction('login');
     }
   }
 
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     const fetchDataAsync = async () => {
-      const logged = await fetchData()
-      console.log(logged)
-      setLoggedIn(logged)
+      const logged = await fetchData();
+      setLoggedIn(logged);
+      console.log(logged);
     }
 
-    fetchDataAsync()
+    fetchDataAsync();
   }, [])
 
   const logOut = () => {
-    deleteCookie('token')
-    setLoggedIn(false)
+    deleteCookie('token');
+    setLoggedIn(false);
+    localStorage.removeItem('logged');
     // window.location.reload()
   }
-  
+
   return (
     <>
       <header>
@@ -47,38 +48,38 @@ function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps
           <img src={mainLogoWhite} alt="Graphical Services" />
         </Link>
 
-        <div className={`header--navbar ` } >
+        <div className={`header--navbar `} >
           <Link to='/products-page'>
-            <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button fill" >Produtos  <DownArrow /> </button>
+            <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button fill" >Produtos  <DownArrow /> </button>
           </Link>
           <Link to='/service-page'>
-            <button style={{fontSize: `${headerFontSize}rem`}} className="header--navbar--button" >Serviços <DownArrow /> </button>
+            <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Serviços <DownArrow /> </button>
           </Link>
           <Link to='/quem-somos-page'>
-          <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Quem somos <DownArrow /></button>
+            <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Quem somos <DownArrow /></button>
           </Link>
-
-          {
-            loggedIn === true ?
-              <>
-                <Link to='/sendfile'>
-                  <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Enviar arquivo</button>
-                </Link>
+          {loggedIn === true ?
+            <>
+              <Link to='/sendfile'>
+                <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Enviar arquivo</button>
+              </Link>
+              <Link to='/profile'>
                 <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Perfil</button>
-                <Link to='/'>
-                  <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button-login" onClick={logOut} >
-                    Log Out </button>
-                </Link>
-              </> :
-              <>
-                <Link to='/login'>
-                  <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Enviar arquivo</button>
-                </Link>
-                <Link to='/login'>
-                  <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button-login" onClick={changeAction} >
-                    {currentAction === 'login' ? 'Sign Up' : 'Sign In'} </button>
-                </Link>
-              </>
+              </Link>
+              <Link to='/'>
+                <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button-login" onClick={logOut} >
+                  Log Out </button>
+              </Link>
+            </> :
+            <>
+              <Link to='/login'>
+                <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Enviar arquivo</button>
+              </Link>
+              <Link to='/login'>
+                <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button-login" onClick={changeAction} >
+                  {currentAction === 'login' ? 'Sign Up' : 'Sign In'} </button>
+              </Link>
+            </>
           }
         </div>
       </header>

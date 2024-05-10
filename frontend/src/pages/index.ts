@@ -5,4 +5,5 @@ export { default as SendFileClientPage } from './sendfileclientpage/SendFileClie
 export { default as QuotingPage } from './quotingpage/QuotingPage';
 export { default as ServicePage} from './servicepage/ServicePage';
 export { default as ProductsPage}  from './productspage/ProductsPage';
-export { default as WhoAreWe} from './whoarewepage/WhoAreWePage';
+export { default as WhoAreWe } from './whoarewepage/WhoAreWePage';
+export { default as ProfilePage } from './profilepage/ProfilePage';
