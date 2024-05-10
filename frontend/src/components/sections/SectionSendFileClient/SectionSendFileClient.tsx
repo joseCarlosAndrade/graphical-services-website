@@ -1,7 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './sectionsendfileclient.css';
 
+import 'react-dropzone';
+
 function SectionSendFileClient() {
+    // const input : HTMLInputElement | null= document.querySelector(".sendFile--loadfile-input");
+
+    const label : HTMLLabelElement | null = document.querySelector(".file--label");
+    let [textoFile, setTextoFile] = useState("Nenhum arquivo selecionado"); 
+    // useEffect(()=>{
+    //     // console.log("changn")
+    //     if (label) {
+    //         // input.addEventListener("change", event => {
+    //         //     if (input.files ) {
+    //         //         if(input.files.length > 0) {
+    //         //             console.log("arquivo recebido");
+    //         //             console.log(input.files);
+        
+    //         //         }
+    //         //     }
+    //         // })
+    //         // console.log(input?.files);
+    //         label.style.backgroundColor = ''
+            
+    //     }
+    //     console.log(textoFile);
+
+
+    // }, [label, input, textoFile])
+
   return (
     <>
         <div className='sendFileContainer'>
@@ -9,6 +36,7 @@ function SectionSendFileClient() {
                 <text className='sendFile--boldText-box-text'>Enviar aquivos CDR para orçamento</text>
             </div>
 
+            
             <div className='sendFile--productType'>
                 <text className='sendFile--productType-text'></text>
                 <div className='sendFile--productType-dropbox'>
@@ -21,15 +49,51 @@ function SectionSendFileClient() {
                 </div>
             </div>
 
+            {/* divider */}
             <div className='sendFile--divider'></div>
 
+            {/* Drag and Drop */}
             <div className='sendFile--loadfile'>
-                <text className='sendFile--loadfile-text'>Carregue o arquivo desejado aqui ou arraste-o até a caixa indicada.</text>
-                <button className='sendFile--loadfile-button'>Carregue arquivos CDR</button>
-                <div className='dragndrop'></div>
-                <input type='file' className='sendFile--loadfile-drag'></input>
+            <text className='sendFile--loadfile-text'>Carregue o arquivo desejado aqui <br></br> ou arraste-o até a caixa indicada.</text>
+                
+                {/* <button className='sendFile--loadfile-button'>Carregue arquivos CDR</button> */}
+
+                <label htmlFor="sendFile-input" className='file--label'
+                onDragEnter={() => {
+                    label?.classList.add("active"); 
+                    // console.log("entering");
+
+                
+                }}
+                onDrop={()=>{
+                   
+                    label?.classList.remove("active"); 
+                    }}
+                onDragEnd={()=>{label?.classList.remove("active");}}
+                onDragLeave={()=>{label?.classList.remove("active");}}>
+                        
+                    <div className='sendFile--loadfile-dropzone'>
+                        <p className='sendFile--loadfile-text'>Clique ou arraste-os aqui.</p>
+                    </div>
+
+                    <input type='file' className='sendFile--loadfile-input' id='sendFile-input'
+                    onChange={(ev)=>{
+                        const file = ev.target.files && ev.target.files[0];
+                        if (file) {
+                            setTextoFile(file.name);
+                        } else {
+                            setTextoFile("");
+                        }
+                        
+                    }}></input>
+                </label>
+                
+                <div className='sendFile-fileName'>Arquivo: {textoFile}</div>
+                {/* <div className='dragndrop'></div> */}
+                
             </div>
 
+            {/* divider */}
             <div className='sendFile--divider'></div>
 
             <div className='sendFile--send'>
