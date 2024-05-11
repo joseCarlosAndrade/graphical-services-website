@@ -8,26 +8,7 @@ function SectionSendFileClient() {
 
     const label : HTMLLabelElement | null = document.querySelector(".file--label");
     let [textoFile, setTextoFile] = useState("Nenhum arquivo selecionado"); 
-    // useEffect(()=>{
-    //     // console.log("changn")
-    //     if (label) {
-    //         // input.addEventListener("change", event => {
-    //         //     if (input.files ) {
-    //         //         if(input.files.length > 0) {
-    //         //             console.log("arquivo recebido");
-    //         //             console.log(input.files);
-        
-    //         //         }
-    //         //     }
-    //         // })
-    //         // console.log(input?.files);
-    //         label.style.backgroundColor = ''
-            
-    //     }
-    //     console.log(textoFile);
-
-
-    // }, [label, input, textoFile])
+   
 
   return (
     <>
