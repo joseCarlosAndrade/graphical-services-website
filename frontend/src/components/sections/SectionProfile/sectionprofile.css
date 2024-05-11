@@ -1,0 +1,161 @@
+.sectionProfileContainer {
+    padding-bottom: 9rem;
+
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 5vw;
+    height: 24rem;
+}
+
+.profile {
+    padding: 2rem 1rem 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 15vw;
+    height: 25vh;
+    background-color: lightgrey;
+}
+
+.profile__img {
+    width: 70%;
+}
+
+.profile__name {
+    text-align: center;
+}
+
+.profile__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile__buttons_selector {
+    padding: 0.5rem;
+    border: 0;
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.profile__buttons_selector:hover {
+    background-color: darkgrey;
+}
+
+.update {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: rgb(219, 219, 219);
+    padding: 2rem;
+}
+
+.update__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.update__field__email_input {
+    font-size: medium;
+    width: 96%;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+}
+
+.update__field__password_input {
+    font-size: medium;
+    width: 96.5%;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+}
+
+.update__field__name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.update__field__name_first_input {
+    font-size: medium;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+    width: 22vw;
+    margin-right: 1rem;
+}
+
+
+.update__field__name_second_input {
+    font-size: medium;
+    width: 22vw;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+}
+
+.update__field__email_text,
+.update__field__name_first_text,
+.update__field__name_second_text,
+.update__field__password_first_text,
+.update__field__password_second_text,
+.update__field__password_text {
+    color: var(--sign-textBold-color-var);
+}
+
+.update__field__password {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.update__field__password_first_input {
+    font-size: medium;
+    width: 22vw;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+}
+
+.update__field__password_second_input {
+    font-size: medium;
+    width: 22vw;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid;
+}
+
+.update__submit__button {
+    background-color: var(--main-color);
+    width: 30vw;
+    height: 3rem;
+    color: white;
+    border: 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.update__submit__button:hover {
+    background-color: var(--button-color);
+    color: black;
+    border: 1px solid black;
+}
+
+.requests__field {
+    width: 50vw;
+    height: 16.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: rgb(219, 219, 219);
+    padding: 2rem;
+}

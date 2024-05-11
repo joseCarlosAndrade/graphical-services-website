@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './sectionsendfileclient.css';
 
-import 'react-dropzone';
+// import 'react-dropzone';
 
 function SectionSendFileClient() {
     // const input : HTMLInputElement | null= document.querySelector(".sendFile--loadfile-input");

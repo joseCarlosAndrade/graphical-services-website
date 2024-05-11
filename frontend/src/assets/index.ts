@@ -25,3 +25,4 @@ export { default as baseTorta} from './base_torta.jpg';
 export { default as search} from './magnifying-glass-search.png';
 export { default as download } from './download.png';
 export { default as upload } from './upload.png';
+export { default as profileDefaultImg } from './profile_default.png';
