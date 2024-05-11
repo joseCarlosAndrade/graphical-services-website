@@ -62,7 +62,7 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
 
   return (
     <>
-      <div className='sectionProfileContainer'>
+      <div className='sectionProfileContainer' style={{ fontSize: `${pageFont}rem` }}>
         <div className="profile">
           <img className='profile__img' src={profileDefaultImg}></img>
           <div className='profile__name'>Carlos Fernandez Vasquez</div>
@@ -70,13 +70,13 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
 
         <div className="profile__container">
           <div className='profile__buttons'>
-            <button className='profile__buttons_selector' onClick={() => setSelector('editProfile')}>Edit Profile</button>
-            <button className='profile__buttons_selector' onClick={() => setSelector('seeRequests')}>See Your Requests</button>
+            <button style={{ fontSize: `${pageFont}rem` }} className='profile__buttons_selector' onClick={() => setSelector('editProfile')}>Edit Profile</button>
+            <button style={{ fontSize: `${pageFont}rem` }} className='profile__buttons_selector' onClick={() => setSelector('seeRequests')}>See Your Requests</button>
           </div>
           {
             selector === 'editProfile' ?
               <>
-                <form className="update" style={{ fontSize: `${pageFont}rem` }} onSubmit={updateProfile}>
+                <form className="update" onSubmit={updateProfile}>
                   <div className="update__field">
                     <FormField
                       action='update'
@@ -86,42 +86,38 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
                       value={formData.email}
                       onChange={e => handleInputChange(e, 'email')}
                     />
-                    <div className='update__field__name'>
-                      <FormField
-                        action='update'
-                        type='name_first'
-                        label='Nome'
-                        placeholder='Enter your first name'
-                        value={formData.firstName}
-                        onChange={e => handleInputChange(e, 'firstName')}
-                      />
-                      <FormField
-                        action='update'
-                        type='name_second'
-                        label='Sobrenome'
-                        placeholder='Enter your last name'
-                        value={formData.lastName}
-                        onChange={e => handleInputChange(e, 'lastName')}
-                      />
-                    </div>
-                    <div className='register__field__password'>
-                      <FormField
-                        action='update'
-                        type='password_first'
-                        label='Senha'
-                        placeholder='Enter your password'
-                        value={formData.password}
-                        onChange={e => handleInputChange(e, 'password')}
-                      />
-                      <FormField
-                        action='update'
-                        type='password_second'
-                        label='Confirmar Senha'
-                        placeholder='Confirm your password'
-                        value={formData.confirmPassword}
-                        onChange={e => handleInputChange(e, 'confirmPassword')}
-                      />
-                    </div>
+                    <FormField
+                      action='update'
+                      type='name_first'
+                      label='Nome'
+                      placeholder='Enter your first name'
+                      value={formData.firstName}
+                      onChange={e => handleInputChange(e, 'firstName')}
+                    />
+                    <FormField
+                      action='update'
+                      type='name_second'
+                      label='Sobrenome'
+                      placeholder='Enter your last name'
+                      value={formData.lastName}
+                      onChange={e => handleInputChange(e, 'lastName')}
+                    />
+                    <FormField
+                      action='update'
+                      type='password_first'
+                      label='Senha'
+                      placeholder='Enter your password'
+                      value={formData.password}
+                      onChange={e => handleInputChange(e, 'password')}
+                    />
+                    <FormField
+                      action='update'
+                      type='password_second'
+                      label='Confirmar Senha'
+                      placeholder='Confirm your password'
+                      value={formData.confirmPassword}
+                      onChange={e => handleInputChange(e, 'confirmPassword')}
+                    />
                   </div>
                   {formError ? <div className="errorMessage">{formError}</div> : <div className="hide"></div>}
                   {formSuccess ? <div className="successMessage">{formSuccess}</div> : <div className="hide"></div>}
