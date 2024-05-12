@@ -153,3 +153,16 @@
 .hide {
     display: none
 }
+
+@media (max-width: 574px){
+    .login__button {
+        margin-bottom: 30px;
+    }
+
+    .register__field__password_second_text{
+        max-width: 110px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

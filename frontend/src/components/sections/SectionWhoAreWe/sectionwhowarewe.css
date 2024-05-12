@@ -34,3 +34,18 @@
     margin-top: 2%;
     margin-bottom: -15%;
 }
+
+@media (max-width: 574px) {
+    .tittleSomos{
+        display: flex;
+        justify-content: center;
+        font-style: italic;
+        font-size: 8vw;
+        margin-top: 2%;
+        margin-bottom: -50%;
+    }
+
+    .lastContainer{
+        margin-bottom: 180px;
+    }
+}

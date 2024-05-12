@@ -19,17 +19,12 @@ header button {
     background-color: var(--main-color);
     outline: 0;
     border: 0;
-    /* border: 2px; */
-    /* border-style: solid; */
     padding: 0.7rem;
     margin: 1rem 0.4rem;
     color: #e6e6e6;
     font-weight: bold;
-    /* font-size: 13px; */
-    /* font-size: 0.8rem; */
     width: auto;
     cursor: pointer;
-
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
     
@@ -50,8 +45,27 @@ header button:hover {
     width: auto;
 }
 
-/* .header--navbar--button-login:hover {
-    border: 2px solid var(--button-color);
+@media (max-width: 574px){
+   header{
+    display: grid;
+    background-color: var(--main-color);
+    height: auto;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    place-items: center;
+   } 
 
-} */
-
+   header button {
+    background-color: var(--main-color);
+    outline: 0;
+    border: 0;
+    padding: 0.7rem;
+    margin: 1rem 0rem;
+    color: #e6e6e6;
+    font-weight: bold;
+    width: auto;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+}

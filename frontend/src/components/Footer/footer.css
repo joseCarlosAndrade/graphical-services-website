@@ -70,3 +70,27 @@ footer {
     cursor: pointer;
     margin-top: -0.4rem;
 }
+
+@media (max-width: 574px){
+    footer {
+        position: absolute;
+        bottom: 0rem;
+        width: 100vw;
+        min-height: 9rem;
+        height: auto;
+        margin-top: auto;
+        display: grid;
+        flex-direction: row;
+        background-color: var(--footer-color);
+        align-items: center;
+        justify-content:center;
+        gap: 0vw;
+        color: white;
+    }
+
+    .footer--logo {
+        width: 10rem;
+        margin-left: 20%;
+    }
+    
+}

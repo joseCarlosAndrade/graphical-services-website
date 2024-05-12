@@ -33,3 +33,19 @@
     align-items: center;
     margin-bottom: 3rem;
 }
+
+@media (max-width: 574px){
+    .searchBarContainer {
+        margin-left: 10vw;
+        width: auto;
+        margin-right: 10vw;
+        border: 2px solid black;
+        display: flex;
+        border-radius: 20px;
+        flex-flow: row nowrap;
+        justify-content: center;
+        background: white;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+}

@@ -57,3 +57,42 @@
     margin-top: 2%;
     margin-bottom: -15%;
 }
+
+@media (max-width: 574px) {
+    .tittleServices {
+        display: flex;
+        justify-content: center;
+        font-style: italic;
+        font-size: 5vw;
+        margin-top: 5%;
+        margin-bottom: -35%;
+    }
+
+    .sectionServices {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 315px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 35vw;
+        height: 35vw;
+        background-color: #C2C2C2;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid;
+    }
+
+    .childButton{
+        display: flex;
+        justify-content: center;
+        padding-top: 5px;
+        margin: auto;
+        font-size: 3vw;
+        font-style: unset;
+    }
+}

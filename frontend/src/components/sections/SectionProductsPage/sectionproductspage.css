@@ -30,3 +30,16 @@ input[type="search"] {
     height: 2rem;
     border-radius: 20px;
 }
+
+@media (max-width: 574px){
+    .container--childText
+    {
+        padding-top: 5px;
+        margin: auto;
+        font-size: 1rem;
+        max-height: 250px;
+        overflow: hidden;
+        word-wrap: break-word;
+        text-overflow: ellipsis;
+    }
+}
