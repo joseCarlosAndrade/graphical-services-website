@@ -2,7 +2,7 @@ import React from 'react'
 import './sectionlogin.css';
 import { google, facebook, apple } from '../../../assets';
 import { useEffect, useState } from 'react';
-import { FormField } from '../..'
+import { FormField } from '../../index'
 import { setCookie } from '../../../utils/cookie';
 import { fetchData } from '../../../services';
 
@@ -78,6 +78,10 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
         console.log('By registering, We are not creating cookie yet.')
 
         setFormSuccess('Please check your email to verify it!')
+
+        // setting in localstorage just to maintain header in logged state 
+        localStorage.setItem('logged', JSON.stringify(true));
+
         await delay(1500);
         window.location.href = "/graphical-services-website#/";
       } else {
@@ -109,6 +113,9 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
         // console.log('Cookie set to token: ', session.token)
 
         setFormSuccess('Success with Login!')
+
+        // setting in localstorage just to maintain header in logged state 
+        localStorage.setItem('logged', JSON.stringify(true));
 
         await delay(1500);
         window.location.href = "/graphical-services-website#/";
