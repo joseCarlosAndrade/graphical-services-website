@@ -24,9 +24,6 @@
     color: var(--text-color);
 }
 
-/* .sendFile--productType-dropbox-contents button {
-    display: none;
-} */
 
 .sendFile--productType-dropbox {
     display: flex;
@@ -173,4 +170,45 @@
 
 .sendFile--send-button:hover {
     background-color: rgb(204, 167, 44);
+}
+
+@media screen and (max-width: 834px) {
+    .sendFileContainer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        margin: 2rem 0;
+        margin-bottom: 5rem;
+    }
+
+    .sendFile--boldText-box {
+        width: 80vw;
+        text-align: center;
+    }
+
+    .sendFile--productType-dropbox {
+        width: auto;
+    }
+
+    .sendFile--divider {
+        width: 80vw;
+        height: 0px;
+        border: 1px dashed rgb(185, 185, 185);
+        margin: 0 1rem;
+    }
+
+    .sendFile--loadfile {
+      
+        width: 70vw;
+        
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sendFileContainer {
+        
+        margin: 2rem 2rem;
+        margin-bottom: 5rem;
+    }
 }
