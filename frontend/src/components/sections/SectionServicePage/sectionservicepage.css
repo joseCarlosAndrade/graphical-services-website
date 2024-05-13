@@ -57,7 +57,13 @@
     color: var(--main-text-color);
 }
 
-@media (max-width: 574px) {
+@media screen and (max-width: 1120px) {
+    .tittleServices {
+        padding-bottom: 3rem;
+    }
+}
+
+@media (max-width: 834px) {
     .tittleServices {
         display: flex;
         justify-content: center;
@@ -82,6 +88,7 @@
         padding: 5px;
         border-radius: 10px;
         border: 1px solid;
+        font-size: 1rem;
     }
 
     .childButton{
@@ -89,7 +96,13 @@
         justify-content: center;
         padding-top: 5px;
         margin: auto;
-        font-size: 3vw;
+        font-size: 2vw;
         font-style: unset;
+    } 
+}
+
+@media (max-width: 400px) {
+    .sectionServices {
+        margin-top: 3rem;
     }
 }
