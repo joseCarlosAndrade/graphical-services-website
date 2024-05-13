@@ -8,6 +8,7 @@ header {
     padding: 0 8%;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
+    font-family: var(--font-family);
 }
 
 header img {
