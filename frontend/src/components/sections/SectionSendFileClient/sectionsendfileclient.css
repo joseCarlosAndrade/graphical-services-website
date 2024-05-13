@@ -4,7 +4,7 @@
     flex-direction: row;
     align-items: start;
     margin: 4rem 3rem 3rem 7rem;
-    
+    color: var(--main-text-color);
 }
 
 .sendFile--boldText-box {
@@ -94,9 +94,9 @@
     opacity: 0;
 }
 
-/* .sendFile--loadfile-input { 
-    opacity: 0;
-}  */
+.sendFile--loadfile-text-inside {
+    color: black;
+}
 
 /* .file--label.active > .sendFile--loadfile-dropzone {
     background-color: antiquewhite;

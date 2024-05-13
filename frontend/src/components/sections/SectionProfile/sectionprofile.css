@@ -101,7 +101,7 @@
 .update__field__password_first_text,
 .update__field__password_second_text,
 .update__field__password_text {
-    color: var(--sign-textBold-color-var);
+    color: grey;
 }
 
 .update__field__password {

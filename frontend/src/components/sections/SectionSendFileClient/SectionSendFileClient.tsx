@@ -53,7 +53,7 @@ function SectionSendFileClient() {
                     onDragLeave={()=>{label?.classList.remove("active");}}>
                         
                     <div className='sendFile--loadfile-dropzone'>
-                        <p className='sendFile--loadfile-text'>Clique ou arraste-os aqui.</p>
+                        <p className='sendFile--loadfile-text-inside'>Clique ou arraste-os aqui.</p>
                     </div>
 
                     <input type='file' className='sendFile--loadfile-input' id='sendFile-input'

@@ -1,0 +1,53 @@
+
+.sectionWhoAreWe {
+    padding-bottom: 10rem;
+}
+
+
+.imageSomos
+{
+    width: 20vw;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid;
+    border-color: #ccc;
+}
+
+.containerSomos
+{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerText
+{
+    width: 40%;
+    display: flex;
+    padding: 20px;
+    color: var(--main-text-color);
+}
+
+.tittleSomos
+{
+    font-style: italic;
+    margin: 2rem;
+    color: var(--main-text-color);
+    padding: 0;
+}
+
+@media (max-width: 574px) {
+    .tittleSomos{
+        display: flex;
+        justify-content: center;
+        font-style: italic;
+        font-size: 8vw;
+        margin-top: 2%;
+        margin-bottom: -50%;
+    }
+
+    .lastContainer{
+        margin-bottom: 180px;
+    }
+}
