@@ -8,10 +8,6 @@ import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '.
 import {  fontSizes } from '../../types/interfacePageProps'
 import { setCSSVar } from '../../utils';
 
-import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '../../assets';
-
-import { fontSizes } from '../../types/interfacePageProps';
-
 interface AccessibilityProps {
   currentTheme?: string;
   setCurrentTheme: (args0: string) => void;
@@ -61,7 +57,7 @@ function AccessibilityTab({ currentTheme, setCurrentTheme, fontSizes, setFontSiz
     <>
       <div className='accessContainer'>
         <div className='accessContainer--buttons'>
-          <VLibras/>
+          <VLibras forceOnload={true} />
           <button className='nightModeButton' onClick={changeThemeCallback}>
             <img className='nightModeIcon' src={darkThemeIcon.toString()} alt='Simbolo modo noturno' />
             Modo noturno
