@@ -4,6 +4,7 @@ import './accessibilitytab.css';
 import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '../../assets';
 
 import {  fontSizes } from '../../types/interfacePageProps'
+import { setCSSVar } from '../../utils';
 
 
 
@@ -46,6 +47,7 @@ function AccessibilityTab( { currentTheme, setCurrentTheme, fontSizes, setFontSi
       document.documentElement.style.setProperty('--bg-color', 'var(--bg-dark)');
       document.documentElement.style.setProperty('--main-text-color', 'var(--text-dark)');
       document.documentElement.style.setProperty('--button-red-hover', 'var(--button-light)');
+      setCSSVar('--text-color-var', 'var(--text-color-dark-white)');
     } else {
       document.documentElement.style.setProperty('--main-color', 'var(--header-light)');
       document.documentElement.style.setProperty('--button-color', 'var(--button-light)');
@@ -53,6 +55,7 @@ function AccessibilityTab( { currentTheme, setCurrentTheme, fontSizes, setFontSi
       document.documentElement.style.setProperty('--bg-color', 'var(--bg-light)');
       document.documentElement.style.setProperty('--main-text-color', 'var(--text-light)');
       document.documentElement.style.setProperty('--button-red-hover', 'var(--header-light)');
+      setCSSVar('--text-color-var', 'var(--text-color-light)');
     }
   }, [currentTheme]);
   
