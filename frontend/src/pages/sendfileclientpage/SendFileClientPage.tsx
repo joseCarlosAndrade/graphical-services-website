@@ -27,8 +27,8 @@ function SendFileClientPage( props: PageProps) {
     <>
         <AccessibilityTab currentTheme={props.theme} setCurrentTheme={props.setTheme} fontSizes={props.fontSizes} setFontSizes={props.setFontsSizes}></AccessibilityTab>
         <Header currentAction={props.action} setCurrentAction={props.setAction} headerFontSize={props.fontSizes.headerFont}></Header>
-        <SectionSendFileClient></SectionSendFileClient>
-        <Footer></Footer>
+        <SectionSendFileClient fontSize={props.fontSizes.sendFilePageFont}></SectionSendFileClient>
+        <Footer footerFont={props.fontSizes.footerFont}></Footer>
     </>
     )
 }

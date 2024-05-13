@@ -1,6 +1,8 @@
 import { Header, Footer, SectionProductsPage, AccessibilityTab } from '../../components';
 import { PageProps } from '../../types/interfacePageProps';
 import { agenda, caja, cajaTorta, baseTorta, search } from '../../assets';
+import { useEffect } from 'react';
+import { setCSSVar } from './../../utils';
 import './productspage.css';
 
 
@@ -25,6 +27,19 @@ const products = [
 
 export default function ProductsPage({ theme, setTheme, fontSizes, setFontsSizes, action, setAction }: PageProps) {
 
+  useEffect(() => {
+    if (theme === 'dark') {
+      //   document.documentElement.style.setProperty('--sign-text-color-var', 'var(--sign-text-color-dark)');
+      //   document.documentElement.style.setProperty('--sign-textBold-color-var', 'var(--sign-textBold-color-dark)');
+      setCSSVar('--text-color', 'var(--text-color-dark)');
+      setCSSVar('--text-bold', 'var(--text-bold-dark)');
+    } else {
+      //   document.documentElement.style.setProperty('--sign-text-color-var', 'var(--sign-text-color-light)');
+      //   document.documentElement.style.setProperty('--sign-textBold-color-var', 'var(--sign-textBold-color-light)');
+      setCSSVar('--text-color', 'var(--text-color-light)');
+      setCSSVar('--text-bold', 'var(--text-bold-light)');
+    }
+  }, [theme])
   return (
     <>
       <AccessibilityTab
@@ -36,7 +51,7 @@ export default function ProductsPage({ theme, setTheme, fontSizes, setFontsSizes
 
       <Header currentAction='register' setCurrentAction={setAction} headerFontSize={fontSizes.headerFont}></Header>
 
-      <div className="productspage">
+      <div className="productspage" style={{ fontSize: `${fontSizes.productPageFont}rem` }}>
         <h1 className='titleProducts'>PRODUTOS</h1>
         <form>
           <div className='searchBarContainer'>
@@ -54,7 +69,7 @@ export default function ProductsPage({ theme, setTheme, fontSizes, setFontsSizes
         </section>
       </div>
 
-      <Footer></Footer>
+      <Footer footerFont={fontSizes.footerFont}></Footer>
     </>
   )
 }

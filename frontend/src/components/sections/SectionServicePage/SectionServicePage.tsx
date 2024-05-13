@@ -1,21 +1,50 @@
 import React, { ReactNode } from 'react'
 //import { useState } from 'react'
 import './sectionservicepage.css'
+import { Card } from '../../index'
 
+import { disenador, impresoraOffset, plastificadora, troquel } from '../../../assets';
+
+const services = [
+  {
+    bottomText: 'PLASTIFICADO',
+    sourceImage: plastificadora
+  },
+  {
+    bottomText: 'IMPRESORA OFFSET',
+    sourceImage: impresoraOffset
+  },
+  {
+    bottomText: 'DISENADOR GRAFICO',
+    sourceImage: disenador
+  },
+  {
+    bottomText: 'TROQUELADO',
+    sourceImage: troquel
+  }
+]
 
 interface SectionServicePageProps {
-  bottomText: string, // Puedes usar ReactNode o string, dependiendo de tu caso de uso
-  sourceImage: string,
+  fontSize: number,
 }
 
-function SectionServicePage ({bottomText, sourceImage}: SectionServicePageProps) {
-  
+function SectionServicePage({ fontSize }: SectionServicePageProps) {
+
   return (
     <>
-      <article className='container'>
-        <img src={`${sourceImage}`} className='imagem'/>
-        <p className='childButton'>{bottomText}</p>
-      </article>
+      <div className='servicePage' style={{ fontSize: `${fontSize}rem` }}>
+        <h1 className='tittleServices'>SERVIÇOS</h1>
+        <section className='sectionServices'>
+          {
+            services.map((service) => (
+              <Card
+                bottomText={service.bottomText}
+                sourceImage={service.sourceImage}
+              ></Card>
+            ))
+          }
+        </section>
+      </div>
     </>
   )
 }

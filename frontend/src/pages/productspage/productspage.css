@@ -1,3 +1,10 @@
+:root {
+    --text-bold-light: var(--text-color-light);
+    --text-bold-dark: rgb(255, 163, 58);
+
+    --text-bold: var(--text-bold-light);
+}
+
 .productspage {
     padding-bottom: 12rem;
 }

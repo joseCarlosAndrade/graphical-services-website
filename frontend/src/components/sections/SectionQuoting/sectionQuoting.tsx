@@ -6,12 +6,10 @@ import { download, upload } from '../../../assets';
 import { UserScrollable } from '../../index';
 
 interface SectionQuotingProps {
-    currentAction: string
-    setCurrentAction: (args0: string) => void
     pageFont: number
 }
 
-function SectionQuoting({ currentAction, setCurrentAction, pageFont }: SectionQuotingProps) {
+function SectionQuoting({ pageFont }: SectionQuotingProps) {
     const [useCookie, setUseCookie] = useState(true);
     const [searchValue, setSearchValue] = useState("");
     const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
@@ -31,7 +29,7 @@ function SectionQuoting({ currentAction, setCurrentAction, pageFont }: SectionQu
 
     return (
         <>
-            <div className="fileQuoting--container">
+            <div className="fileQuoting--container" style={{ fontSize: `${pageFont}rem` }}>
                 <UserScrollable className="fileQuoting--scrollableList" search={searchValue} onChange={e => handleInputChange(e)} />
                 <div className="fileQuoting">
                     <div className="fileQuoting--text">Solicitação de orçamento de molde</div>

@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react'
-import './sectionproductspage.css'
+import './sectionproducts.css'
 
-interface SectionServicePageProps {
+interface SectionProductPageProps {
   bottomText: string, // Puedes usar ReactNode o string, dependiendo de tu caso de uso
   sourceImage: string,
 }
 
-function SectionProductsPage({ bottomText, sourceImage }: SectionServicePageProps) {
+function SectionProductsPage({ bottomText, sourceImage }: SectionProductPageProps) {
 
   return (
     <>

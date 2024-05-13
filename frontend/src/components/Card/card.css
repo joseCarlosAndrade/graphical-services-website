@@ -1,0 +1,26 @@
+.card--image {
+    max-height: 30vw;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+
+}
+
+/* company main color #F04B37*/
+.card--container {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    background-color: darkgray;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.card--text {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5rem;
+    margin: auto;
+    color: black;
+}

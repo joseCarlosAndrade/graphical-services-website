@@ -5,6 +5,7 @@
     align-items: start;
     margin: 4rem 3rem 3rem 7rem;
     color: var(--main-text-color);
+    padding-bottom: 15rem;
 }
 
 .sendFile--boldText-box {
@@ -40,7 +41,7 @@
 
 .sendFile--divider {
     /* width: 3px; */
-    height: 55vh;
+    height: 65vh;
     border: 1px dashed rgb(185, 185, 185);
     margin: 0 1rem;
 }

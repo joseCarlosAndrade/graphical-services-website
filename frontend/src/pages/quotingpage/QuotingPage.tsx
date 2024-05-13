@@ -20,7 +20,7 @@ function QuotingPage({ theme, setTheme, action, setAction, fontSizes, setFontsSi
             <AccessibilityTab currentTheme={theme} setCurrentTheme={setTheme} fontSizes={fontSizes} setFontSizes={setFontsSizes}></AccessibilityTab>
             <Header currentAction={action} setCurrentAction={setAction} headerFontSize={fontSizes.headerFont}></Header>
 
-            <SectionQuoting currentAction={action} setCurrentAction={setAction} pageFont={fontSizes.loginFont} ></SectionQuoting>
+            <SectionQuoting pageFont={fontSizes.loginFont} ></SectionQuoting>
 
             <Footer footerFont={fontSizes.footerFont}></Footer>
 
