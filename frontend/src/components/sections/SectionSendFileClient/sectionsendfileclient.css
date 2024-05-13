@@ -14,21 +14,21 @@
     font-size: 3rem;
     width: 30vw;
     margin-right: 1rem;
+    color: var(--text-bold);
 }
 
 .sendFile--productType-dropbox {
     text-align: justify;
     width: 10rem;
     /* width: ; */
+    color: var(--text-color);
 }
 
-/* .sendFile--productType-dropbox-contents button {
-    display: none;
-} */
 
 .sendFile--productType-dropbox {
     display: flex;
     flex-direction: column;
+    color: var(--text-color);
 }
 
 #product-type {
@@ -53,6 +53,7 @@
     /* background-color: rgb(190, 190, 190); */
     /* border: 2px dashed black; */
     position: relative;
+    /* color: var(--text-color); */
     
 }
 
@@ -110,8 +111,12 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    /* color: var(--text-color); */
 }
 
+.sendFile--loadfile > text {
+    color: var(--text-color);
+}
 /* .sendFile--loadfile-button {
     background-color: var(--button-light);
     font-weight: 600;
@@ -136,6 +141,7 @@
     border: 2px solid rgb(110, 110, 110);
     border-radius: 10px;
     padding: 3px;
+    color: var(--text-color);
     
 }
 
@@ -144,6 +150,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: var(--text-color);
 }
 
 .sendFile--send-button {
@@ -163,4 +170,45 @@
 
 .sendFile--send-button:hover {
     background-color: rgb(204, 167, 44);
+}
+
+@media screen and (max-width: 834px) {
+    .sendFileContainer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        margin: 2rem 0;
+        margin-bottom: 5rem;
+    }
+
+    .sendFile--boldText-box {
+        width: 80vw;
+        text-align: center;
+    }
+
+    .sendFile--productType-dropbox {
+        width: auto;
+    }
+
+    .sendFile--divider {
+        width: 80vw;
+        height: 0px;
+        border: 1px dashed rgb(185, 185, 185);
+        margin: 0 1rem;
+    }
+
+    .sendFile--loadfile {
+      
+        width: 70vw;
+        
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sendFileContainer {
+        
+        margin: 2rem 2rem;
+        margin-bottom: 5rem;
+    }
 }
