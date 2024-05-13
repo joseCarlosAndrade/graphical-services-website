@@ -25,12 +25,9 @@ header button {
     font-weight: bold;
     width: auto;
     cursor: pointer;
-<<<<<<< HEAD
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
     
-=======
->>>>>>> 948839ca6becacd734b4ded6f233c3313d4e1471
 }
 
 header button:hover {
@@ -51,34 +48,27 @@ header button:hover {
     transition-timing-function: ease-in-out;
 }
 
-<<<<<<< HEAD
 @media (max-width: 574px){
    header{
-    display: grid;
-    background-color: var(--main-color);
-    height: auto;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-    place-items: center;
+        display: grid;
+        background-color: var(--main-color);
+        height: auto;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+        place-items: center;
    } 
 
    header button {
-    background-color: var(--main-color);
-    outline: 0;
-    border: 0;
-    padding: 0.7rem;
-    margin: 1rem 0rem;
-    color: #e6e6e6;
-    font-weight: bold;
-    width: auto;
-    cursor: pointer;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
+        background-color: var(--main-color);
+        outline: 0;
+        border: 0;
+        padding: 0.7rem;
+        margin: 1rem 0rem;
+        color: #e6e6e6;
+        font-weight: bold;
+        width: auto;
+        cursor: pointer;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+    }
 }
-}
-=======
-/* .header--navbar--button-login:hover {
-    border: 2px solid var(--button-color);
-
-} */
->>>>>>> 948839ca6becacd734b4ded6f233c3313d4e1471
