@@ -2,12 +2,10 @@ header {
     display: flex;
     flex-direction: row;
     background-color: var(--main-color);
-    height: auto;
+    height: 15vh;
     align-items: center;
     justify-content: space-between;
     padding: 0 8%;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
     font-family: var(--font-family);
 }
 
@@ -24,11 +22,10 @@ header button {
     margin: 1rem 0.4rem;
     color: #e6e6e6;
     font-weight: bold;
-    width: auto;
     cursor: pointer;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
-    
+
 }
 
 header button:hover {
@@ -49,17 +46,17 @@ header button:hover {
     transition-timing-function: ease-in-out;
 }
 
-@media (max-width: 574px){
-   header{
+@media (max-width: 574px) {
+    header {
         display: grid;
         background-color: var(--main-color);
         height: auto;
         transition-duration: 0.3s;
         transition-timing-function: ease-in-out;
         place-items: center;
-   } 
+    }
 
-   header button {
+    header button {
         background-color: var(--main-color);
         outline: 0;
         border: 0;

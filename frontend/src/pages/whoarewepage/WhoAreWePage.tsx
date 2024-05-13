@@ -18,6 +18,8 @@ export default function WhoAreWe({ theme, setTheme, fontSizes, setFontsSizes, ac
       setCSSVar('--text-bold', 'var(--text-bold-light)');
     }
   }, [theme])
+
+  
   return (
     <>
       <AccessibilityTab

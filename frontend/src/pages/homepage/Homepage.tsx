@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header, Footer, SectionHomepage, AccessibilityTab } from '../../components';
 import { PageProps } from '../../types/interfacePageProps'
 
 import './homepage.css';
 
 
-function Homepage( {theme, setTheme, action, setAction, fontSizes, setFontsSizes} : PageProps) {
+function Homepage({ theme, setTheme, action, setAction, fontSizes, setFontsSizes }: PageProps) {
 
   // const [theme, setTheme] = useState('light');
-  
+
   useEffect(() => {
     if (theme === 'dark') {
       // homepage only changes to dark mode
@@ -19,16 +19,15 @@ function Homepage( {theme, setTheme, action, setAction, fontSizes, setFontsSizes
 
     }
   }, [theme])
-  
+
   return (
     <>
-        <AccessibilityTab currentTheme={theme} setCurrentTheme={setTheme} fontSizes={fontSizes} setFontSizes={setFontsSizes}></AccessibilityTab>
-        <Header currentAction='register' setCurrentAction={setAction} headerFontSize={fontSizes.headerFont}></Header>
-        
-        <SectionHomepage currentTheme={theme} homepageFont={fontSizes.homepageFont}></SectionHomepage>
+      <AccessibilityTab currentTheme={theme} setCurrentTheme={setTheme} fontSizes={fontSizes} setFontSizes={setFontsSizes}></AccessibilityTab>
+      <Header currentAction='register' setCurrentAction={setAction} headerFontSize={fontSizes.headerFont}></Header>
 
-        <Footer footerFont={fontSizes.footerFont}></Footer>
-        
+      <SectionHomepage currentTheme={theme} homepageFont={fontSizes.homepageFont}></SectionHomepage>
+
+      <Footer footerFont={fontSizes.footerFont}></Footer>
     </>
   )
 }
