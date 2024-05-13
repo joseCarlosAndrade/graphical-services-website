@@ -46,18 +46,11 @@ function SectionSendFileClient() {
                 {/* <button className='sendFile--loadfile-button'>Carregue arquivos CDR</button> */}
 
                 <label htmlFor="sendFile-input" className='file--label'
-                onDragEnter={() => {
-                    label?.classList.add("active"); 
-                    // console.log("entering");
-
-                
-                }}
-                onDrop={()=>{
-                   
-                    label?.classList.remove("active"); 
-                    }}
-                onDragEnd={()=>{label?.classList.remove("active");}}
-                onDragLeave={()=>{label?.classList.remove("active");}}>
+                    onDragEnter={() => {
+                        label?.classList.add("active"); }}
+                    onDrop={()=>{label?.classList.remove("active");  }}
+                    onDragEnd={()=>{label?.classList.remove("active");}}
+                    onDragLeave={()=>{label?.classList.remove("active");}}>
                         
                     <div className='sendFile--loadfile-dropzone'>
                         <p className='sendFile--loadfile-text'>Clique ou arraste-os aqui.</p>

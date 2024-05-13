@@ -16,6 +16,10 @@ function SectionQuoting({ currentAction, setCurrentAction, pageFont }: SectionQu
     const [searchValue, setSearchValue] = useState("");
     const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
 
+    const label : HTMLLabelElement | null = document.querySelector('.label--fileQuoting');
+    
+    const [textoFile, setTextoFile] = useState("Nenhum arquivo selecionado.");
+
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(event.target.value)
     }
@@ -32,16 +36,43 @@ function SectionQuoting({ currentAction, setCurrentAction, pageFont }: SectionQu
                 <div className="fileQuoting">
                     <div className="fileQuoting--text">Solicitação de orçamento de molde</div>
                     <button className="fileQuoting--button">
-                        <img className="fileQuoting--img" src={download}></img>
+                        <img className="fileQuoting--img" src={download} alt='Icone download'></img>
                         Faça o download do arquivo aqui
                     </button>
                     <div className="division"></div>
                     <div className="fileQuoting--text">Envio de orçamento</div>
                     <button className="fileQuoting--button">
-                        <img className="fileQuoting--img" src={upload}></img>
+                        <img className="fileQuoting--img" src={upload} alt='Icone upload'></img>
                         Selecionar arquivos
                     </button>
-                    <div className='fileQuoting--dragndrop'></div>
+
+                    
+
+                    <label className='label--fileQuoting' htmlFor="fileQuoting--dragndrop-input"
+                            onDragEnter={() => {
+                                label?.classList.add("active");  }}
+                            onDrop={()=>{label?.classList.remove("active");  }}
+                            onDragEnd={()=>{label?.classList.remove("active");}}
+                            onDragLeave={()=>{label?.classList.remove("active");}}>
+                            
+                        <div className='fileQuoting--dragndrop'>
+                            Arraste arquivos aqui
+                        </div>
+
+                        
+                        <input type='file' id='fileQuoting--dragndrop-input'
+                            onChange={(ev)=>{
+                                const file = ev.target.files && ev.target.files[0];
+                                if (file) {
+                                    setTextoFile(file.name);
+                                } else {
+                                    setTextoFile("");
+                                }
+                                
+                        }}></input>
+                    </label>
+                    <div className='fileQuoting--send-fileName'>{textoFile}</div>
+
                     <button className='fileQuoting--send'>Enviar</button>
                 </div>
             </div>
