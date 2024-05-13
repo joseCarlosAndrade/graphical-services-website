@@ -1,26 +1,35 @@
 {
   "files": {
-    "main.css": "/graphical-services-website/static/css/main.1536c474.css",
-    "main.js": "/graphical-services-website/static/js/main.bba5563c.js",
-    "static/js/453.e0d0dffa.chunk.js": "/graphical-services-website/static/js/453.e0d0dffa.chunk.js",
+    "main.css": "/graphical-services-website/static/css/main.013c5782.css",
+    "main.js": "/graphical-services-website/static/js/main.bcf25c2b.js",
+    "static/js/453.8ab44547.chunk.js": "/graphical-services-website/static/js/453.8ab44547.chunk.js",
     "static/media/Image-homepage.jpg": "/graphical-services-website/static/media/Image-homepage.be14e95375be5396164f.jpg",
+    "static/media/agenda.jpg": "/graphical-services-website/static/media/agenda.362d2bfd977f4537235b.jpg",
+    "static/media/caja_torta.png": "/graphical-services-website/static/media/caja_torta.4b02860cb6913faa1db3.png",
+    "static/media/caja.png": "/graphical-services-website/static/media/caja.a92590bb1a860da9b006.png",
+    "static/media/disenadora-grafica-ordenador.jpg": "/graphical-services-website/static/media/disenadora-grafica-ordenador.a88f0c5a1750c365f76a.jpg",
+    "static/media/plastificadora.jpeg": "/graphical-services-website/static/media/plastificadora.426ace5d0f124cb82397.jpeg",
     "static/media/accessIcon.svg": "/graphical-services-website/static/media/accessIcon.1353b4b87f4ac8400ebce213ec2907ab.svg",
     "static/media/instagram.png": "/graphical-services-website/static/media/instagram.e719d8b29f452a16302d.png",
-    "static/media/graphical-logo.png": "/graphical-services-website/static/media/graphical-logo.9eab5d4667caf6c0cde9.png",
+    "static/media/troquel.jpeg": "/graphical-services-website/static/media/troquel.aaae873e63eac13014e9.jpeg",
+    "static/media/graphical-logo.png": "/graphical-services-website/static/media/graphical-logo.a4896a6a3c1163d83cbb.png",
+    "static/media/impresora_offset.jpg": "/graphical-services-website/static/media/impresora_offset.88d063b446cfac13a4ea.jpg",
     "static/media/libras.png": "/graphical-services-website/static/media/libras.cb9ab577faeb219466f0.png",
     "static/media/lensUp.svg": "/graphical-services-website/static/media/lensUp.63b946d51ef6bd240cf0a5163260483d.svg",
+    "static/media/graphical-logo-white.png": "/graphical-services-website/static/media/graphical-logo-white.56a51c8337898c43ef7c.png",
     "static/media/lensDown.svg": "/graphical-services-website/static/media/lensDown.a38c8f5db14c62344e6ab098da5ea3b2.svg",
     "static/media/google.png": "/graphical-services-website/static/media/google.cadee8cdb0c0afb1a713.png",
     "static/media/facebook.png": "/graphical-services-website/static/media/facebook.49e67d43221b6bb1aa86.png",
+    "static/media/base_torta.jpg": "/graphical-services-website/static/media/base_torta.f4134140bd91a9478410.jpg",
     "index.html": "/graphical-services-website/index.html",
     "static/media/dark-theme.svg": "/graphical-services-website/static/media/dark-theme.be8825085eb5b15ae300eb2cae1d8756.svg",
     "static/media/downarrow.svg": "/graphical-services-website/static/media/downarrow.4e326d148b806562b6d0f588299f3537.svg",
-    "main.1536c474.css.map": "/graphical-services-website/static/css/main.1536c474.css.map",
-    "main.bba5563c.js.map": "/graphical-services-website/static/js/main.bba5563c.js.map",
-    "453.e0d0dffa.chunk.js.map": "/graphical-services-website/static/js/453.e0d0dffa.chunk.js.map"
+    "main.013c5782.css.map": "/graphical-services-website/static/css/main.013c5782.css.map",
+    "main.bcf25c2b.js.map": "/graphical-services-website/static/js/main.bcf25c2b.js.map",
+    "453.8ab44547.chunk.js.map": "/graphical-services-website/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1536c474.css",
-    "static/js/main.bba5563c.js"
+    "static/css/main.013c5782.css",
+    "static/js/main.bcf25c2b.js"
   ]
 }
