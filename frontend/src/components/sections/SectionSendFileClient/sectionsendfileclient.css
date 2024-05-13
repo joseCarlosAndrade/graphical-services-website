@@ -21,13 +21,21 @@
     /* width: ; */
 }
 
-.sendFile--productType-dropbox-contents button {
+/* .sendFile--productType-dropbox-contents button {
     display: none;
+} */
+
+.sendFile--productType-dropbox {
+    display: flex;
+    flex-direction: column;
 }
 
-/* .sendFile--productType-dropbox-contents:nth-child(1) {
-    display: block;
-} */
+#product-type {
+    margin-top: 2rem;
+    height: 2rem;
+    font-family: var(--font-family);
+    font-size: 1rem;
+}
 
 .sendFile--divider {
     /* width: 3px; */
@@ -58,6 +66,7 @@
 .file--label > .sendFile--loadfile-dropzone {
     background-color: rgb(177, 177, 177);
     border: 2px dashed black;
+    border-radius: 10px;
 
 }
 
@@ -102,14 +111,14 @@
     gap: 20px;
 }
 
-.sendFile--loadfile-button {
+/* .sendFile--loadfile-button {
     background-color: var(--button-light);
     font-weight: 600;
     color: rgb(77, 77, 77);
     border: 0;
     border-radius: 5px;
     padding: 1rem;
-}
+} */
 
 /* .dragndrop {
     width: 80%;
@@ -120,6 +129,13 @@
 
 .sendFile--loadfile-drag {
     border-radius: 5px;
+}
+
+.sendFile-fileName {
+    border: 2px solid rgb(110, 110, 110);
+    border-radius: 10px;
+    padding: 3px;
+    
 }
 
 .sendFile--send {
@@ -139,4 +155,11 @@
     font-size: 1rem;
     width: 8rem;
     margin-top: 3rem;
+    cursor: pointer;
+
+    transition: all ease-in-out 0.1s;
+}
+
+.sendFile--send-button:hover {
+    background-color: rgb(204, 167, 44);
 }

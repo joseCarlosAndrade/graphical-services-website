@@ -25,12 +25,9 @@ header button {
     font-weight: bold;
     width: auto;
     cursor: pointer;
-<<<<<<< HEAD
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
     
-=======
->>>>>>> 948839ca6becacd734b4ded6f233c3313d4e1471
 }
 
 header button:hover {
@@ -51,7 +48,6 @@ header button:hover {
     transition-timing-function: ease-in-out;
 }
 
-<<<<<<< HEAD
 @media (max-width: 574px){
    header{
     display: grid;
@@ -76,9 +72,3 @@ header button:hover {
     transition-timing-function: ease-in-out;
 }
 }
-=======
-/* .header--navbar--button-login:hover {
-    border: 2px solid var(--button-color);
-
-} */
->>>>>>> 948839ca6becacd734b4ded6f233c3313d4e1471
