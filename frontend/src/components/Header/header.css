@@ -51,25 +51,25 @@ header button:hover {
 
 @media (max-width: 574px){
    header{
-    display: grid;
-    background-color: var(--main-color);
-    height: auto;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-    place-items: center;
+        display: grid;
+        background-color: var(--main-color);
+        height: auto;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+        place-items: center;
    } 
 
    header button {
-    background-color: var(--main-color);
-    outline: 0;
-    border: 0;
-    padding: 0.7rem;
-    margin: 1rem 0rem;
-    color: #e6e6e6;
-    font-weight: bold;
-    width: auto;
-    cursor: pointer;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-}
+        background-color: var(--main-color);
+        outline: 0;
+        border: 0;
+        padding: 0.7rem;
+        margin: 1rem 0rem;
+        color: #e6e6e6;
+        font-weight: bold;
+        width: auto;
+        cursor: pointer;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+    }
 }
