@@ -63,8 +63,6 @@
         justify-content: center;
         font-style: italic;
         font-size: 5vw;
-        margin-top: 5%;
-        margin-bottom: -35%;
     }
 
     .sectionServices {
@@ -80,7 +78,7 @@
         flex-direction: column;
         width: 35vw;
         height: 35vw;
-        background-color: #C2C2C2;
+        background-color: var(--main-color);
         padding: 5px;
         border-radius: 10px;
         border: 1px solid;
