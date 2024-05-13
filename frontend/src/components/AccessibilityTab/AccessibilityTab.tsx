@@ -3,14 +3,15 @@ import './accessibilitytab.css';
 
 
 import VLibras from '@djpfs/react-vlibras';
+// import VLibras from '@djpfs/react-vlibras';
 import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '../../assets';
 
 import {  fontSizes } from '../../types/interfacePageProps'
 import { setCSSVar } from '../../utils';
 
-import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '../../assets';
+// import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '../../assets';
 
-import { fontSizes } from '../../types/interfacePageProps';
+// import { fontSizes } from '../../types/interfacePageProps';
 
 interface AccessibilityProps {
   currentTheme?: string;
@@ -59,27 +60,33 @@ function AccessibilityTab({ currentTheme, setCurrentTheme, fontSizes, setFontSiz
 
   return (
     <>
+       <VLibras />   
+
       <div className='accessContainer'>
-        <div className='accessContainer--buttons'>
-          <VLibras/>
-          <button className='nightModeButton' onClick={changeThemeCallback}>
-            <img className='nightModeIcon' src={darkThemeIcon.toString()} alt='Simbolo modo noturno' />
-            Modo noturno
-          </button>
+        <div className='accessContainer-bg'>
+        
+          <div className='accessContainer--buttons'>
+            
+            <button className='nightModeButton' onClick={changeThemeCallback}>
+              <img className='nightModeIcon' src={darkThemeIcon.toString()} alt='Simbolo modo noturno' />
+              Modo noturno
+            </button>
 
-          <button className='increaseFontButton' onClick={increaseFontCallback}>
-            <img className='increaseFontIcon' src={lensUp.toString()} alt='Lupa com aumento' />
-            Aumentar fonte
-          </button>
+            <button className='increaseFontButton' onClick={increaseFontCallback}>
+              <img className='increaseFontIcon' src={lensUp.toString()} alt='Lupa com aumento' />
+              Aumentar fonte
+            </button>
 
-          <button className='decreaseFontButton' onClick={decreaseFontCallback}>
-            <img className='decreaseFontIcon' src={lensDown.toString()} alt='Lupa com diminuição' />
-            Diminuir fonte
-          </button>
+            <button className='decreaseFontButton' onClick={decreaseFontCallback}>
+              <img className='decreaseFontIcon' src={lensDown.toString()} alt='Lupa com diminuição' />
+              Diminuir fonte
+            </button>
+          </div>
+          
         </div>
         <div className='accessContainer--border'>
-          <img src={accessIcon.toString()} alt='Accessibilidade' />
-        </div>
+            <img src={accessIcon.toString()} alt='Accessibilidade' />
+          </div>
       </div>
     </>
   );

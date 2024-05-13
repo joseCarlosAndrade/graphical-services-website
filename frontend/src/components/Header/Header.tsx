@@ -6,6 +6,7 @@ import './header.css';
 import { mainLogoWhite } from './../../assets';
 import { Link } from 'react-router-dom'
 import DownArrow from '../DownArrow/DownArrow';
+import VLibras from '@djpfs/react-vlibras';
 
 interface HeaderProps {
   currentAction: string,
@@ -42,6 +43,7 @@ function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps
 
   return (
     <>
+    
       <header>
         {/* <div className="header--logo">Logo</div> */}
         <Link to='/'>

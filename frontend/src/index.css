@@ -8,7 +8,7 @@ body {
     sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: var(--main-font);
+  font-family: "DM Sans", sans-serif;
   overflow-x: hidden;
   overflow-y: scroll;
   background-color: var(--bg-color);
