@@ -42,8 +42,14 @@ code {
 
   --text-light: rgb(39, 39, 39);
   --text-dark: rgb(212, 204, 157);
+  --text-dark-white: rgb(238, 238, 238);
 
-  --button-red-hover: var(--header-light);
+  --text-color-light: rgb(39, 39, 39);
+  --text-color-dark: rgb(238, 238, 238);
+  
+  --text-color: var(--text-color-light);
+
+  --button-red-hover: var(--header-li ght);
   --main-text-color: rgb(39, 39, 39);
   --bg-color: var(--bg-light);
   --main-font: "DM Sans", sans-serif;

@@ -72,7 +72,7 @@ function Header({ currentAction, setCurrentAction, headerFontSize }: HeaderProps
               </Link>
             </> :
             <>
-              <Link to='/login'>
+              <Link to='/sendfile'>
                 <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Enviar arquivo</button>
               </Link>
               <Link to='/login'>

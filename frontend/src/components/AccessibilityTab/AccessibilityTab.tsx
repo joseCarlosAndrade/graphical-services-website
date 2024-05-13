@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
 import './accessibilitytab.css';
 
+
 import VLibras from '@djpfs/react-vlibras';
+import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '../../assets';
+
+import {  fontSizes } from '../../types/interfacePageProps'
+import { setCSSVar } from '../../utils';
 
 import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '../../assets';
 
@@ -39,6 +44,7 @@ function AccessibilityTab({ currentTheme, setCurrentTheme, fontSizes, setFontSiz
       document.documentElement.style.setProperty('--bg-color', 'var(--bg-dark)');
       document.documentElement.style.setProperty('--main-text-color', 'var(--text-dark)');
       document.documentElement.style.setProperty('--button-red-hover', 'var(--button-light)');
+      setCSSVar('--text-color-var', 'var(--text-color-dark-white)');
     } else {
       document.documentElement.style.setProperty('--main-color', 'var(--header-light)');
       document.documentElement.style.setProperty('--button-color', 'var(--button-light)');
@@ -46,6 +52,7 @@ function AccessibilityTab({ currentTheme, setCurrentTheme, fontSizes, setFontSiz
       document.documentElement.style.setProperty('--bg-color', 'var(--bg-light)');
       document.documentElement.style.setProperty('--main-text-color', 'var(--text-light)');
       document.documentElement.style.setProperty('--button-red-hover', 'var(--header-light)');
+      setCSSVar('--text-color-var', 'var(--text-color-light)');
     }
   }, [currentTheme]);
   

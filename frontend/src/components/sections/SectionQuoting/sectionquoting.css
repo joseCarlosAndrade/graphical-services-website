@@ -37,11 +37,42 @@
     height: 16px;
 }
 
-.fileQuoting--dragndrop {
+.label--fileQuoting {
+    position: relative;
     width: 30vw;
     height: 15vh;
-    background-color: rgb(190, 190, 190);
+    /* background-color: rgb(190, 190, 190);
+    border: 2px dashed black; */
+    /* text-align: center; */
+    
+    
+}
+
+.fileQuoting--dragndrop {
+    background-color: rgb(177, 177, 177);
     border: 2px dashed black;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s ease-in-out;
+}
+
+.label--fileQuoting.active > .fileQuoting--dragndrop {
+    background-color: rgb(129, 129, 129);
+}   
+
+#fileQuoting--dragndrop-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    
 }
 
 .fileQuoting--send {

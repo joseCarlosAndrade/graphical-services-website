@@ -4,6 +4,7 @@
     flex-direction: row;
     align-items: start;
     margin: 4rem 3rem 3rem 7rem;
+    
 }
 
 .sendFile--boldText-box {
@@ -13,21 +14,29 @@
     font-size: 3rem;
     width: 30vw;
     margin-right: 1rem;
+    color: var(--text-bold);
 }
 
 .sendFile--productType-dropbox {
     text-align: justify;
     width: 10rem;
     /* width: ; */
+    color: var(--text-color);
 }
 
-.sendFile--productType-dropbox-contents button {
-    display: none;
+
+.sendFile--productType-dropbox {
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
 }
 
-/* .sendFile--productType-dropbox-contents:nth-child(1) {
-    display: block;
-} */
+#product-type {
+    margin-top: 2rem;
+    height: 2rem;
+    font-family: var(--font-family);
+    font-size: 1rem;
+}
 
 .sendFile--divider {
     /* width: 3px; */
@@ -44,6 +53,7 @@
     /* background-color: rgb(190, 190, 190); */
     /* border: 2px dashed black; */
     position: relative;
+    /* color: var(--text-color); */
     
 }
 
@@ -58,6 +68,7 @@
 .file--label > .sendFile--loadfile-dropzone {
     background-color: rgb(177, 177, 177);
     border: 2px dashed black;
+    border-radius: 10px;
 
 }
 
@@ -100,16 +111,20 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    /* color: var(--text-color); */
 }
 
-.sendFile--loadfile-button {
+.sendFile--loadfile > text {
+    color: var(--text-color);
+}
+/* .sendFile--loadfile-button {
     background-color: var(--button-light);
     font-weight: 600;
     color: rgb(77, 77, 77);
     border: 0;
     border-radius: 5px;
     padding: 1rem;
-}
+} */
 
 /* .dragndrop {
     width: 80%;
@@ -122,11 +137,20 @@
     border-radius: 5px;
 }
 
+.sendFile-fileName {
+    border: 2px solid rgb(110, 110, 110);
+    border-radius: 10px;
+    padding: 3px;
+    color: var(--text-color);
+    
+}
+
 .sendFile--send {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: var(--text-color);
 }
 
 .sendFile--send-button {
@@ -139,4 +163,52 @@
     font-size: 1rem;
     width: 8rem;
     margin-top: 3rem;
+    cursor: pointer;
+
+    transition: all ease-in-out 0.1s;
+}
+
+.sendFile--send-button:hover {
+    background-color: rgb(204, 167, 44);
+}
+
+@media screen and (max-width: 834px) {
+    .sendFileContainer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        margin: 2rem 0;
+        margin-bottom: 5rem;
+    }
+
+    .sendFile--boldText-box {
+        width: 80vw;
+        text-align: center;
+    }
+
+    .sendFile--productType-dropbox {
+        width: auto;
+    }
+
+    .sendFile--divider {
+        width: 80vw;
+        height: 0px;
+        border: 1px dashed rgb(185, 185, 185);
+        margin: 0 1rem;
+    }
+
+    .sendFile--loadfile {
+      
+        width: 70vw;
+        
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sendFileContainer {
+        
+        margin: 2rem 2rem;
+        margin-bottom: 5rem;
+    }
 }

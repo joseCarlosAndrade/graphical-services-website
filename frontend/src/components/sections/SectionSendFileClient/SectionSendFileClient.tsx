@@ -19,14 +19,20 @@ function SectionSendFileClient() {
 
             
             <div className='sendFile--productType'>
-                <text className='sendFile--productType-text'></text>
+                {/* <text className='sendFile--productType-text'></text> */}
                 <div className='sendFile--productType-dropbox'>
-                    <text className='sendFile--productType-dropbox-dropbtn'>Selecione o tipo de produto aqui! É tudo muito fácil.</text>
-                    <div className='sendFile--productType-dropbox-contents'>
+                    <label htmlFor='product-type' className='sendFile--productType-dropbox-dropbtn'>Selecione o tipo de produto aqui! É tudo muito fácil.</label>
+                    <select name="product-type" id="product-type">
+                        <option value='opcao1'>Opcao 1</option>
+                        <option value='opcao2'>Opcao 2</option>
+                        <option value='opcao3'>Opcao 3</option>
+                    </select>
+                        
+                        {/* <div className='sendFile--productType-dropbox-contents'>
                         <button>Opcao 1</button>
                         <button>Opcao 2</button>
                         <button>Opcao 3</button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
@@ -40,18 +46,11 @@ function SectionSendFileClient() {
                 {/* <button className='sendFile--loadfile-button'>Carregue arquivos CDR</button> */}
 
                 <label htmlFor="sendFile-input" className='file--label'
-                onDragEnter={() => {
-                    label?.classList.add("active"); 
-                    // console.log("entering");
-
-                
-                }}
-                onDrop={()=>{
-                   
-                    label?.classList.remove("active"); 
-                    }}
-                onDragEnd={()=>{label?.classList.remove("active");}}
-                onDragLeave={()=>{label?.classList.remove("active");}}>
+                    onDragEnter={() => {
+                        label?.classList.add("active"); }}
+                    onDrop={()=>{label?.classList.remove("active");  }}
+                    onDragEnd={()=>{label?.classList.remove("active");}}
+                    onDragLeave={()=>{label?.classList.remove("active");}}>
                         
                     <div className='sendFile--loadfile-dropzone'>
                         <p className='sendFile--loadfile-text'>Clique ou arraste-os aqui.</p>
@@ -79,7 +78,7 @@ function SectionSendFileClient() {
 
             <div className='sendFile--send'>
                 <div className='sendFile--send-text'>Agora é só clicar em enviar</div>
-                <button className='sendFile--send-button'>Enviar</button>
+                <button className='sendFile--send-button' onClick={() => {alert("Dados enviados com sucesso!")}}>Enviar</button>
             </div>
         </div>
     </>
