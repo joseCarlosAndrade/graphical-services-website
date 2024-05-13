@@ -10,7 +10,7 @@ interface UserScrollableProps {
 
 function UserScrollable({ className, search, onChange = () => { } }: UserScrollableProps) {
     let exampleList = [
-        "Shogo", "JC", "Gabriel Barbosa", "Thiago Zero", "Lázaro Vinaud", "Rafael Mansur", "Arthur Ernesto de Carvalho"
+        "Shogo Shima", "Gabriel Barbosa", "Thiago Zero", "Lázaro Vinaud", "Rafael Mansur", "Arthur Ernesto de Carvalho"
     ]
     return (
         <>

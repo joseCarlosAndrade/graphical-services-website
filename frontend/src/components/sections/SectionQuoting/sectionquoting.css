@@ -18,6 +18,14 @@
     gap: 1rem;
 }
 
+.fileQuoting--text {
+    color: var(--main-text-color);
+}
+
+.fileQuoting--send-fileName {
+    color: var(--main-text-color);
+}
+
 .division {
     border: 1px solid #888;
     width: 60%;

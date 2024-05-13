@@ -3,8 +3,10 @@
 }
 
 .titleProducts {
+    font-style: italic;
     padding: 0;
     margin: 2rem;
+    color: var(--main-text-color);
 }
 
 .sectionProducts {
