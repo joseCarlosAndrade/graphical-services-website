@@ -31,3 +31,6 @@ Feito por:
 - José Carlos Andrade do Nascimento
 - Shogo Shima
 - Mateus Bernal Leffeck
+- Enrique Córdova Sáenz
+- Miguel Córdova Oruna
+- Esteban Mercado Cueva
