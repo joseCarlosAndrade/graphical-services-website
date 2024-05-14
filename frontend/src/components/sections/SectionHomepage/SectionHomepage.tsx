@@ -19,7 +19,8 @@ function SectionHomepage({ currentTheme, homepageFont }: HomepageProps) {
         </div>
 
         <div style={{ fontSize: `${homepageFont}rem` }} className="homepage--text">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+        Trabalhamos com uma ampla variedade de serviços de impressão nos tipos de papel mais comerciais e especiais. Realizamos serviços de impressão de folhetos, catálogos, cartões de visita, flyers, panfletos triplos, calendários, banners, adesivos e muito mais. Todos os nossos trabalhos têm garantia de satisfação do cliente.
+        Ao longo dos anos trabalhando no mundo gráfico, conquistamos algumas marcas que confiam plenamente em nós, como: Alejandra Tafur, Dolce Brown, Morena Boutique, Dasso e Marini's.
         </div>
 
       </section>

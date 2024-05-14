@@ -7,19 +7,19 @@ import './productspage.css';
 
 const products = [
   {
-    bottomText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    bottomText: 'AGENDAS PERSONALIZADAS',
     sourceImage: agenda
   },
   {
-    bottomText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    bottomText: 'CAIXAS',
     sourceImage: caja
   },
   {
-    bottomText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    bottomText: 'CAIXAS DE BOLO',
     sourceImage: cajaTorta
   },
   {
-    bottomText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    bottomText: 'BASES DE BOLO',
     sourceImage: baseTorta
   }
 ]
