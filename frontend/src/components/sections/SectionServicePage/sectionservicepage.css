@@ -5,8 +5,7 @@
 }
 */
 
-.sectionServices
-{
+.sectionServices {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -16,8 +15,7 @@
     margin-bottom: 14rem;
 }
 
-.tittleServices
-{
+.tittleServices {
     font-style: italic;
     margin: 2rem;
     padding: 0;
@@ -40,31 +38,13 @@
 
     .sectionServices {
         width: 100%;
-	}
-    .container {
-        display: flex;
-        flex-direction: column;
-        width: 20vw;
-        height: 20vw;
-        background-color: #C2C2C2;
-        padding: 5px;
-        border-radius: 10px;
-        border: 1px solid;
-        font-size: 1rem;
+        display: grid;
+        grid-template: 1fr 1fr / 1fr 1fr;
+        justify-items: center;
     }
-
-    .childButton{
-        display: flex;
-        justify-content: center;
-        padding-top: 5px;
-        margin: auto;
-        font-size: 2vw;
-        font-style: unset;
-    } 
 }
 
 @media screen and(max-width: 570px) {
-
     .sectionServices {
         /* margin-bottom: 40rem; */
         margin-top: 0;

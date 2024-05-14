@@ -24,3 +24,26 @@
     margin: auto;
     color: black;
 }
+
+@media (max-width: 834px) {
+    .card--container {
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+        height: 20vw;
+        background-color: #C2C2C2;
+        padding: 5px;
+        border-radius: 10px;
+        border: 1px solid;
+        font-size: 1rem;
+    }
+
+    .card--text {
+        display: flex;
+        justify-content: center;
+        padding-top: 5px;
+        margin: auto;
+        font-size: 2vw;
+        font-style: unset;
+    }
+}

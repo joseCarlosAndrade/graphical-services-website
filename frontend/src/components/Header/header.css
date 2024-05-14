@@ -2,7 +2,7 @@ header {
     display: flex;
     flex-direction: row;
     background-color: var(--main-color);
-    height: 15vh;
+    height: auto;
     align-items: center;
     justify-content: space-between;
     padding: 0 8%;
@@ -61,7 +61,6 @@ header button:hover {
         outline: 0;
         border: 0;
         padding: 0.7rem;
-        margin: 1rem 0rem;
         color: #e6e6e6;
         font-weight: bold;
         width: auto;
