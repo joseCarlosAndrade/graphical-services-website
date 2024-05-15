@@ -8,19 +8,23 @@ import { disenador, impresoraOffset, plastificadora, troquel } from '../../../as
 const services = [
   {
     bottomText: 'PLASTIFICADO',
-    sourceImage: plastificadora
+    sourceImage: plastificadora,
+    altText : 'Plastificadora'
   },
   {
     bottomText: 'IMPRESORA OFFSET',
-    sourceImage: impresoraOffset
+    sourceImage: impresoraOffset,
+    altText : 'Impressora'
   },
   {
     bottomText: 'DISENADOR GRAFICO',
-    sourceImage: disenador
+    sourceImage: disenador,
+    altText : 'Desenhador'
   },
   {
     bottomText: 'TROQUELADO',
-    sourceImage: troquel
+    sourceImage: troquel,
+    altText : 'Troquelado'
   }
 ]
 
@@ -40,6 +44,7 @@ function SectionServicePage({ fontSize }: SectionServicePageProps) {
               <Card
                 bottomText={service.bottomText}
                 sourceImage={service.sourceImage}
+                altText={service.altText}
               ></Card>
             ))
           }

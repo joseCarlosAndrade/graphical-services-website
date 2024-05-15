@@ -12,13 +12,13 @@ function SectionWhoAreWePage({ somosFontSize }: SectionWhoAreWePageProps) {
     <>
       <div className="sectionWhoAreWe">
         <article className='containerSomos'>
-          <img src={agenda} className='imageSomos' />
+          <img alt='Agenda' src={agenda} className='imageSomos' />
           <p className='containerText' style={{ fontSize: `${somosFontSize}rem` }}>Contribuir para o crescimento da indústria gráfica nacional, oferecendo serviços gráficos integrais de qualidade diferenciada, no momento oportuno e com a tecnologia adequada.</p>
         </article>
 
         <article className='containerSomos lastContainer'>
           <p className='containerText' style={{ fontSize: `${somosFontSize}rem` }}>Ser a referência líder na prestação de serviços gráficos; gerando sinergia empresarial com nossos clientes.</p>
-          <img src={caja} className='imageSomos' />
+          <img alt='Caixa' src={caja} className='imageSomos' />
         </article>
 
       </div>

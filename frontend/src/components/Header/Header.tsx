@@ -56,30 +56,30 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
           {isLoading ? <></> :
             <>
               <Link to='/products-page'>
-                <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button fill" >Produtos  <DownArrow /> </button>
+                <button style={{ fontSize: `${headerFontSize}rem` , fontFamily: "DM Sans, sans-serif"}} className="header--navbar--button fill" >Produtos  <DownArrow /> </button>
               </Link>
               <Link to='/service-page'>
-                <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Serviços <DownArrow /> </button>
+                <button style={{ fontSize: `${headerFontSize}rem` , fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Serviços <DownArrow /> </button>
               </Link>
               <Link to='/quem-somos-page'>
-                <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Quem somos <DownArrow /></button>
+                <button style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Quem somos <DownArrow /></button>
               </Link>
               <Link to='/sendfile'>
-                <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Enviar arquivo</button>
+                <button style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Enviar arquivo</button>
               </Link>
               {loggedIn === true ?
                 <>
                   <Link to='/profile'>
-                    <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button" >Perfil</button>
+                    <button style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Perfil</button>
                   </Link>
                   <Link to='/'>
-                    <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button-login" onClick={logOut} >
+                    <button style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button-login" onClick={logOut} >
                       Log Out </button>
                   </Link>
                 </> :
                 <>
                   <Link to='/login'>
-                    <button style={{ fontSize: `${headerFontSize}rem` }} className="header--navbar--button-login" onClick={changeAction} >
+                    <button style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button-login" onClick={changeAction} >
                       {currentAction === 'login' ? 'Sign Up' : 'Sign In'} </button>
                   </Link>
                 </>

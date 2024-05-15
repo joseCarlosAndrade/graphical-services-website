@@ -64,7 +64,7 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
     <>
       <div className='sectionProfileContainer' style={{ fontSize: `${pageFont}rem` }}>
         <div className="profile">
-          <img className='profile__img' src={profileDefaultImg}></img>
+          <img alt='Icone usuario' className='profile__img' src={profileDefaultImg}></img>
           <div className='profile__name'>Carlos Fernandez Vasquez</div>
         </div>
 

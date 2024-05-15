@@ -8,19 +8,23 @@ import './productspage.css';
 const products = [
   {
     bottomText: 'AGENDAS PERSONALIZADAS',
-    sourceImage: agenda
+    sourceImage: agenda,
+    altText : 'Agenda'
   },
   {
     bottomText: 'CAIXAS',
-    sourceImage: caja
+    sourceImage: caja,
+    altText : 'Caixa de papelão'
   },
   {
     bottomText: 'CAIXAS DE BOLO',
-    sourceImage: cajaTorta
+    sourceImage: cajaTorta,
+    altText : 'Caixa de bolo'
   },
   {
     bottomText: 'BASES DE BOLO',
-    sourceImage: baseTorta
+    sourceImage: baseTorta,
+    altText :  'Base de bolo'
   }
 ]
 
@@ -55,7 +59,7 @@ export default function ProductsPage({ theme, setTheme, fontSizes, setFontsSizes
         <form>
           <div className='searchBarContainer'>
             <input type='search' placeholder='Pesquisar produtos'></input>
-            <img src={search} className='imageSearch'></img>
+            <img alt='icone de pesquisa' src={search} className='imageSearch'></img>
           </div>
         </form>
         <section className='sectionProducts'>
@@ -63,6 +67,7 @@ export default function ProductsPage({ theme, setTheme, fontSizes, setFontsSizes
             <SectionProductsPage
               bottomText={product.bottomText}
               sourceImage={product.sourceImage}
+              altText={product.altText}
             ></SectionProductsPage>
           ))}
         </section>
