@@ -5,15 +5,14 @@ import { deleteCookie } from '../../utils/cookie';
 import './header.css';
 import { mainLogoWhite, menuWhite, closeMenuWhite } from './../../assets';
 import { Link } from 'react-router-dom'
-import DownArrow from '../DownArrow/DownArrow';
-import VLibras from '@djpfs/react-vlibras';
 import MobileMenu from '../MobileMenu/MobileMenu';
 
 export interface HeaderProps {
   currentAction: string,
   setCurrentAction: (args0: string) => void,
   headerFontSize: number,
-  logged?: boolean
+  logged?: boolean,
+  currentPage? : string
 }
 
 function Header({ currentAction, setCurrentAction, headerFontSize, logged }: HeaderProps) {
@@ -65,11 +64,7 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
             // whether to show or not the menu
             {toggle ? menuWhite.toString() : closeMenuWhite.toString()} alt="Menu Icon" /></div>
           {
-            // toggle ? 
-            //   // make a menu component  
-            //   <></>
-            //   :
-            // <button>x</button>
+            
             <>
               <MobileMenu
                 currentAction={currentAction}
@@ -84,28 +79,28 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
           }
         </div>
 
-        <div className={`header--navbar `} >
+        <div className={`header--navbar`} >
           {isLoading ? <></> :
             <>
               <Link to='/products-page' style={{ textDecoration: 'none' }}>
-                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif", textDecoration: "none" }} className="header--navbar--button fill" >Produtos   </button>
+                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif", textDecoration: "none" }} className="header--navbar--button products" >Produtos   </button>
               </Link>
               <Link to='/service-page' style={{ textDecoration: 'none' }}>
-                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Serviços  </button>
+                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button services" >Serviços  </button>
               </Link>
               <Link to='/quem-somos-page' style={{ textDecoration: 'none' }}>
-                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Quem somos </button>
+                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button whoarewe" >Quem somos </button>
               </Link>
               <Link to='/sendfile' style={{ textDecoration: 'none' }}>
-                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Enviar arquivo</button>
+                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button sendfile" >Enviar arquivo</button>
               </Link>
               {loggedIn === true ?
                 <>
                   <Link to='/profile' style={{ textDecoration: 'none' }}>
-                    <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Perfil</button>
+                    <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button profile" >Perfil</button>
                   </Link>
                   <Link to='/' style={{ textDecoration: 'none' }}>
-                    <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button-login" onClick={logOut} >
+                    <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button-login login" onClick={logOut} >
                       Log Out </button>
                   </Link>
                 </> :

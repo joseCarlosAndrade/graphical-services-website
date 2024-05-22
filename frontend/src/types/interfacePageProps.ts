@@ -23,3 +23,15 @@ export interface fontSizes {
 
   loginFont : number,
 }
+
+// talvez desnecessario?
+export const pagesCss = {
+  homepage : 'homepage',
+  products : 'products',
+  services : 'services',
+  whoarewe : 'whoarewe',
+  sendfile : 'sendfile',
+  login : 'login',
+  register : 'register',
+  profile : 'profile'
+}
