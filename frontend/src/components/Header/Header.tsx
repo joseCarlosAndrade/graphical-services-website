@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 import { fetchData } from '../../services';
 import { deleteCookie } from '../../utils/cookie';
 import './header.css';
-import { mainLogoWhite } from './../../assets';
+import { mainLogoWhite, menuWhite, closeMenuWhite } from './../../assets';
 import { Link } from 'react-router-dom'
 import DownArrow from '../DownArrow/DownArrow';
 import VLibras from '@djpfs/react-vlibras';
+import MobileMenu from '../MobileMenu/MobileMenu';
 
-interface HeaderProps {
+export interface HeaderProps {
   currentAction: string,
   setCurrentAction: (args0: string) => void,
   headerFontSize: number,
@@ -43,6 +44,9 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
     // window.location.reload()
   }
 
+  // mobile menu
+  const [toggle, setToggle] = useState(true); // when false, close button is shown
+
   return (
     <>
 
@@ -51,6 +55,34 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
         <Link to='/'>
           <img src={mainLogoWhite} alt="Graphical Services" />
         </Link>
+        <div className='header--mobileMenu'>
+          <div onClick={()=> {
+            toggle ? document.querySelector('.mobile-menu--container')?.classList.add('slide') :
+            document.querySelector('.mobile-menu--container')?.classList.remove('slide');
+            setToggle(!toggle);
+            
+          }}> <img className='header--mobileMenu' src=
+          // whether to show or not the menu
+          {toggle ? menuWhite.toString() : closeMenuWhite.toString()} alt="Menu Icon" /></div>
+            {
+            // toggle ? 
+            //   // make a menu component  
+            //   <></>
+            //   :
+              // <button>x</button>
+              <>
+              <MobileMenu 
+                currentAction={currentAction}
+                setCurrentAction={setCurrentAction}
+                headerFontSize={headerFontSize}
+                logged={logged}
+                logOut={logOut}
+                loggedIn={loggedIn}
+                changeAction={changeAction}
+              ></MobileMenu>
+              </>
+            }
+        </div>
 
         <div className={`header--navbar `} >
           {isLoading ? <></> :

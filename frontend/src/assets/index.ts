@@ -26,3 +26,6 @@ export { default as search} from './magnifying-glass-search.png';
 export { default as download } from './download.png';
 export { default as upload } from './upload.png';
 export { default as profileDefaultImg } from './profile_default.png';
+
+export {default as menuWhite}  from './menu-white.svg';
+export {default as closeMenuWhite}  from './closeMenuWhite.svg';

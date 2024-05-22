@@ -40,6 +40,17 @@ header button:hover {
     border-radius: 4px;
 }
 
+
+
+.header--mobileMenu {
+    display: none;
+    width: 1.6rem;
+    position: relative;
+    
+}
+
+
+
 .header--navbar--button-login {
     background-color: var(--button-color);
     color: var(--blue);
@@ -52,15 +63,25 @@ header button:hover {
     transition-timing-function: ease-in-out;
 }
 
+@media screen and (max-width: 834px) {
+    .header--navbar {
+        display: none;
+    }
+
+    .header--mobileMenu {
+        display: block;
+    }
+}
+
 @media (max-width: 574px) {
-    header {
+    /* header {
         display: grid;
         background-color: var(--main-color);
         height: auto;
         transition-duration: 0.3s;
         transition-timing-function: ease-in-out;
         place-items: center;
-    }
+    } */
 
     header button {
         background-color: var(--main-color);
