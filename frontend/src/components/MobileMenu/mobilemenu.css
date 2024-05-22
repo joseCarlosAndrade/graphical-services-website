@@ -34,7 +34,7 @@
     /* right: 0; */
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
     .mobile-menu--container {
     
         width: 70vw;
@@ -42,7 +42,7 @@
     }
 
     .slide {
-        transform: translateX(-60vw)
+        transform: translateX(-69vw)
     }
     
     .mobile-menu--container button {

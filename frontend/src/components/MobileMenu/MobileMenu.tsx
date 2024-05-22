@@ -18,7 +18,7 @@ export interface MobileMenuProps {
 function MobileMenu({ currentAction, setCurrentAction, headerFontSize, logged, logOut, loggedIn, changeAction }: MobileMenuProps) {
   return (
     <>
-    <div className='mobile-menu--container slide'>
+    <div className='mobile-menu--container'>
       <Link to='/products-page' style={{textDecoration : 'none'}}>
         <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem` , fontFamily: "DM Sans, sans-serif", textDecoration : "none"}} className="mobile-menu--navbar--button fill" >Produtos   </button>
       </Link>

@@ -54,10 +54,13 @@
     }
 }
 
-@media screen and(max-width: 570px) {
+@media screen and (max-width: 574px) {
     .sectionServices {
         /* margin-bottom: 40rem; */
         margin-top: 0;
+    }
+    .sectionServices {
+        margin-bottom: 8rem;
     }
 }
 
