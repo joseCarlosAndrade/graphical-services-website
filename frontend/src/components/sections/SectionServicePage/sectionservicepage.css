@@ -17,14 +17,22 @@
 
 .tittleServices {
     font-style: italic;
-    margin: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 0;
     padding: 0;
     color: var(--main-text-color);
 }
 
 @media screen and (max-width: 1120px) {
     .tittleServices {
-        padding-bottom: 3rem;
+        padding: 0;
+    }
+
+    .sectionServices {
+        width: 100%;
+        display: grid;
+        grid-template: 1fr 1fr / 1fr 1fr;
+        justify-items: center;
     }
 }
 
@@ -33,13 +41,12 @@
         display: flex;
         justify-content: center;
         font-style: italic;
-        font-size: 5vw;
     }
 
     .sectionServices {
         width: 100%;
         display: grid;
-        grid-template: 1fr 1fr / 1fr 1fr;
+        grid-template: 1fr 1fr 1fr 1fr / 1fr;
         justify-items: center;
     }
 }

@@ -1,91 +1,83 @@
-
 .sectionWhoAreWe {
     padding-bottom: 10rem;
 }
 
 
-.imageSomos
-{
-    width: 20vw;
+.imageSomos {
+    width: 10rem;
     padding: 20px;
     border-radius: 20px;
     border: 2px solid;
     border-color: #ccc;
+    cursor: default;
 }
 
-.containerSomos
-{
+.containerSomos {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
 }
 
-.containerText
-{
+.containerText {
     width: 40%;
     display: flex;
     padding: 20px;
     color: var(--text-color);
 }
 
-.tittleSomos
-{
+.tittleSomos {
     font-style: italic;
-    margin: 2rem;
-    color: var(--main-text-color);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     padding: 0;
+    color: var(--main-text-color);
 }
 
 @media screen and (max-width: 1440px) {
-    .tittleSomos{
+    .tittleSomos {
         margin-top: 1rem;
     }
 
-    .lastContainer{
-        margin-bottom: 10rem;
+    .lastContainer {
+        margin-bottom: 5rem;
     }
 }
 
 @media screen and (max-width: 834px) {
-    .tittleSomos{
-        margin-top: 2rem;
+    .tittleSomos {
         /* margin-bottom: 0; */
         font-size: 2rem;
-        padding-bottom: 10rem;
     }
 
     .containerSomos {
         margin-bottom: 2vw;
         margin-top: 0;
+        flex-direction: column;
     }
 
     .containerSomos.lastContainer {
-        margin-bottom: 10rem;
+        margin-bottom: 5rem;
+        flex-direction: column-reverse;
     }
 
     .containerText {
+        width: 80vw;
         font-size: 0.1rem;
-        /* color: red; */
+        padding-top: 0;
     }
-
 }
 
 @media (max-width: 574px) {
-    .tittleSomos{
+    .tittleSomos {
         display: flex;
         justify-content: center;
         font-style: italic;
-        font-size: 6vw;
-        margin-top: 2%;
-        padding-bottom: 5rem;
-        /* margin-bottom: -50%; */
     }
 
-    .lastContainer{
+    .lastContainer {
         margin-bottom: 180px;
         padding-bottom: 2rem;
-
     }
 }
 
