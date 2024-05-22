@@ -155,6 +155,28 @@
     display: none
 }
 
+@media screen and (max-width: 600px) {
+    .register__field__name {
+        flex-direction: column;
+        /* width: 100%; */
+        align-items: center;
+    }
+
+    .register__field__name_first_input,
+    .login__field__email_input,
+    .register__field__name_second_input,
+    .register__field__password_first_input,
+    .register__field__password_second_input {
+        width: 100%;
+    }
+
+    .register__field__password {
+        flex-direction: column;
+        /* width: 100%; */
+        align-items: center;
+    }
+}
+
 @media (max-width: 574px){
     .login__button {
         margin-bottom: 30px;

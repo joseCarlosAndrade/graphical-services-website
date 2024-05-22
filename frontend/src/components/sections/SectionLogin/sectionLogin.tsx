@@ -164,6 +164,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
         </div>
 
         <div className="login__field">
+        <div className='register__field__email'>
           <FormField
             action='login'
             type='email'
@@ -172,6 +173,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
             value={formData.email}
             onChange={e => handleInputChange(e, 'email')}
           />
+          </div>
           {
             currentAction === 'register' ? <>
               <div className='register__field__name'>
