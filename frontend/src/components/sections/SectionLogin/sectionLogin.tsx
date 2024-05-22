@@ -137,9 +137,9 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
         <div className="login__div">
           <div className="login__div_line"></div>
           <div className="login__div_text">{currentAction === 'login' ? <>
-            Sign In with your Social Network
+            Entre com sua rede social
           </> : <>
-            Sign Up with your Social Network
+            Registre-se com sua rede social
           </>}
           </div>
           <div className="login__div_line"></div>
@@ -155,9 +155,9 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
           <div className="login__div_line"></div>
           <div className="login__div_text">
             {currentAction === 'login' ? <>
-              Sign In with email
+              Entre com seu email
             </> : <>
-              Sign Up with email
+              Registre-se com seu email
             </>}
           </div>
           <div className="login__div_line"></div>
@@ -168,7 +168,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
             action='login'
             type='email'
             label='Email'
-            placeholder='Enter your email'
+            placeholder='Digite seu email'
             value={formData.email}
             onChange={e => handleInputChange(e, 'email')}
           />
@@ -179,7 +179,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
                   action='register'
                   type='name_first'
                   label='Nome'
-                  placeholder='Enter your first name'
+                  placeholder='Digite seu nome'
                   value={formData.firstName}
                   onChange={e => handleInputChange(e, 'firstName')}
                 />
@@ -187,7 +187,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
                   action='register'
                   type='name_second'
                   label='Sobrenome'
-                  placeholder='Enter your last name'
+                  placeholder='Digite seu sobrenome'
                   value={formData.lastName}
                   onChange={e => handleInputChange(e, 'lastName')}
                 />
@@ -197,7 +197,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
                   action='register'
                   type='password_first'
                   label='Senha'
-                  placeholder='Enter your password'
+                  placeholder='Digite sua senha'
                   value={formData.password}
                   onChange={e => handleInputChange(e, 'password')}
                 />
@@ -205,14 +205,14 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
                   action='register'
                   type='password_second'
                   label='Confirmar Senha'
-                  placeholder='Confirm your password'
+                  placeholder='Confirme sua senha'
                   value={formData.confirmPassword}
                   onChange={e => handleInputChange(e, 'confirmPassword')}
                 />
               </div>
               <div className='register__field__terms'>
                 <input className='register__field__terms_checkbox' type='checkbox'></input>
-                <div className='register__field__terms_text'>I agree to the Terms of Use and Privacy Notice</div>
+                <div className='register__field__terms_text'>Li e aceito os termos de política e privacidade.</div>
               </div>
             </>
               : <>
@@ -220,7 +220,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
                   action='login'
                   type='password'
                   label='Senha'
-                  placeholder='Enter your password'
+                  placeholder='Digite sua senha'
                   value={formData.password}
                   onChange={e => handleInputChange(e, 'password')}
                 />
@@ -228,14 +228,14 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
                   <input className='register__field__terms_checkbox' type='checkbox' checked onChange={() => {
                     useCookie === true ? setUseCookie(true) : setUseCookie(false);
                   }}></input>
-                  <div className='register__field__terms_text'>Remember me</div>
+                  <div className='register__field__terms_text'>Lembrar de mim</div>
                 </div>
               </>
           }
         </div>
         {formError ? <div className="errorMessage">{formError}</div> : <div className="hide"></div>}
         {formSuccess ? <div className="successMessage">{formSuccess}</div> : <div className="hide"></div>}
-        <button style={{ fontSize: `${loginFont}rem` }}  type="submit" className='login__button'>{currentAction === 'login' ? "Sign In" : "Sign Up"}</button>
+        <button style={{ fontSize: `${loginFont}rem` }}  type="submit" className='login__button'>{currentAction === 'login' ? "Entrar" : "Cadastrar"}</button>
       </form>
     </>
   )

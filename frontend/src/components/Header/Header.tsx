@@ -80,7 +80,7 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
                 <>
                   <Link to='/login' style={{textDecoration : 'none'}}>
                     <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button-login" onClick={changeAction} >
-                      {currentAction === 'login' ? 'Sign Up' : 'Sign In'} </button>
+                      {currentAction === 'login' ? 'Cadastrar' : 'Entrar'} </button>
                   </Link>
                 </>
               }
