@@ -1,4 +1,5 @@
 .sendFileContainer {
+    padding-top: 8rem;
     padding-bottom: 9rem;
     display: flex;
     flex-direction: row;

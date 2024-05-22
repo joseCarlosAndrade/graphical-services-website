@@ -4,7 +4,12 @@
     src: url('/frontend/src/assets/AVENGEANCE\ MIGHTIEST\ AVENGER.ttf') format('truetype');
 }
 */
+.productspage{
+    padding-top: 5rem;
+}
+
 .container--products {
+    /* padding-top: 10rem; */
     grid-column: span 1;
     grid-row: span 1;
 }
