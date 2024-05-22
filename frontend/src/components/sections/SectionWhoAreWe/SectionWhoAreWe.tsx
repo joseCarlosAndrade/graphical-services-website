@@ -11,6 +11,7 @@ function SectionWhoAreWePage({ somosFontSize }: SectionWhoAreWePageProps) {
   return (
     <>
       <div className="sectionWhoAreWe">
+        <h1 className='tittleSomos'>QUEM SOMOS</h1>
         <article className='containerSomos'>
           <img alt='Agenda' src={agenda} className='imageSomos' />
           <p className='containerText' style={{ fontSize: `${somosFontSize}rem` }}>Contribuir para o crescimento da indústria gráfica nacional, oferecendo serviços gráficos integrais de qualidade diferenciada, no momento oportuno e com a tecnologia adequada.</p>

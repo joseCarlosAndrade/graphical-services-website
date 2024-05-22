@@ -1,16 +1,14 @@
 .card--image {
-    max-height: 30vw;
-    width: 100%;
-    height: 100%;
+    width: 12rem;
+    height: 8rem;
     border-radius: 5px;
-
+    cursor: default;
 }
 
 /* company main color #F04B37*/
 .card--container {
     display: flex;
     flex-direction: column;
-    width: 20vw;
     background-color: darkgray;
     padding: 0.5rem;
     border-radius: 10px;
@@ -25,25 +23,35 @@
     color: black;
 }
 
+@media screen and (max-width: 1120px) {
+    .card--container {
+        font-size: 1.2rem;
+    }
+}
+
 @media (max-width: 834px) {
     .card--container {
         display: flex;
         flex-direction: column;
-        width: 20vw;
-        height: 20vw;
+        width: auto;
         background-color: #C2C2C2;
         padding: 5px;
         border-radius: 10px;
         border: 1px solid;
-        font-size: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .card--image {
+        width: 15rem;
+        height: 10rem;
+        border-radius: 5px;
+        cursor: default;
     }
 
     .card--text {
-        display: flex;
-        justify-content: center;
+        align-items: center;
         padding-top: 5px;
         margin: auto;
-        font-size: 2vw;
         font-style: unset;
     }
 }

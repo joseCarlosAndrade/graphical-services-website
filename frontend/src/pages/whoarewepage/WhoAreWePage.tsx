@@ -29,8 +29,7 @@ export default function WhoAreWe({ theme, setTheme, fontSizes, setFontsSizes, ac
         setFontSizes={setFontsSizes}
       ></AccessibilityTab>
       <Header currentAction='register' setCurrentAction={setAction} headerFontSize={fontSizes.headerFont}></Header>
-      <h1 className='tittleSomos'>QUEM SOMOS</h1>
-
+      
       <SectionWhoAreWePage somosFontSize={fontSizes.whoAreWePageFont}></SectionWhoAreWePage>
 
       <Footer footerFont={fontSizes.footerFont}></Footer>
