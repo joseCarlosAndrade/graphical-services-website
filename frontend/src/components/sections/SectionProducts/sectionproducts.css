@@ -12,12 +12,14 @@
     /* padding-top: 10rem; */
     grid-column: span 1;
     grid-row: span 1;
+    cursor: default;
 }
 
 .container--image 
 {
     height: 25vw;
     border-radius: 5px;
+    cursor: default;
 }
 
 .container--childText
