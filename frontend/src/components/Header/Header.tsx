@@ -56,22 +56,22 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
           <img src={mainLogoWhite} alt="Graphical Services" />
         </Link>
         <div className='header--mobileMenu'>
-          <div onClick={()=> {
+          <div onClick={() => {
             toggle ? document.querySelector('.mobile-menu--container')?.classList.add('slide') :
             document.querySelector('.mobile-menu--container')?.classList.remove('slide');
             setToggle(!toggle);
-            
+
           }}> <img className='header--mobileMenu' src=
-          // whether to show or not the menu
-          {toggle ? menuWhite.toString() : closeMenuWhite.toString()} alt="Menu Icon" /></div>
-            {
+            // whether to show or not the menu
+            {toggle ? menuWhite.toString() : closeMenuWhite.toString()} alt="Menu Icon" /></div>
+          {
             // toggle ? 
             //   // make a menu component  
             //   <></>
             //   :
-              // <button>x</button>
-              <>
-              <MobileMenu 
+            // <button>x</button>
+            <>
+              <MobileMenu
                 currentAction={currentAction}
                 setCurrentAction={setCurrentAction}
                 headerFontSize={headerFontSize}
@@ -80,37 +80,37 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
                 loggedIn={loggedIn}
                 changeAction={changeAction}
               ></MobileMenu>
-              </>
-            }
+            </>
+          }
         </div>
 
         <div className={`header--navbar `} >
           {isLoading ? <></> :
             <>
-              <Link to='/products-page' style={{textDecoration : 'none'}}>
-                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem` , fontFamily: "DM Sans, sans-serif", textDecoration : "none"}} className="header--navbar--button fill" >Produtos   </button>
+              <Link to='/products-page' style={{ textDecoration: 'none' }}>
+                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif", textDecoration: "none" }} className="header--navbar--button fill" >Produtos   </button>
               </Link>
-              <Link to='/service-page' style={{textDecoration : 'none'}}>
-                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem` , fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Serviços  </button>
+              <Link to='/service-page' style={{ textDecoration: 'none' }}>
+                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Serviços  </button>
               </Link>
-              <Link to='/quem-somos-page' style={{textDecoration : 'none'}}>
+              <Link to='/quem-somos-page' style={{ textDecoration: 'none' }}>
                 <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Quem somos </button>
               </Link>
-              <Link to='/sendfile' style={{textDecoration : 'none'}}>
+              <Link to='/sendfile' style={{ textDecoration: 'none' }}>
                 <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Enviar arquivo</button>
               </Link>
               {loggedIn === true ?
                 <>
-                  <Link to='/profile' style={{textDecoration : 'none'}}>
+                  <Link to='/profile' style={{ textDecoration: 'none' }}>
                     <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Perfil</button>
                   </Link>
-                  <Link to='/' style={{textDecoration : 'none'}}>
+                  <Link to='/' style={{ textDecoration: 'none' }}>
                     <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button-login" onClick={logOut} >
                       Log Out </button>
                   </Link>
                 </> :
                 <>
-                  <Link to='/login' style={{textDecoration : 'none'}}>
+                  <Link to='/login' style={{ textDecoration: 'none' }}>
                     <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button-login" onClick={changeAction} >
                       {currentAction === 'login' ? 'Cadastrar' : 'Entrar'} </button>
                   </Link>

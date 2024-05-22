@@ -26,7 +26,7 @@ function App() {
     headerFont: 0.8,
     homepageFont: 0.9,
     footerFont: 1,
-    servicePageFont: 1.2,
+    servicePageFont: 1,
     productPageFont: 1,
     loginFont: 1,
     sendFilePageFont: 1,
