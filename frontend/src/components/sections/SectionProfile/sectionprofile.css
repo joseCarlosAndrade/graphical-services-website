@@ -1,7 +1,7 @@
 .sectionProfileContainer {
     padding-bottom: 13rem;
 
-    margin-top: 1.5rem;
+    margin-top: 10rem;
     display: flex;
     justify-content: center;
     gap: 5vw;
@@ -102,6 +102,7 @@
 .update__field__password_second_text,
 .update__field__password_text {
     color: grey;
+    /* font: small; */
 }
 
 .update__field__password {
@@ -154,4 +155,42 @@
     gap: 1.5rem;
     background-color: rgb(219, 219, 219);
     padding: 2rem;
+}
+
+@media screen and (max-width: 480px) {
+    
+
+    .sectionProfileContainer {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15rem;
+        margin-bottom: 10rem;
+        /* width: 90vw; */
+        gap: 3rem;
+        
+    }
+
+    .profile {
+        width: 50vw;
+    }
+
+    .profile__container {
+
+        width: 90vw;
+        font-size: small;
+    }
+
+    .update__field {
+        width: 85vw;
+        /* gap: 10px; */
+    }
+
+    .update__field__email_input,
+    .update__field__name_first_input ,
+    .update__field__name_second_input ,
+    .update__field__password_first_input ,
+    .update__field__password_second_input {
+    font-size: small;
+}
+    
 }

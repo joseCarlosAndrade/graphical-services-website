@@ -67,7 +67,7 @@ header button:hover {
     transition-timing-function: ease-in-out;
 }
 
-@media screen and (max-width: 834px) {
+@media screen and (max-width: 934px) {
     .header--navbar {
         display: none;
     }
