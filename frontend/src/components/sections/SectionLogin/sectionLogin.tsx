@@ -235,8 +235,8 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
               </>
           }
         </div>
-        {formError ? <div className="errorMessage">{formError}</div> : <div className="hide"></div>}
-        {formSuccess ? <div className="successMessage">{formSuccess}</div> : <div className="hide"></div>}
+        {formError ? <div role="alert" className="errorMessage">{formError}</div> : <div className="hide"></div>}
+        {formSuccess ? <div role="alert" className="successMessage">{formSuccess}</div> : <div className="hide"></div>}
         <button style={{ fontSize: `${loginFont}rem` }}  type="submit" className='login__button'>{currentAction === 'login' ? "Entrar" : "Cadastrar"}</button>
       </form>
     </>

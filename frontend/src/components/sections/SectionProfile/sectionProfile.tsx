@@ -69,7 +69,7 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
         </div>
 
         <div className="profile__container">
-          <div className='profile__buttons'>
+          <div role="menubar" className='profile__buttons'>
             <button style={{ fontSize: `${pageFont}rem` }} className='profile__buttons_selector' onClick={() => setSelector('editProfile')}>Edit Profile</button>
             <button style={{ fontSize: `${pageFont}rem` }} className='profile__buttons_selector' onClick={() => setSelector('seeRequests')}>See Your Requests</button>
           </div>
@@ -119,8 +119,8 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
                       onChange={e => handleInputChange(e, 'confirmPassword')}
                     />
                   </div>
-                  {formError ? <div className="errorMessage">{formError}</div> : <div className="hide"></div>}
-                  {formSuccess ? <div className="successMessage">{formSuccess}</div> : <div className="hide"></div>}
+                  {formError ? <div role="alert" className="errorMessage">{formError}</div> : <div className="hide"></div>}
+                  {formSuccess ? <div role="alert" className="successMessage">{formSuccess}</div> : <div className="hide"></div>}
                   <button style={{ fontSize: `${pageFont}rem` }} type="submit" className='update__submit__button'>Update info</button>
                 </form>
               </>

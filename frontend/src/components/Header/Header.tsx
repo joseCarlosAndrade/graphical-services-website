@@ -49,13 +49,13 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
   return (
     <>
 
-      <header>
+      <header role="banner">
         {/* <div className="header--logo">Logo</div> */}
-        <Link to='/'>
+        <Link role="button" to='/'>
           <img src={mainLogoWhite} alt="Graphical Services" />
         </Link>
         <div className='header--mobileMenu'>
-          <div onClick={() => {
+          <div role="button" onClick={() => {
             toggle ? document.querySelector('.mobile-menu--container')?.classList.add('slide') :
             document.querySelector('.mobile-menu--container')?.classList.remove('slide');
             setToggle(!toggle);
@@ -79,7 +79,7 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
           }
         </div>
 
-        <div className={`header--navbar`} >
+        <div role="menubar" className={`header--navbar`} >
           {isLoading ? <></> :
             <>
               <Link to='/products-page' style={{ textDecoration: 'none' }}>

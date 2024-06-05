@@ -24,7 +24,7 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
 
         <div className='sendFile--productType'>
           {/* <text className='sendFile--productType-text'></text> */}
-          <div className='sendFile--productType-dropbox'>
+          <div role="form" className='sendFile--productType-dropbox'>
             <label htmlFor='product-type' className='sendFile--productType-dropbox-dropbtn'>Selecione o tipo de produto aqui! É tudo muito fácil.</label>
             <select name="product-type" id="product-type">
               <option value='opcao1'>Opcao 1</option>

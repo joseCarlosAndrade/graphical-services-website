@@ -14,7 +14,7 @@ function UserScrollable({ className, search, onChange = () => { } }: UserScrolla
   ]
   return (
     <>
-      <div className={className}>
+      <div  className={className}>
         <input className="scrollableSearchBar" type="text" placeholder="search names" value={search} onChange={e => { onChange(e) }} ></input>
         <div className="scrollableList">
           <ul className="scrollableList--container">
