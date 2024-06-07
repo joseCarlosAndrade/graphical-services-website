@@ -70,7 +70,7 @@
 
     .homepage--section-image-logo {
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: auto auto auto;
         width: 100%;
         justify-content: center;
         background-color: var(--main-color);
