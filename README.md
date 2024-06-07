@@ -28,7 +28,7 @@ Depois, basta iniciar o projeto:
 
 ```
 
-Se não ouver nenhuma alteração de configuração, o site será aberto no endereço `localhost:3000`.
+Se não houver nenhuma alteração de configuração, o site será aberto no endereço `localhost:3000`.
 
 ## Desenvolvedores
 
