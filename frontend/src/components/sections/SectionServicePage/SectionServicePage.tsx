@@ -3,13 +3,13 @@ import React, { ReactNode } from 'react'
 import './sectionservicepage.css'
 import { Card } from '../../index'
 
-import { disenador, impresoraOffset, plastificadora, troquel } from '../../../assets';
+import { disenador, impresoraOffset, plastificadora, troquel, cortador} from '../../../assets';
 
 const services = [
   {
-    bottomText: 'PLASTIFICADO',
-    sourceImage: plastificadora,
-    altText : 'Plastificadora'
+    bottomText: 'DISENADOR GRAFICO',
+    sourceImage: disenador,
+    altText : 'Desenhador'
   },
   {
     bottomText: 'IMPRESORA OFFSET',
@@ -17,14 +17,19 @@ const services = [
     altText : 'Impressora'
   },
   {
-    bottomText: 'DISENADOR GRAFICO',
-    sourceImage: disenador,
-    altText : 'Desenhador'
+    bottomText: 'PLASTIFICADO',
+    sourceImage: plastificadora,
+    altText : 'Plastificadora'
   },
   {
     bottomText: 'TROQUELADO',
     sourceImage: troquel,
     altText : 'Troquelado'
+  },
+  {
+    bottomText: 'CORTE DE PAPEL',
+    sourceImage: cortador,
+    altText : 'Corte de Papel'
   }
 ]
 

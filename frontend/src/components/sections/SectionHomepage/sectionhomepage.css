@@ -5,7 +5,9 @@
 
 .homepage--slide-image {
     /* width: var(--image-width-var); */
-    width: 100vw;
+    width: 600px !important;
+    height: 400px !important;
+    margin: 90px 0 0 0;
 }
 
 .imgDark {
@@ -13,8 +15,7 @@
 }
 
 .homepage--text {
-    padding: 4rem;
-    
+    padding: 2rem 4rem;
     width: 60vw;
     text-align: justify;
     margin: 1rem auto;
@@ -22,5 +23,91 @@
     color: var(--main-text-color);
     font-weight: bold;
     font-size: 0.9rem;
-    margin-bottom: 50px !important;
+}
+
+.homepage--text-title {
+    width: 60vw;
+    text-align: justify;
+    margin: 1rem auto;
+    font-family: var(--section-font);
+    color: var(--main-text-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+
+.homepage--section-image-logo {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: var(--main-color);
+    margin-bottom: 0.5%;
+}
+
+.homepage--image-logo{
+    max-width: 8%;
+    max-height: 8%;
+    border: 2px solid black;
+    margin: 1%;
+}
+
+.homepage--slide{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+@media (max-width: 574px){
+    .homepage--slide-image {
+        width: 90% !important;
+        height: 200px !important;
+        margin: 90px 0 0 0;
+    }
+
+    .homepage--last-text{
+        margin-bottom: 50px !important;
+    }
+
+    .homepage--section-image-logo {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        width: 100%;
+        justify-content: center;
+        background-color: var(--main-color);
+        margin-bottom: 0.5%;
+        gap: 10px;
+        padding: 5px 0;
+    }
+
+    .homepage--image-logo{
+        max-width: 100px;
+        max-height: 300px;
+        border: 2px solid black;
+        margin: 1%;
+    }
+
+    .homepage--image-logo-none{
+        display: none;
+    }
+
+    .homepage--text-title {
+        width: 60vw;
+        text-align: center;
+        margin: 0 auto;
+        font-family: var(--section-font);
+        color: var(--main-text-color);
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    
+    .homepage--text {
+        padding: 2rem 4rem;
+        width: 60vw;
+        text-align: center;
+        margin: 1rem auto;
+        font-family: var(--section-font);
+        color: var(--main-text-color);
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
 }

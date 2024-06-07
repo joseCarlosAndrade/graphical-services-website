@@ -1,7 +1,9 @@
 export { default as downarrow } from './downarrow.svg';
 export { default as mainLogo } from './graphical-logo.png';
 export { default as mainLogoWhite } from './graphical-logo-white.png';
-export { default as machine } from './Image-homepage.jpg';
+export { default as machine } from './Image-homepage-1.jpg';
+export { default as troquelado } from './Image-homepage-2.jpg';
+export { default as artwork } from './Image-homepage-3.png';
 export { default as libras } from './libras.png';
 export { default as instagram } from './instagram.png';
 export { default as google } from './google.png';
@@ -26,6 +28,16 @@ export { default as search} from './magnifying-glass-search.png';
 export { default as download } from './download.png';
 export { default as upload } from './upload.png';
 export { default as profileDefaultImg } from './profile_default.png';
+export { default as cortador} from './corte-papel.jpg';
+
+export { default as alejandra} from './alejandra-tafur-logo.jpg';
+export { default as bermanlab} from './bermanlab-logo.jpg';
+export { default as danper} from './danper-logo.jpg';
+export { default as dolceBrown} from './dolce-brown-logo.jpg';
+export { default as ecovalle} from './ecovalle-logo.jpg';
+export { default as marinis} from './marinis-logo.jpg';
+export { default as morenaBoutique} from './morena-boutique-logo.jpg';
+
 
 export {default as menuWhite}  from './menu-white.svg';
 export {default as closeMenuWhite}  from './closeMenuWhite.svg';

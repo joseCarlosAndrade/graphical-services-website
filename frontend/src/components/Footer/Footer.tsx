@@ -1,6 +1,6 @@
 import React from 'react'
 import './footer.css'
-import { gmail, instagram, whatsapp, mainLogo } from '../../assets';
+import { gmail, instagram, whatsapp, mainLogoWhite, facebook } from '../../assets';
 
 
 
@@ -10,7 +10,7 @@ function Footer({ footerFont }: { footerFont?: number }) {
 
             <footer style={{fontSize: `${footerFont}rem`}} >
                 <div className="footer--logo-left">
-                    <img src={mainLogo} alt="Logo preto e branco" className="footer--logo" />
+                    <img src={mainLogoWhite} alt="Logo preto e branco" className="footer--logo" />
                 </div>
 
                 <div className='footer--contents'>
@@ -23,18 +23,37 @@ function Footer({ footerFont }: { footerFont?: number }) {
                     <div className="footer--resources">
                         <p className='footer--resources-bold'>Resources</p>
                         <div className="footer--resources-item">
-                            <img className="footer--resources-icon" src={gmail} alt="" />
-                            <p className="footer--resources-text" style={{ fontSize: `${footerFont ? (footerFont < 1 ? 1 : footerFont - 0.3) : 1}rem` }} >Correo</p>
+                            <img className="footer--resources-icon" src={gmail} alt="Gmail icon" />
+                            <p
+                                className="footer--resources-text"
+                                style={{ fontSize: `${footerFont ? (footerFont < 1 ? 1 : footerFont - 0.3) : 1}rem`}}
+                                onClick={() => window.open('mailto:graphical.services.sac@gmail.com')}
+                            >
+                                Correo
+                            </p>
                         </div>
 
                         <div className="footer--resources-item">
                             <img className="footer--resources-icon" src={whatsapp} alt="" />
-                            <p className="footer--resources-text" style={{ fontSize: `${footerFont ? (footerFont < 1 ? 1 : footerFont - 0.3) : 1}rem` }} >Whatsapp</p>
+                            <p className="footer--resources-text"
+                            style={{ fontSize: `${footerFont ? (footerFont < 1 ? 1 : footerFont - 0.3) : 1}rem` }}
+                            onClick={() => window.open('https://wa.me/51965050450')}
+                            >Whatsapp</p>
                         </div>
 
                         <div className="footer--resources-item">
                             <img className="footer--resources-icon" src={instagram} alt="" />
-                            <p className="footer--resources-text" style={{ fontSize: `${footerFont ? (footerFont < 1 ? 1 : footerFont - 0.3) : 1}rem` }} >Instagram</p>
+                            <p className="footer--resources-text"
+                            style={{ fontSize: `${footerFont ? (footerFont < 1 ? 1 : footerFont - 0.3) : 1}rem` }}
+                            onClick={() => window.open('https://www.instagram.com/graphical.pe?igsh=MXZvOXdmc3dxejVsbQ==')}
+                            >Instagram</p>
+                        </div>
+                        <div className="footer--resources-item">
+                            <img className="footer--resources-icon" src={facebook} alt="" />
+                            <p className="footer--resources-text"
+                            style={{ fontSize: `${footerFont ? (footerFont < 1 ? 1 : footerFont - 0.3) : 1}rem` }}
+                            onClick={() => window.open('https://www.facebook.com/profile.php?id=100077175729195')}
+                            >Facebook</p>
                         </div>
                     </div>
 

@@ -75,7 +75,7 @@ footer {
     footer {
         position: absolute;
         bottom: 0rem;
-        width: 100vw;
+        width: 100%;
         min-height: 8rem;
         height: auto;
         margin-top: auto;
