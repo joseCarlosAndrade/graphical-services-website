@@ -88,11 +88,6 @@ header button:hover {
         place-items: center;
     } */
 
-    header {
-        width: 95%;
-        padding: 0;
-    }
-
     header button {
         background-color: var(--main-color);
         outline: 0;

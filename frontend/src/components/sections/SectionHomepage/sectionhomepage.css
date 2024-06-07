@@ -64,15 +64,50 @@
         margin: 90px 0 0 0;
     }
 
-    .homepage--text{
+    .homepage--last-text{
         margin-bottom: 50px !important;
     }
 
     .homepage--section-image-logo {
-        display: flex;
-        width: 95%;
+        display: grid;
+        grid-template-columns: auto auto;
+        width: 100%;
         justify-content: center;
         background-color: var(--main-color);
         margin-bottom: 0.5%;
+        gap: 10px;
+        padding: 5px 0;
+    }
+
+    .homepage--image-logo{
+        max-width: 100px;
+        max-height: 300px;
+        border: 2px solid black;
+        margin: 1%;
+    }
+
+    .homepage--image-logo-none{
+        display: none;
+    }
+
+    .homepage--text-title {
+        width: 60vw;
+        text-align: center;
+        margin: 0 auto;
+        font-family: var(--section-font);
+        color: var(--main-text-color);
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+    
+    .homepage--text {
+        padding: 2rem 4rem;
+        width: 60vw;
+        text-align: center;
+        margin: 1rem auto;
+        font-family: var(--section-font);
+        color: var(--main-text-color);
+        font-weight: bold;
+        font-size: 0.9rem;
     }
 }

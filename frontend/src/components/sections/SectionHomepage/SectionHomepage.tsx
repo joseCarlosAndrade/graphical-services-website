@@ -8,7 +8,6 @@ interface HomepageProps {
 }
 
 function SectionHomepage({ currentTheme, homepageFont }: HomepageProps) {
-
   const fontSizeTitle = homepageFont !== undefined ? `${homepageFont + 2}rem` : '1rem';
 
     const images = [machine, troquelado, artwork];
@@ -38,16 +37,24 @@ function SectionHomepage({ currentTheme, homepageFont }: HomepageProps) {
         Ao longo dos anos trabalhando no mundo gráfico, conquistamos algumas marcas que confiam plenamente em nós, como: Marinis's, Alejandra Tafur, Bermanlab, Doce Brown, Casteñeda, Morena boutique e Dasso.
         </div>
         <div className='homepage--section-image-logo'>
+          
+          {/*eslint-disable-next-line */}
           <img className='homepage--image-logo' src={alejandra}></img>
-          <img className='homepage--image-logo' src={bermanlab}></img>
+          {/*eslint-disable-next-line */}
+          <img className='homepage--image-logo homepage--image-logo-none' src={bermanlab}></img>
+          {/*eslint-disable-next-line */}
           <img className='homepage--image-logo' src={danper}></img>
+          {/*eslint-disable-next-line */}
           <img className='homepage--image-logo' src={dolceBrown}></img>
+          {/*eslint-disable-next-line */}
           <img className='homepage--image-logo' src={ecovalle}></img>
+          {/*eslint-disable-next-line */}
           <img className='homepage--image-logo' src={marinis}></img>
+          {/*eslint-disable-next-line */}
           <img className='homepage--image-logo' src={morenaBoutique}></img>
         </div>
 
-        <div style={{ fontSize: `${homepageFont}rem` }} className="homepage--text">
+        <div style={{ fontSize: `${homepageFont}rem` }} className="homepage--text homepage--last-text">
         <div style={{ fontSize: `${fontSizeTitle}rem` }}  className='homepage--text-title'>Somos seu melhor aliado estratégico!</div><p></p>
         Na GRAPHICAL, nosso objetivo é fornecer soluções gráficas adaptadas às necessidades de nossos clientes. Temos o respaldo de um sólido histórico de 14 anos que nos permite oferecer uma gama de serviços, produtos, soluções personalizadas e profissionais para todos os seus projetos.
         Explore nossos serviços e produtos. Descubra como podemos transformar suas ideias em impressões perfeitas.
