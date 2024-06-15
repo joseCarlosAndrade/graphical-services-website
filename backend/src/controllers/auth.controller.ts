@@ -1,4 +1,4 @@
-import { RegisterForm, LoginForm } from "../models/form.models"
+import { RegisterForm, LoginForm, UserData } from "../models/form.models"
 
 import { validateName } from './validators.controller'
 import bcrypt from 'bcryptjs'
@@ -13,8 +13,11 @@ import {
     updateProfile,
     signInWithPopup,
     GoogleAuthProvider,
-    AuthProvider
+    AuthProvider,
+    signInWithCredential
 } from "firebase/auth";
+import { createUser } from "./user.controller";
+import { prisma } from "../services/prisma.service";
 
 export async function register(user: RegisterForm) {
 
@@ -102,48 +105,38 @@ export async function logout() {
     signOut(auth)
 }
 
-export async function loginGoogle(provider: AuthProvider) {
-    signInWithPopup(auth, provider)
-        .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            let token;
-            if (credential != null) {
-                token = credential.accessToken;
+export async function loginWithGoogle(id_token: string): Promise<{ status: number, userId?: string, email?: string, message?: string }> {
+    const credential = GoogleAuthProvider.credential(id_token);
+    try {
+        const signInResult = await signInWithCredential(auth, credential);
+        if (signInResult.user.email && signInResult.user.displayName) {
+            const user: UserData = {
+                email: signInResult.user.email,
+                displayName: signInResult.user.displayName,
+                id: signInResult.user.uid,
+            };
+
+            const searchUser = await prisma.user.findUnique({
+                where: {
+                    id: user.id
+                }
+            })
+
+            if (!searchUser) {
+                // caso não encontre, então cria um novo usuário
+                console.log("nao encontrei");
+                return createUser(user).then((newUser) => {
+                    return { userId: newUser.id, email: newUser.email, status: 200 }
+                })
             } else {
-                return { message: "Authentication with Google refused.", status: 400 };
+                console.log("encontrei");
+                return { userId: searchUser.id, email: searchUser.email, status: 200 }
             }
-            // The signed-in user info.
-            const user = result.user;
-            // IdP data available using getAdditionalUserInfo(result)
-            // ...
-            
-
-            return { googleToken: token, userInfo: user, status: 200 };
-        }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            const email = error.customData.email;
-            // The AuthCredential type that was used.
-
-            if (errorCode === "auth/account-exists-with-different-credential") {
-                // The pending Google credential.
-                let pendingCred = error.credential;
-
-                // Step 3: Save the pending credential in temporary storage,
-
-                return { message: `email account: ${email} exists with different credential. Please try another way of signing in.`, status: 400 };
-                // Step 4: Let the user know that they already have an account
-                // but with a different provider, and let them choose another
-                // sign-in method.
-            }
-
-
-            const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
-
-            return { message: errorMessage, status: 400 };
-        });
+        }
+        return { message: "something went wrong!", status: 400 };
+    } catch (error) {
+        console.log(error);
+        return { message: "something went wrong!", status: 400 };
+    }
 }
+

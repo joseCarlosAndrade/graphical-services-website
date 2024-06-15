@@ -2,7 +2,7 @@ import React from 'react'
 import './sectionlogin.css';
 import { google, facebook, apple } from '../../../assets';
 import { useEffect, useState } from 'react';
-import { FormField } from '../../index'
+import { FormField, LoginProvider } from '../../index'
 import { setCookie } from '../../../utils/cookie';
 import { fetchData } from '../../../services';
 
@@ -137,18 +137,16 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
         <div className="login__div">
           <div className="login__div_line"></div>
           <div className="login__div_text">{currentAction === 'login' ? <>
-            Entre com sua rede social
+            Entre com sua conta Google
           </> : <>
-            Registre-se com sua rede social
+            Registre-se com sua conta Google
           </>}
           </div>
           <div className="login__div_line"></div>
         </div>
 
         <div className="login__social">
-          <img className="login__social__icon" src={facebook} alt="" />
-          <img className="login__social__icon" src={google} alt="" />
-          <img className="login__social__icon" src={apple} alt="" />
+          <LoginProvider iconSrc={google} loginProvider='google' />
         </div>
 
         <div className="login__div">

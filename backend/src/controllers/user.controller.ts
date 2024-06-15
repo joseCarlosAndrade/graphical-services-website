@@ -18,9 +18,9 @@ export const createUser = async (user: UserData) => {
     if (!newUser) {
         return {
             message: `Something went wrong trying to create a new user.`,
-            status: 500
+            status: 400
         }
     }
     console.log(newUser)
-    return { fields: { email: newUser.email, displayName: newUser.displayName }, status: 200 }
+    return { email: newUser.email, displayName: newUser.displayName, id: user.id }
 }

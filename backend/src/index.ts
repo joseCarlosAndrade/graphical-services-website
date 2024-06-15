@@ -1,6 +1,6 @@
 import express from 'express'
 import { prisma } from './services/prisma.service'
-import { login, register } from './controllers/auth.controller'
+import { login, loginWithGoogle, register } from './controllers/auth.controller'
 import { requireJwtMiddleware } from './server/requiteJwt.middleware'
 import { encodeSession } from './server/token.server'
 import { Session } from './models/session.models'
@@ -50,6 +50,21 @@ app.post(`/login`, async (req, res) => {
             dateCreated: new Date().getTime()
         })
         res.status(201).json(session)
+    } else {
+        res.status(ans.status).json(ans.message)
+    }
+})
+
+app.post(`/loginGoogle`, async (req, res) => {
+    const id = req.body.id_token;
+    const ans = await loginWithGoogle(id);
+    if (ans.status === 200) {
+        const session = encodeSession(TOKEN_SECRET, {
+            id: ans.userId || 'err',
+            email: ans.email || 'err',
+            dateCreated: new Date().getTime()
+        })
+        res.status(200).json(session)
     } else {
         res.status(ans.status).json(ans.message)
     }

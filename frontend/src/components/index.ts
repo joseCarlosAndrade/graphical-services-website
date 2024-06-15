@@ -13,6 +13,6 @@ export { default as SectionProductsPage } from './sections/SectionProducts/Secti
 export { default as SectionWhoAreWePage } from './sections/SectionWhoAreWe/SectionWhoAreWe';
 export { default as SectionProfile } from './sections/SectionProfile/sectionProfile'
 export { default as Card } from './Card/card'
-
-export { default as MobileMenu} from './MobileMenu/MobileMenu';
+export { default as LoginProvider } from './LoginProvider/loginProvider'
+export { default as MobileMenu } from './MobileMenu/MobileMenu';
 // export {default as }

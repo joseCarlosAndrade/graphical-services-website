@@ -1,0 +1,12 @@
+.login__social_button {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.9rem;
+    padding: 0.9rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.login__social_button_icon {
+    width: 2rem;
+}
