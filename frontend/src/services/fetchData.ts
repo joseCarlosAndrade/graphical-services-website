@@ -4,6 +4,7 @@ const fetchData = async () => {
     try {
         const token = getCookie('token')
         // console.log('testing for token: ', token)
+        console.log(token);
         const res = await fetch(`http://localhost:8080/protected`, {
             method: 'GET',
             headers: { 'X-JWT-Token': token || '' },

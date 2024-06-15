@@ -124,12 +124,10 @@ export async function loginWithGoogle(id_token: string): Promise<{ status: numbe
 
             if (!searchUser) {
                 // caso não encontre, então cria um novo usuário
-                console.log("nao encontrei");
                 return createUser(user).then((newUser) => {
                     return { userId: newUser.id, email: newUser.email, status: 200 }
                 })
             } else {
-                console.log("encontrei");
                 return { userId: searchUser.id, email: searchUser.email, status: 200 }
             }
         }

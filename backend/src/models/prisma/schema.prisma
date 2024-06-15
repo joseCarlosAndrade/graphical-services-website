@@ -19,13 +19,16 @@ model User {
   email       String    @unique
   displayName String
   requests    Request[]
+  reqCount    Int       @default(0)
   role        String    @default("client")
 }
 
 model Request {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt DateTime @default(now())
+  pending   Boolean  @default(true)
   url       String
+  title     String
   price     Int      @default(0)
   author    User?    @relation(fields: [userId], references: [id])
   userId    String?
