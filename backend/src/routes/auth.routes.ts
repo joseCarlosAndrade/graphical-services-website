@@ -17,7 +17,7 @@ const router = Router()
 router.use("/protected", requireJwtMiddleware);
 router.get("/protected", (req, res) => {
     const session: Session = res.locals.session;
-    res.status(200).json({ message: `Hello, ${session.email}!` });
+    res.status(200).json(session);
 });
 
 // creates an user with default role "client"

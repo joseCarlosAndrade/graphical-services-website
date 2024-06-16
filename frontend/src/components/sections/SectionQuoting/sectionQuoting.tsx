@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import './sectionquoting.css';
 import { useEffect, useState } from 'react';
-import { fetchData } from '../../../services';
+import { adminAuth } from '../../../services';
 import { download, upload } from '../../../assets';
 import { UserScrollable } from '../../index';
 
@@ -25,7 +25,7 @@ function SectionQuoting({ pageFont }: SectionQuotingProps) {
 
   // gets user session on reload
   useEffect(() => {
-    fetchData(); // Immediately invoke the async function
+    adminAuth(); // Immediately invoke the async function
   }, [])
 
   const displayScrollable = (event: React.MouseEvent<HTMLButtonElement>) => {

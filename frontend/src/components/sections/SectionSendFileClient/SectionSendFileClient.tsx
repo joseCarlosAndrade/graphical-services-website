@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './sectionsendfileclient.css';
+import { createRequest } from '../../../services';
+import { requestModel } from '../../../types/requestModel';
 
 // import 'react-dropzone';
 
@@ -12,7 +14,32 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
 
   const label: HTMLLabelElement | null = document.querySelector(".file--label");
   let [textoFile, setTextoFile] = useState("Nenhum arquivo selecionado");
+  let [fileUrl, setFileUrl] = useState('');
+  const [selectedValue, setSelectedValue] = useState('example');
 
+  // Função para criar a URL em alguma plataforma cloud (amazon?)
+  const createUrl = async () => {
+
+    // utilizar setFileUrl para setar a string da url
+    setFileUrl("example.com");
+  }
+
+  // após o usuário clicar em enviar, manda o request para criar na base de dados
+  const handleFileToSend = async () => {
+    await createUrl();
+
+    const request: requestModel = {
+      title: selectedValue,
+      url: fileUrl
+    }
+    const ans = await createRequest(request)
+    console.log(ans);
+  }
+
+  // Update the selectedValue state variable with the new selected value
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedValue(event.target.value);
+  }
 
   return (
     <>
@@ -26,17 +53,11 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
           {/* <text className='sendFile--productType-text'></text> */}
           <div role="form" className='sendFile--productType-dropbox'>
             <label htmlFor='product-type' className='sendFile--productType-dropbox-dropbtn'>Selecione o tipo de produto aqui! É tudo muito fácil.</label>
-            <select name="product-type" id="product-type">
+            <select name="product-type" id="product-type" onChange={handleSelectChange}>
               <option value='opcao1'>Opcao 1</option>
               <option value='opcao2'>Opcao 2</option>
               <option value='opcao3'>Opcao 3</option>
             </select>
-
-            {/* <div className='sendFile--productType-dropbox-contents'>
-                        <button>Opcao 1</button>
-                        <button>Opcao 2</button>
-                        <button>Opcao 3</button>
-                    </div> */}
           </div>
         </div>
 
@@ -83,7 +104,10 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
 
         <div className='sendFile--send'>
           <div className='sendFile--send-text'>Agora é só clicar em enviar</div>
-          <button className='sendFile--send-button' onClick={() => { alert("Dados enviados com sucesso!") }}>Enviar</button>
+          <button className='sendFile--send-button' onClick={() => {
+            handleFileToSend()
+            alert("Dados enviados com sucesso!")
+          }}>Enviar</button>
         </div>
       </div>
     </>

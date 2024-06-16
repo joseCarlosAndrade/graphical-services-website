@@ -76,6 +76,7 @@ export async function createRequest(title: string, url: string, authorEmail: str
 
         return { request: result };
     } catch (e) {
+        console.log(e)
         return { error: e };
     }
 }

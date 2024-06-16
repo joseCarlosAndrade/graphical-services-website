@@ -1,6 +1,6 @@
 import { getCookie } from "../utils/cookie";
 
-const fetchData = async () => {
+const sessionAuth = async () => {
     try {
         const token = getCookie('token')
         // console.log('testing for token: ', token)
@@ -10,7 +10,7 @@ const fetchData = async () => {
         });
         const resObject = await res.json();
         if (res.status === 200) {
-            console.log(resObject.message)
+            console.log(resObject)
             return true
         } else {
             console.error(resObject.message)
@@ -22,4 +22,4 @@ const fetchData = async () => {
     }
 };
 
-export default fetchData
+export default sessionAuth

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { fetchData } from '../../services';
+import { sessionAuth } from '../../services';
 import { deleteCookie } from '../../utils/cookie';
 import './header.css';
 import { mainLogoWhite, menuWhite, closeMenuWhite } from './../../assets';
@@ -28,7 +28,7 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchDataAsync = async () => {
-      const logged = await fetchData();
+      const logged = await sessionAuth();
       setLoggedIn(logged);
       setIsLoading(false);
     }

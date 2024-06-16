@@ -1,7 +1,7 @@
 import React from 'react'
 import './sectionprofile.css';
 import { useEffect, useState } from 'react';
-import { fetchData } from '../../../services';
+import { sessionAuth } from '../../../services';
 import { FormField } from '../../index'
 import { profileDefaultImg } from '../../../assets/index'
 
@@ -28,7 +28,12 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
 
   // gets user session on reload
   useEffect(() => {
-    fetchData(); // Immediately invoke the async function
+    const getUserData = async () => {
+      const userData = await sessionAuth(); // Immediately invoke the async function
+      console.log(userData);
+    }
+
+    getUserData();
   }, [])
 
   // when input changes, update formData

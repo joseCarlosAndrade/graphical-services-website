@@ -1,5 +1,4 @@
 export interface requestModel{
-    
-    email: string
-
+    title: string
+    url: string
 }

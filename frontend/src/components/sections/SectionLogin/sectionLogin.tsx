@@ -4,7 +4,7 @@ import { google, facebook, apple } from '../../../assets';
 import { useEffect, useState } from 'react';
 import { FormField, LoginProvider } from '../../index'
 import { setCookie } from '../../../utils/cookie';
-import { fetchData } from '../../../services';
+import { sessionAuth } from '../../../services';
 
 interface SectionLoginProps {
   currentAction: string
@@ -27,7 +27,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
 
   // gets user session on reload
   useEffect(() => {
-    fetchData(); // Immediately invoke the async function
+    sessionAuth(); // Immediately invoke the async function
   }, [])
 
   // when input changes, update formData
