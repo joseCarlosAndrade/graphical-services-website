@@ -2,6 +2,8 @@ import { Request, Response, NextFunction } from "express";
 import { DecodeResult, ExpirationStatus, Session } from "../models/session.models";
 import { decodeSession, checkExpirationStatus, encodeSession } from "./token.server";
 
+import * as dotenv from 'dotenv';
+dotenv.config();
 const TOKEN_SECRET = process.env.TOKEN_SECRET || ''
 
 /**

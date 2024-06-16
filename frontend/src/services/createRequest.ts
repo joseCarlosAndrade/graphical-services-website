@@ -1,6 +1,6 @@
 import { getCookie } from "../utils/cookie";
 
-const fetchData = async () => {
+const createRequest = async () => {
     try {
         const token = getCookie('token')
         // console.log('testing for token: ', token)
@@ -8,12 +8,11 @@ const fetchData = async () => {
             method: 'GET',
             headers: { 'X-JWT-Token': token || '' },
         });
-        const resObject = await res.json();
         if (res.status === 200) {
+            const resObject = await res.json();
             console.log(resObject.message)
             return true
         } else {
-            console.error(resObject.message)
             return false
         }
     } catch (error) {
@@ -22,4 +21,4 @@ const fetchData = async () => {
     }
 };
 
-export default fetchData
+export default createRequest
