@@ -6,6 +6,7 @@ import { Session } from "../models/session.models";
 // Middleware to check if the user is an admin
 export const requireAdminMiddleWare = async (request: Request, response: Response, next: NextFunction) => {
     const session: Session = response.locals.session;
+    
     const result = await prisma.user.findUnique({
         where: { id: session.id },
     })

@@ -97,10 +97,10 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
               {loggedIn === true ?
                 <>
                   <Link to='/profile' style={{ textDecoration: 'none' }}>
-                    <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button profile" >Perfil</button>
+                    <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Perfil</button>
                   </Link>
                   <Link to='/' style={{ textDecoration: 'none' }}>
-                    <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button-login login" onClick={logOut} >
+                    <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button-login" onClick={logOut} >
                       Log Out </button>
                   </Link>
                 </> :
