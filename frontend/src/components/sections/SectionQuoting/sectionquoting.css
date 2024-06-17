@@ -1,9 +1,57 @@
 .fileQuoting--container {
     padding-bottom: 10rem;
     padding-top: 6rem;
-    margin-top: 1rem;
-    display: grid;
-    grid-template: 1fr / 1fr 4fr 7fr;
+    margin: 1rem 8rem 1rem 8rem;
+    display: flex;
+    flex-direction: column;
+
+    /* display: grid;
+    grid-template: 1fr / 1fr 4fr 7fr; */
+}
+
+.fileQuoting--userList-searchbar {
+    height: fit-content;
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+    font-size: medium;
+    margin-bottom: 1rem;
+}
+
+.fileQuoting--userList {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid black;
+}
+
+.fileQuoting--userList-label {
+    display: flex;
+    padding: 0.5rem;
+    border: 1px solid black;
+    border-bottom: 0;
+    justify-content: space-between;
+    background-color: #ffd8d8;
+}
+
+.fileQuoting--userList-item {
+    display: flex;
+    padding: 0.5rem;
+    border: 1px solid black;
+    border-bottom: 0;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.fileQuoting--userList-item:hover {
+    cursor: pointer;
+    background-color: #dfdfdf;
+}
+
+.fileQuoting--userList-item-number {
+    width: 1rem;
+    text-align: center;
 }
 
 .fileQuoting--scrollableList {

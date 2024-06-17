@@ -3,6 +3,7 @@ import { prisma } from '../services/prisma.service';
 import { requireJwtMiddleware } from '../server/requiteJwt.middleware';
 import { requireAdminMiddleWare } from '../server/requireAdmin.middleware';
 import { deleteRequest, getAllRequestsFromUser, getRequestInfo, updateRequestInfo } from '../controllers/request.controller';
+import { Session } from '../models/session.models';
 
 const router = Router();
 
@@ -62,11 +63,10 @@ router.get('/users', async (req, res) => {
 
 // method to get all requests with user id
 // curl -v http://localhost:8080/user/66137fbc2380054923c17c42/requests
-router.use("/user/:id/requests", requireJwtMiddleware, requireAdminMiddleWare);
-router.get('/user/:id/requests', async (req, res) => {
-    // user id
-    const { id } = req.params
-    const result = await getAllRequestsFromUser(id);
+router.use("/user/requests", requireJwtMiddleware, requireAdminMiddleWare);
+router.get('/user/requests', async (req, res) => {
+    const session: Session = res.locals.session;
+    const result = await getAllRequestsFromUser(session.id);
     if ('requests' in result) {
         res.status(200).json(result.requests);
     } else {

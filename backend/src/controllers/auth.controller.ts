@@ -11,9 +11,7 @@ import {
     sendEmailVerification,
     signOut,
     updateProfile,
-    signInWithPopup,
     GoogleAuthProvider,
-    AuthProvider,
     signInWithCredential
 } from "firebase/auth";
 import { createUser } from "./user.controller";
@@ -27,6 +25,7 @@ export async function register(user: RegisterForm) {
 
     try {
         // create a new user with email and password
+        
         const userCredential = await createUserWithEmailAndPassword(
             auth,
             user.email,
