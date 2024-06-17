@@ -1,4 +1,5 @@
 export { default as downarrow } from './downarrow.svg';
+export { default as downarrowPng } from './downarrow.png';
 export { default as mainLogo } from './graphical-logo.png';
 export { default as mainLogoWhite } from './graphical-logo-white.png';
 export { default as machine } from './Image-homepage-1.jpg';

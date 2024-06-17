@@ -15,4 +15,5 @@ export { default as SectionProfile } from './sections/SectionProfile/sectionProf
 export { default as Card } from './Card/card'
 export { default as LoginProvider } from './LoginProvider/loginProvider'
 export { default as MobileMenu } from './MobileMenu/MobileMenu';
+export { default as RequestsModal } from './Modal/modal';
 // export {default as }

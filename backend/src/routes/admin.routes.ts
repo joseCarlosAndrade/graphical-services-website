@@ -62,11 +62,12 @@ router.get('/users', async (req, res) => {
 })
 
 // method to get all requests with user id
-// curl -v http://localhost:8080/user/66137fbc2380054923c17c42/requests
-router.use("/user/requests", requireJwtMiddleware, requireAdminMiddleWare);
-router.get('/user/requests', async (req, res) => {
-    const session: Session = res.locals.session;
-    const result = await getAllRequestsFromUser(session.id);
+// curl -v http://localhost:8080/admin/requests/66137fbc2380054923c17c42
+router.use("/requests/:id", requireJwtMiddleware, requireAdminMiddleWare);
+router.get('/requests/:id', async (req, res) => {
+    const { id } = req.params;
+    const userId = id;
+    const result = await getAllRequestsFromUser(userId);
     if ('requests' in result) {
         res.status(200).json(result.requests);
     } else {

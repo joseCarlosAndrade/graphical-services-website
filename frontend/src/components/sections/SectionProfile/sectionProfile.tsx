@@ -1,9 +1,11 @@
 import React from 'react'
 import './sectionprofile.css';
 import { useEffect, useState } from 'react';
-import { sessionAuth } from '../../../services';
+import { getUserInfo, sessionAuth } from '../../../services';
 import { FormField } from '../../index'
 import { profileDefaultImg } from '../../../assets/index'
+import { UserDBData } from '../../../types/userModel';
+import { requestData, requestModel } from '../../../types/requestModel';
 
 interface SectionProfileProps {
   currentAction: string
@@ -24,13 +26,29 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
     firstName: '',
     lastName: '',
   })
+  const [userName, setUserName] = useState('')
+  const [userRequests, setUserRequests] = useState<requestData[]>([]);
   const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
 
   // gets user session on reload
   useEffect(() => {
     const getUserData = async () => {
-      const userData = await sessionAuth(); // Immediately invoke the async function
-      console.log(userData);
+      const userData = await getUserInfo(); // Immediately invoke the async function
+      if (userData) {
+        const user = userData.user;
+        const requests = userData.requests;
+        setUserName(user.displayName);
+        setUserRequests(requests.requests);
+        setFormData({
+          email: user.email,
+          password: '',
+          confirmPassword: '',
+          firstName: user.displayName.substring(0, user.displayName.indexOf(' ')),
+          lastName: user.displayName.substring(user.displayName.indexOf(' ') + 1),
+        })
+      } else {
+        setFormError('something went wrong...');
+      }
     }
 
     getUserData();
@@ -70,7 +88,7 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
       <div className='sectionProfileContainer' style={{ fontSize: `${pageFont}rem` }}>
         <div className="profile">
           <img alt='Icone usuario' className='profile__img' src={profileDefaultImg}></img>
-          <div className='profile__name'>Carlos Fernandez Vasquez</div>
+          <div className='profile__name'>{userName}</div>
         </div>
 
         <div className="profile__container">
@@ -132,7 +150,17 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
               :
               <>
                 <div className='requests__field'>
-                  My requests
+                  {userRequests.length > 0 ? (
+                    userRequests.map((request: requestData) => (
+                      <div className='requests__field_item' role="listitem" key={request.id}>
+                        <div>{request.title}</div>
+                        <div>{request.url}</div>
+                        <div>{request.price}</div>
+                      </div>
+                    ))
+                  ) : (
+                    <div>No requests found</div>
+                  )}
                 </div>
               </>
           }

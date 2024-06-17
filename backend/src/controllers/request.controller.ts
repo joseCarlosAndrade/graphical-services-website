@@ -121,6 +121,7 @@ export async function getAllRequestsFromUser(id: string) {
             .requests({
                 select: {
                     id: true,
+                    title: true,
                     url: true,
                     price: true,
                     pending: true,

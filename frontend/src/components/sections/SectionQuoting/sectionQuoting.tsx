@@ -3,7 +3,7 @@ import './sectionquoting.css';
 import { useEffect, useState } from 'react';
 import { adminAuth, getAllUsers } from '../../../services';
 import { download, upload } from '../../../assets';
-import { UserScrollable } from '../../index';
+import { RequestsModal, UserScrollable } from '../../index';
 import { UserDBData } from '../../../types/userModel';
 
 interface SectionQuotingProps {
@@ -12,16 +12,21 @@ interface SectionQuotingProps {
 
 function SectionQuoting({ pageFont }: SectionQuotingProps) {
   const [searchValue, setSearchValue] = useState("");
-  const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
-  const [display, setDisplay] = useState(false);
-  const [users, setUsers] = useState([]);
-
-  const label: HTMLLabelElement | null = document.querySelector('.label--fileQuoting');
-
-  const [textoFile, setTextoFile] = useState("Nenhum arquivo selecionado.");
+  const [users, setUsers] = useState<UserDBData[]>([]);
+  const [isRequestsModalOpen, setRequestsModalOpen] = useState<boolean>(false);
+  const [requestUserId, setRequestUserId] = useState('');
+  const [requestUserName, setRequestUserName] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value)
+  }
+  const handleOpenRequestsModal = (id:string, userName:string) => {
+    setRequestUserId(id);
+    setRequestUserName(userName)
+    setRequestsModalOpen(true);
+  }
+  const handleCloseRequestsModal = () => {
+    setRequestsModalOpen(false);
   }
 
   // gets user session on reload
@@ -29,7 +34,8 @@ function SectionQuoting({ pageFont }: SectionQuotingProps) {
     const load = async () => {
       const result = await adminAuth(); // Immediately invoke the async function
       if (result) {
-        const allUsers = await getAllUsers();
+        const allUsers: UserDBData[] = await getAllUsers();
+        allUsers.sort((a, b) => (a.displayName < b.displayName ? -1 : 1))
         setUsers(allUsers);
       } else {
         console.error(result);
@@ -37,19 +43,6 @@ function SectionQuoting({ pageFont }: SectionQuotingProps) {
     }
     load();
   }, [])
-
-  // const displayScrollable = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   const scrollable = document.querySelector('.fileQuoting--scrollableList');
-  //   if (scrollable && display == false) {
-  //     event.currentTarget.style.transform = 'translate(10rem)';
-  //     (scrollable as HTMLElement).style.display = 'block';
-  //     setDisplay(true);
-  //   } else {
-  //     event.currentTarget.style.transform = 'translate(0rem)';
-  //     (scrollable as HTMLElement).style.display = 'none';
-  //     setDisplay(false);
-  //   }
-  // }
 
   return (
     <>
@@ -63,7 +56,7 @@ function SectionQuoting({ pageFont }: SectionQuotingProps) {
         <div className="fileQuoting--userList" role="list">
           {users.map((user: UserDBData) => {
             return (
-              <div className='fileQuoting--userList-item' role="listitem">
+              <div className='fileQuoting--userList-item' role="listitem" key={user.id} onClick={() => handleOpenRequestsModal(user.id, user.displayName)}>
                 <div>{user.displayName}</div>
                 <div className='fileQuoting--userList-item-number'>{user.reqCount}</div>
               </div>
@@ -71,22 +64,13 @@ function SectionQuoting({ pageFont }: SectionQuotingProps) {
           })}
         </div>
 
-        {/* <button onClick={displayScrollable} className='fileQuoting--responsive--button'>=</button>
-        <UserScrollable className="fileQuoting--scrollableList" search={searchValue} onChange={e => handleInputChange(e)} />
-
-        <div className="fileQuoting">
-          <div className="fileQuoting--text">Solicitação de orçamento de molde</div>
-          <button className="fileQuoting--button">
-            <img className="fileQuoting--img" src={download} alt='Icone download'></img>
-            Faça o download do arquivo aqui
-          </button>
-          <div className="division"></div>
-          <div className="fileQuoting--text">Escreva o orçamento</div>
-
-          
-
-          <button className='fileQuoting--send'>Enviar</button>
-        </div> */}
+        <RequestsModal
+          userName={requestUserName}
+          userId={requestUserId}
+          isOpen={isRequestsModalOpen}
+          hasCloseBtn={true}
+          onClose={handleCloseRequestsModal}
+        />
       </div>
     </>
   )

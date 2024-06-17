@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { createRequest } from "../controllers/request.controller";
+import { createRequest, getAllRequestsFromUser } from "../controllers/request.controller";
 import { requireAdminMiddleWare } from "../server/requireAdmin.middleware";
 import { requireJwtMiddleware } from "../server/requiteJwt.middleware";
 import { Session } from "../models/session.models";
+import { UserDBData } from "../models/form.models";
+import { prisma } from "../services/prisma.service";
 
 const router = Router();
 
@@ -20,8 +22,23 @@ router.post(`/request`, async (req, res) => {
     }
 })
 
+router.use('/user/info', requireJwtMiddleware)
 router.get('/user/info', async (req, res) => {
-    
+    const session: Session = res.locals.session;
+    const user: UserDBData | null = await prisma.user.findUnique({
+        where: { id: session.id },
+    })
+    const requests = await getAllRequestsFromUser(session.id);
+
+    if (user === null) {
+        res.status(404).json({ error: 'User not found' });
+    } else {
+        res.status(200).json({ user: user, requests: requests });
+    }
 })
+
+router.put('/user/info', async (req, res) => {
+
+}) 
 
 export default router

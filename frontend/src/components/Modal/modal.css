@@ -1,0 +1,68 @@
+
+.modal {
+    width: 60vw;
+    height: 70vh;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-list {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid black;
+    margin-top: 1rem;
+}
+
+.modal-close-btn {
+    cursor: pointer;
+    background-color: rgb(255, 45, 45);
+    padding: 0.5rem;
+    color: white;
+}
+.modal-close-btn:hover {
+    background-color: rgb(212, 38, 38);
+}
+
+.collapsible-card {
+    padding: 0.5rem;
+    border: 1px solid black;
+    border-bottom: 0;
+    background-color: rgb(219, 219, 219);
+}
+
+.collapsible-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-text {
+    display: flex;
+    flex-direction: row;
+    width:90%;
+    justify-content: space-between;
+}
+
+.collapsible-content {
+    overflow: hidden;
+    transition: height 0.2s ease-in-out;
+    width: 100%;
+}
+
+.collapsible-icon-button {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    background-color: rgb(219, 219, 219);
+}
+
+.collapsible-icon-button:hover{
+    background-color: rgb(199, 199, 199);
+}

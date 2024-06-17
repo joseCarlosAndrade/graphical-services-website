@@ -14,23 +14,22 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
 
   const label: HTMLLabelElement | null = document.querySelector(".file--label");
   let [textoFile, setTextoFile] = useState("Nenhum arquivo selecionado");
-  let [fileUrl, setFileUrl] = useState('');
   const [selectedValue, setSelectedValue] = useState('example');
 
   // Função para criar a URL em alguma plataforma cloud (amazon?)
   const createUrl = async () => {
 
     // utilizar setFileUrl para setar a string da url
-    setFileUrl("example.com");
+    return "example.com"
   }
 
   // após o usuário clicar em enviar, manda o request para criar na base de dados
   const handleFileToSend = async () => {
-    await createUrl();
+    const url = await createUrl();
 
     const request: requestModel = {
       title: selectedValue,
-      url: fileUrl
+      url: url
     }
     const ans = await createRequest(request)
     console.log(ans);

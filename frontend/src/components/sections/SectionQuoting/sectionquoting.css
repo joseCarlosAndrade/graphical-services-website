@@ -12,12 +12,13 @@
 .fileQuoting--userList-searchbar {
     height: fit-content;
     padding: 0.5rem;
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     display: flex;
     align-items: center;
     gap: 0.1rem;
     font-size: medium;
     margin-bottom: 1rem;
+    border: 1.5px solid black;
 }
 
 .fileQuoting--userList {
