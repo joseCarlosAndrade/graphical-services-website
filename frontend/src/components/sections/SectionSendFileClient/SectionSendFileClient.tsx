@@ -13,7 +13,7 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
   const [selectedValue, setSelectedValue] = useState('example');
   const [file, setFile] = useState<File | null>(null);
 
-  // Configuração do AWS S3
+  // Configuração do AWS S3 p2
   AWS.config.update({
     accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
     secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
