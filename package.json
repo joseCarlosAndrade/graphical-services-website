@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "@djpfs/react-vlibras": "^2.0.2",
+    "aws-sdk": "^2.1643.0",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
     "react-dropzone": "^14.2.3"
   }
 }
