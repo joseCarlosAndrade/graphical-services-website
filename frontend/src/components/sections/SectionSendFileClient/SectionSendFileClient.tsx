@@ -15,9 +15,9 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
 
   // Configuração do AWS S3
   AWS.config.update({
-    accessKeyId: 'AKIAYS2NQYLGDA254QXB',
-    secretAccessKey: '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',
-    region: 'sa-east-1'
+    accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+    secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
+    region: process.env.REACT_APP_REGION
   });
 
   const s3 = new AWS.S3();
