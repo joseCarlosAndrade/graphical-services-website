@@ -23,7 +23,7 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
   const s3 = new AWS.S3();
   const bucketName = 'server-test-graphical-services';
 
-  // Função para criar a URL em alguma plataforma cloud (Amazon S3) :)
+  // Função para criar a URL em alguma plataforma cloud (Amazon S3)
   const createUrl = async (file: File) => {
     const params = {
       Bucket: bucketName,
