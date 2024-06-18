@@ -70,7 +70,7 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
 
   return (
     <>
-      <div className='sendFileContainer' style={{ fontSize: `${props.fontSize}rem` }}>
+      <div className='sendFileContainer' style={{ fontSize: ${props.fontSize}rem }}>
         <div className='sendFile--boldText-box'>
           <text className='sendFile--boldText-box-text'>Enviar aquivos CDR para orçamento</text>
         </div>
