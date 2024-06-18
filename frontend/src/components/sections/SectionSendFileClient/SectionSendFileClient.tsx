@@ -13,7 +13,7 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
   const [selectedValue, setSelectedValue] = useState('example');
   const [file, setFile] = useState<File | null>(null);
 
-  // Configuração do AWS S3 p2
+  // Configuração do AWS S3
   AWS.config.update({
     accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
     secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY,
@@ -34,13 +34,14 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
 
     try {
       const data = await s3.upload(params).promise();
-      return data.Location;
+      return data.Location; // Retorna a URL do arquivo
     } catch (err) {
       console.error('Erro ao fazer upload no S3:', err);
       throw new Error('Erro ao fazer upload no S3');
     }
   }
 
+  // Após o usuário clicar em enviar, manda o request para criar na base de dados
   const handleFileToSend = async () => {
     if (!file) {
       alert('Por favor, selecione um arquivo.');
@@ -70,7 +71,7 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
 
   return (
     <>
-      <div className='sendFileContainer' style={{ fontSize: ${props.fontSize}rem }}>
+      <div className='sendFileContainer' style={{ fontSize: `${props.fontSize}rem` }}>
         <div className='sendFile--boldText-box'>
           <text className='sendFile--boldText-box-text'>Enviar aquivos CDR para orçamento</text>
         </div>
@@ -116,8 +117,7 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
           <div className='sendFile-fileName'>Arquivo: {textoFile}</div>
         </div>
 
-        <div className='sendFile--divider'>
-        </div>
+        <div className='sendFile--divider'></div>
 
         <div className='sendFile--send'>
           <div className='sendFile--send-text'>Agora é só clicar em enviar</div>
