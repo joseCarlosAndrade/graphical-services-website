@@ -7,13 +7,14 @@ import Collapsible from './Collapsible/collapsible';
 interface ModalProps {
   userName: string
   userId: string
+  userEmail: string
   isOpen: boolean;
   hasCloseBtn?: boolean;
   onClose?: () => void;
 }
 
 
-function RequestsModal({ userName, userId, isOpen, hasCloseBtn, onClose }: ModalProps) {
+function RequestsModal({ userName, userId, userEmail, isOpen, hasCloseBtn, onClose }: ModalProps) {
   const [isModalOpen, setModalOpen] = useState(isOpen);
   const modalRef = useRef<HTMLDialogElement | null>(null);
   const [userRequests, setUserRequests] = useState([]);
@@ -61,7 +62,7 @@ function RequestsModal({ userName, userId, isOpen, hasCloseBtn, onClose }: Modal
     <>
       <dialog ref={modalRef} className="modal" onKeyDown={handleKeyDown}>
         <div className="modal-header">
-          <div>{userName}</div>
+          <div>{userName} ({userEmail})</div>
           {hasCloseBtn && (
             <button className="modal-close-btn" onClick={handleCloseModal}>
               Close
@@ -69,6 +70,10 @@ function RequestsModal({ userName, userId, isOpen, hasCloseBtn, onClose }: Modal
           )}
         </div>
         <div className="modal-list" role="list">
+          <div className='modal-list-label'>
+            <div>Título</div>
+            <div>Orçamento</div>
+          </div>
           {userRequests.map((request: requestData) => {
             return (
               <div role="listitem" key={request.id}>
@@ -77,6 +82,7 @@ function RequestsModal({ userName, userId, isOpen, hasCloseBtn, onClose }: Modal
                   pending={request.pending}
                   url={request.url}
                   price={request.price}
+                  id={request.id}
                 />
               </div>
             )

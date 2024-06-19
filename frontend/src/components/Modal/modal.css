@@ -1,4 +1,3 @@
-
 .modal {
     width: 60vw;
     height: 70vh;
@@ -17,12 +16,20 @@
     margin-top: 1rem;
 }
 
+.modal-list-label {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 10%;
+}
+
 .modal-close-btn {
     cursor: pointer;
     background-color: rgb(255, 45, 45);
     padding: 0.5rem;
     color: white;
 }
+
 .modal-close-btn:hover {
     background-color: rgb(212, 38, 38);
 }
@@ -44,7 +51,7 @@
 .title-text {
     display: flex;
     flex-direction: row;
-    width:90%;
+    width: 90%;
     justify-content: space-between;
 }
 
@@ -63,6 +70,72 @@
     background-color: rgb(219, 219, 219);
 }
 
-.collapsible-icon-button:hover{
+.collapsible-icon-button:hover {
     background-color: rgb(199, 199, 199);
+}
+
+.rotate-center-down {
+    transform: rotate(180deg);
+}
+
+.rotate-center-up {
+    transform: rotate(0deg);
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+.collapsible-content-padding {
+    padding-top: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.quotedPrice {
+    width: 4rem;
+    text-align: center;
+}
+
+.download--btn {
+    cursor: pointer;
+    padding: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid black;
+}
+
+.download--btn:hover {
+    background-color: rgb(199, 199, 199);
+}
+
+.quoting--input::-webkit-outer-spin-button,
+.quoting--input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.sendQuoting--btn {
+    cursor: pointer;
+    padding: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid black;
+}
+
+.sendQuoting--btn:hover {
+    background-color: rgb(199, 199, 199);
+}
+
+@media screen and (max-width: 834px) {
+    .modal {
+        width: 80vw;
+        height: 70vh;
+    }
 }

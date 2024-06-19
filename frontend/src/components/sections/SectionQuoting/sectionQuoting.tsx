@@ -13,16 +13,24 @@ interface SectionQuotingProps {
 function SectionQuoting({ pageFont }: SectionQuotingProps) {
   const [searchValue, setSearchValue] = useState("");
   const [users, setUsers] = useState<UserDBData[]>([]);
+  const [searchResult, setSearchResult] = useState<UserDBData[]>([]);
   const [isRequestsModalOpen, setRequestsModalOpen] = useState<boolean>(false);
   const [requestUserId, setRequestUserId] = useState('');
   const [requestUserName, setRequestUserName] = useState('');
+  const [requestUserEmail, setRequestUserEmail] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value)
+    setSearchValue(event.target.value);
   }
-  const handleOpenRequestsModal = (id:string, userName:string) => {
+  useEffect(() => {
+    let list = users.filter((user: UserDBData) => user.displayName.startsWith(searchValue));
+    setSearchResult(list);
+  }, [searchValue])
+
+  const handleOpenRequestsModal = (id: string, userName: string, userEmail: string) => {
     setRequestUserId(id);
-    setRequestUserName(userName)
+    setRequestUserName(userName);
+    setRequestUserEmail(userEmail)
     setRequestsModalOpen(true);
   }
   const handleCloseRequestsModal = () => {
@@ -37,6 +45,7 @@ function SectionQuoting({ pageFont }: SectionQuotingProps) {
         const allUsers: UserDBData[] = await getAllUsers();
         allUsers.sort((a, b) => (a.displayName < b.displayName ? -1 : 1))
         setUsers(allUsers);
+        setSearchResult(allUsers);
       } else {
         console.error(result);
       }
@@ -47,16 +56,17 @@ function SectionQuoting({ pageFont }: SectionQuotingProps) {
   return (
     <>
       <div className="fileQuoting--container" style={{ fontSize: `${pageFont}rem` }}>
+        <h1 className='fileQuoting--header'>Aqui você pode realizar os orçamentos!</h1>
 
-        <input className="fileQuoting--userList-searchbar" type="text" placeholder="search names" onChange={e => { handleInputChange(e) }} ></input>
+        <input className="fileQuoting--userList-searchbar" type="text" placeholder="Procurar por nomes" onChange={e => { handleInputChange(e) }} ></input>
         <div className='fileQuoting--userList-label'>
           <div>Nome</div>
           <div>Arquivos a cotar</div>
         </div>
         <div className="fileQuoting--userList" role="list">
-          {users.map((user: UserDBData) => {
+          {searchResult.map((user: UserDBData) => {
             return (
-              <div className='fileQuoting--userList-item' role="listitem" key={user.id} onClick={() => handleOpenRequestsModal(user.id, user.displayName)}>
+              <div className='fileQuoting--userList-item' role="listitem" key={user.id} onClick={() => handleOpenRequestsModal(user.id, user.displayName, user.email)}>
                 <div>{user.displayName}</div>
                 <div className='fileQuoting--userList-item-number'>{user.reqCount}</div>
               </div>
@@ -67,6 +77,7 @@ function SectionQuoting({ pageFont }: SectionQuotingProps) {
         <RequestsModal
           userName={requestUserName}
           userId={requestUserId}
+          userEmail={requestUserEmail}
           isOpen={isRequestsModalOpen}
           hasCloseBtn={true}
           onClose={handleCloseRequestsModal}

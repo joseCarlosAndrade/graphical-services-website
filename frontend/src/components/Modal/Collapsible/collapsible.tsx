@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { downarrowPng } from '../../../assets';
+import { updatePrice } from '../../../services';
 
 interface CollapsibleProps {
   open?: boolean
@@ -13,6 +14,7 @@ interface CollapsibleProps {
   pending: boolean;
   price: number;
   url: string;
+  id: string;
 }
 
 const Collapsible: React.FC<CollapsibleProps> = ({
@@ -26,8 +28,12 @@ const Collapsible: React.FC<CollapsibleProps> = ({
   title,
   pending,
   price,
-  url
+  url,
+  id
 }) => {
+  const [officialPrice, setOfficialPrice] = useState(price);
+  const [isPending, setIsPending] = useState(pending);
+  const [newPrice, setNewPrice] = useState(price);
   const [isOpen, setIsOpen] = useState(open);
   const [height, setHeight] = useState<number | undefined>(
     open ? undefined : 0
@@ -73,6 +79,10 @@ const Collapsible: React.FC<CollapsibleProps> = ({
     xhr.send();
   }
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewPrice(parseFloat(event.target.value));
+  }
+
   return (
     <>
       <div className={collapsibleClassName}>
@@ -80,7 +90,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({
           <div className={headerClassName}>
             <div className={titleClassName}>
               <div>{title}</div>
-              <div>{pending ? <>pending!</> : <>{price}</>}</div>
+              <div className='quotedPrice'>{isPending ? <>pending!</> : <>{officialPrice}</>}</div>
             </div>
             <button
               type="button"
@@ -88,9 +98,9 @@ const Collapsible: React.FC<CollapsibleProps> = ({
               onClick={handleFilterOpening}
             >
               <img
-                className={`fas-edonec fa-chevron-down-edonec ${isOpen
-                  ? "rotate-center-edonec down"
-                  : "rotate-center-edonec up"
+                className={`quoting-collapsible ${isOpen
+                  ? "rotate-center-down"
+                  : "rotate-center-up"
                   }`}
                 src={downarrowPng}
               />
@@ -100,9 +110,13 @@ const Collapsible: React.FC<CollapsibleProps> = ({
         <div className={contentClassName} style={{ height }}>
           <div ref={ref}>
             <div className={contentContainerClassName}>
-              <button onClick={() => saveFile(url)}>Baixar Arquivo</button>
-              <input placeholder='digite o valor' type="number"></input>
-              <button>Enviar!</button>
+              <button className='download--btn' onClick={() => saveFile(url)}>Baixar Arquivo</button>
+              <input className='quoting--input' onChange={handleInputChange} placeholder='digite o valor' type="number"></input>
+              <button className='sendQuoting--btn' onClick={() => {
+                setOfficialPrice(newPrice);
+                setIsPending(false);
+                updatePrice(id, newPrice)
+              }}>Enviar!</button>
             </div>
           </div>
         </div>

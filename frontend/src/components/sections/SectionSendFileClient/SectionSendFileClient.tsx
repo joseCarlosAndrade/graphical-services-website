@@ -9,8 +9,10 @@ interface SectionSendFileClientPageProps {
 }
 
 function SectionSendFileClient(props: SectionSendFileClientPageProps) {
+  const [formError, setFormError] = useState('')
+  const [formSuccess, setFormSuccess] = useState('')
   const [textoFile, setTextoFile] = useState("Nenhum arquivo selecionado");
-  const [selectedValue, setSelectedValue] = useState('example');
+  const [selectedValue, setSelectedValue] = useState('');
   const [file, setFile] = useState<File | null>(null);
 
   // Configuração do AWS S3
@@ -43,10 +45,16 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
 
   // Após o usuário clicar em enviar, manda o request para criar na base de dados
   const handleFileToSend = async () => {
-    if (!file) {
-      alert('Por favor, selecione um arquivo.');
+    setFormError('');
+    if (!file || file.name.slice(file.name.indexOf('.')) !== '.cdr') {
+      setFormError("Por favor, selecione um arquivo '.cdr'.");
       return;
     }
+    if (selectedValue === '') {
+      setFormError('Por favor, selecione o tipo de produto.');
+      return;
+    }
+    console.log(file.name, selectedValue);
 
     try {
       const url = await createUrl(file);
@@ -57,10 +65,10 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
       }
       const ans = await createRequest(request);
       console.log(ans);
-      alert("Dados enviados com sucesso!");
+      setFormSuccess('Arquivo para orçamento enviado com sucesso!');
     } catch (error) {
       console.error('Erro ao criar a URL:', error);
-      alert("Erro ao enviar os dados.");
+      setFormError('Erro ao enviar os dados.');
     }
   }
 
@@ -82,9 +90,11 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
               Selecione o tipo de produto aqui! É tudo muito fácil.
             </label>
             <select name="product-type" id="product-type" onChange={handleSelectChange}>
-              <option value='opcao1'>Opcao 1</option>
-              <option value='opcao2'>Opcao 2</option>
-              <option value='opcao3'>Opcao 3</option>
+              <option value='' disabled selected>Selecione o produto</option>
+              <option value='Agenda personalizada'>Agenda Personalizada</option>
+              <option value='Caixa'>Caixa</option>
+              <option value='Caixa de olo'>Caixa de bolo</option>
+              <option value='Base de bolo'>Base de bolo</option>
             </select>
           </div>
         </div>
@@ -122,6 +132,8 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
         <div className='sendFile--send'>
           <div className='sendFile--send-text'>Agora é só clicar em enviar</div>
           <button className='sendFile--send-button' onClick={handleFileToSend}>Enviar</button>
+          {formError ? <div role="alert" className="errorMessage">{formError}</div> : <div className="hide"></div>}
+          {formSuccess ? <div role="alert" className="successMessage">{formSuccess}</div> : <div className="hide"></div>}
         </div>
       </div>
     </>
