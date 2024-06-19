@@ -44,6 +44,10 @@
     background-color: darkgrey;
 }
 
+.profile__buttons_active {
+    background-color: darkgrey;
+}
+
 .update {
     display: flex;
     flex-direction: column;
@@ -172,7 +176,7 @@
 
 .requests__field_item button {
     border-radius: 6px;
-    height: 80%;
+    height: 90%;
     width: 7rem;
 }
 

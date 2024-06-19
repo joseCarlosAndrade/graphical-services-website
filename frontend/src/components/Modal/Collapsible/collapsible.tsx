@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { downarrowPng } from '../../../assets';
 import { updatePrice } from '../../../services';
+import { saveFile } from '../../../utils';
 
 interface CollapsibleProps {
   open?: boolean
@@ -61,23 +62,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({
   }, [isOpen]);
 
   // Download a file form a url.
-  function saveFile(url: string) {
-    // Get file name from url.
-    var filename = url.substring(url.lastIndexOf("/") + 1).split("?")[0];
-    var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function () {
-      var a = document.createElement('a');
-      a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
-      a.download = filename; // Set the file name.
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    };
-    xhr.open('GET', url);
-    xhr.send();
-  }
+  
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewPrice(parseFloat(event.target.value));
@@ -97,7 +82,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({
               className={iconButtonClassName}
               onClick={handleFilterOpening}
             >
-              <img
+              <img alt='collapsible'
                 className={`quoting-collapsible ${isOpen
                   ? "rotate-center-down"
                   : "rotate-center-up"

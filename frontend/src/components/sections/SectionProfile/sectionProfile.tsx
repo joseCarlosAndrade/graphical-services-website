@@ -6,6 +6,7 @@ import { FormField } from '../../index'
 import { profileDefaultImg } from '../../../assets/index'
 import { UserDBData } from '../../../types/userModel';
 import { requestData, requestModel } from '../../../types/requestModel';
+import { saveFile } from '../../../utils';
 
 interface SectionProfileProps {
   currentAction: string
@@ -83,6 +84,8 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
     e.preventDefault();
   }
 
+  const [editActive, setEditActive] = useState(true);
+
   return (
     <>
       <div className='sectionProfileContainer' style={{ fontSize: `${pageFont}rem` }}>
@@ -93,8 +96,20 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
 
         <div className="profile__container">
           <div role="menubar" className='profile__buttons'>
-            <button style={{ fontSize: `${pageFont}rem` }} className='profile__buttons_selector' onClick={() => setSelector('editProfile')}>Edit Profile</button>
-            <button style={{ fontSize: `${pageFont}rem` }} className='profile__buttons_selector' onClick={() => setSelector('seeRequests')}>See Your Requests</button>
+            <button style={{ fontSize: `${pageFont}rem` }} 
+              className={`profile__buttons_selector ${editActive ? `profile__buttons_active` : ''}`} 
+              onClick={() => {
+                setSelector('editProfile');
+                setEditActive(true);
+
+                }}>Edit Profile</button>
+            <button style={{ fontSize: `${pageFont}rem` }} 
+              className={`profile__buttons_selector ${editActive ? '': `profile__buttons_active`}`}
+              onClick={() => {
+              setSelector('seeRequests');
+              setEditActive(false);
+
+              }}>See Your Requests</button>
           </div>
           {
             selector === 'editProfile' ?
@@ -161,7 +176,7 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
                           <div className='requests_price no-quote'>Não cotado ainda! Aguardar</div>}
                           
                         </div>
-                        <button >Baixar</button>
+                        <button onClick={()=>saveFile(request.url)} >Baixar</button>
                       </div>
                     ))
                   ) : (
