@@ -34,11 +34,11 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
       setLoggedIn(logged);
       setIsLoading(false);
 
-      if (loggedIn) {
+      if (logged) {
         const admin = await adminAuth();
         setIsAdmin(admin);
       }
-      console.log("admin: ", isAdmin)
+      console.log("admin:", isAdmin)
     }
 
     fetchDataAsync();

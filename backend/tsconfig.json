@@ -3,8 +3,12 @@
         "sourceMap": true,
         "strict": true,
         "lib": [
-            "esnext"
+            "es5"
         ],
         "esModuleInterop": true,
+        "baseUrl": "./src",
+        "target": "esnext",
+        "moduleResolution": "node",
+        "outDir": "./build"
     },
 }
