@@ -51,6 +51,7 @@
     gap: 1.5rem;
     background-color: rgb(219, 219, 219);
     padding: 2rem;
+    border-radius: 0 15px 15px 15px;
 }
 
 .update__field {
@@ -155,19 +156,24 @@
     gap: 1.5rem;
     background-color: rgb(219, 219, 219);
     padding: 2rem;
+    border-radius: 0 15px 15px 15px;
 }
 
 .requests__field_item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     padding: 4px;
     width: 100%;
     background-color: rgb(182, 181, 181);
+    border-radius: 6px;
 }
 
-.requests__field_item-container {
-    
+.requests__field_item button {
+    border-radius: 6px;
+    height: 80%;
+    width: 7rem;
 }
 
 .requests_title {

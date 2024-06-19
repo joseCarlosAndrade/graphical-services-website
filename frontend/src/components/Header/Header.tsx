@@ -38,6 +38,7 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
         const admin = await adminAuth();
         setIsAdmin(admin);
       }
+      console.log("admin: ", isAdmin)
     }
 
     fetchDataAsync();
