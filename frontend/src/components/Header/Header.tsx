@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { sessionAuth } from '../../services';
+import { sessionAuth, adminAuth } from '../../services';
 import { deleteCookie } from '../../utils/cookie';
 import './header.css';
 import { mainLogoWhite, menuWhite, closeMenuWhite } from './../../assets';
@@ -26,11 +26,18 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+
   useEffect(() => {
     const fetchDataAsync = async () => {
       const logged = await sessionAuth();
       setLoggedIn(logged);
       setIsLoading(false);
+
+      if (loggedIn) {
+        const admin = await adminAuth();
+        setIsAdmin(admin);
+      }
     }
 
     fetchDataAsync();
@@ -73,6 +80,7 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
                 logged={logged}
                 logOut={logOut}
                 loggedIn={loggedIn}
+                isAdmin={isAdmin}
                 changeAction={changeAction}
               ></MobileMenu>
             </>
@@ -91,11 +99,18 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
               <Link to='/quem-somos-page' style={{ textDecoration: 'none' }}>
                 <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button whoarewe" >Quem somos </button>
               </Link>
-              <Link to='/sendfile' style={{ textDecoration: 'none' }}>
-                <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button sendfile" >Enviar arquivo</button>
-              </Link>
+             
               {loggedIn === true ?
                 <>
+                   {isAdmin ? 
+                    <Link to='/quoting' style={{ textDecoration: 'none' }}>
+                      <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button quoting" >Cotar</button>
+                    </Link> :
+                    <Link to='/sendfile' style={{ textDecoration: 'none' }}>
+                      <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button sendfile" >Enviar arquivo</button>
+                    </Link> 
+                    }
+                  
                   <Link to='/profile' style={{ textDecoration: 'none' }}>
                     <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="header--navbar--button" >Perfil</button>
                   </Link>

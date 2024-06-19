@@ -153,9 +153,15 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
                   {userRequests.length > 0 ? (
                     userRequests.map((request: requestData) => (
                       <div className='requests__field_item' role="listitem" key={request.id}>
-                        <div>{request.title}</div>
-                        <div>{request.url}</div>
-                        <div>{request.price}</div>
+                        <div className='requests__field_item-container'>
+                          <div className='requests_title'>{request.title}</div>
+                          {/* <div>{request.url}</div> */}
+                          {request.price > 0 ? 
+                          <div className='requests_price'>R$ {request.price}</div> :
+                          <div className='requests_price no-quote'>Não cotado ainda! Aguardar</div>}
+                          
+                        </div>
+                        <button >Baixar</button>
                       </div>
                     ))
                   ) : (

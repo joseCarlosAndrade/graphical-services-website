@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './mobilemenu.css';
+import { BooleanModel } from 'aws-sdk/clients/gamelift';
 // import { HeaderProps } from '../Header/Header';
 
 export interface MobileMenuProps {
@@ -10,12 +11,13 @@ export interface MobileMenuProps {
   logged?: boolean,
   logOut : ()=>void,
   loggedIn : boolean,
+  isAdmin : boolean,
   changeAction : () => void
 
 }
 
 
-function MobileMenu({ currentAction, setCurrentAction, headerFontSize, logged, logOut, loggedIn, changeAction }: MobileMenuProps) {
+function MobileMenu({ currentAction, setCurrentAction, headerFontSize, logged, logOut, loggedIn, isAdmin, changeAction }: MobileMenuProps) {
   return (
     <>
     <div role="navigation" className='mobile-menu--container'>
@@ -28,11 +30,17 @@ function MobileMenu({ currentAction, setCurrentAction, headerFontSize, logged, l
       <Link to='/quem-somos-page' style={{textDecoration : 'none'}}>
         <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="mobile-menu--navbar--button" >Quem somos </button>
       </Link>
-      <Link to='/sendfile' style={{textDecoration : 'none'}}>
-        <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="mobile-menu--navbar--button" >Enviar arquivo</button>
-      </Link>
+      
       {loggedIn === true ?
         <>
+          {isAdmin ? 
+            <Link to='/quoting' style={{ textDecoration: 'none' }}>
+              <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="mobile-menu--navbar--button" >Cotar</button>
+            </Link> :
+            <Link to='/sendfile' style={{ textDecoration: 'none' }}>
+              <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="mobile-menu--navbar--button" >Enviar arquivo</button>
+            </Link> 
+            }
           <Link to='/profile' style={{textDecoration : 'none'}}>
             <button tabIndex={-1} style={{ fontSize: `${headerFontSize}rem`, fontFamily: "DM Sans, sans-serif" }} className="mobile-menu--navbar--button" >Perfil</button>
           </Link>

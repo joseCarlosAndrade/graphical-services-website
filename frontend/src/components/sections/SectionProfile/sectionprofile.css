@@ -157,6 +157,32 @@
     padding: 2rem;
 }
 
+.requests__field_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4px;
+    width: 100%;
+    background-color: rgb(182, 181, 181);
+}
+
+.requests__field_item-container {
+    
+}
+
+.requests_title {
+    font-weight: bold;
+}
+
+.requests_price {
+    color: green;
+}
+
+.no-quote {
+    color: rgb(173, 22, 22);
+    font-weight: 500;
+}
+
 @media screen and (max-width: 480px) {
     
 
