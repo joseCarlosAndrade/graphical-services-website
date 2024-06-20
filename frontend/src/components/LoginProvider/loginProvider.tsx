@@ -1,6 +1,5 @@
 import React from 'react'
 import './loginProvider.css';
-import { google } from '../../assets';
 import { GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from '../../services';
 import { setCookie } from '../../utils';
@@ -25,7 +24,6 @@ function LoginProvider({ iconSrc, loginProvider }: LoginProviderProps) {
         // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const credential = FacebookAuthProvider.credentialFromResult(result);
         if (credential != null) {
-          const accessToken = credential.accessToken;
           const idToken = credential.idToken;
 
           console.log("idToken", idToken);
@@ -36,13 +34,7 @@ function LoginProvider({ iconSrc, loginProvider }: LoginProviderProps) {
       })
       .catch((error) => {
         // Handle Errors here.
-        const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
-
         // ...
         console.log(errorMessage);
       });
@@ -87,10 +79,6 @@ function LoginProvider({ iconSrc, loginProvider }: LoginProviderProps) {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
         console.error(errorCode, errorMessage);
       });
@@ -106,7 +94,7 @@ function LoginProvider({ iconSrc, loginProvider }: LoginProviderProps) {
 
   return (
     <>
-      <button className="login__social_button" onClick={loginFunction}>
+      <button  type="button" className="login__social_button" onClick={loginFunction}>
         <img className="login__social_button_icon" src={iconSrc} alt="Button for login with google" />
       </button>
     </>

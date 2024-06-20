@@ -1,10 +1,11 @@
 import React from 'react'
 import './sectionlogin.css';
-import { google, facebook, apple } from '../../../assets';
+import { google } from '../../../assets';
 import { useEffect, useState } from 'react';
 import { FormField, LoginProvider } from '../../index'
 import { setCookie } from '../../../utils/cookie';
 import { sessionAuth } from '../../../services';
+import { sha256 } from 'crypto-hash';
 
 interface SectionLoginProps {
   currentAction: string
@@ -13,7 +14,7 @@ interface SectionLoginProps {
 }
 
 function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLoginProps) {
-  const [useCookie, setUseCookie] = useState(true);
+  // const [useCookie, setUseCookie] = useState(true);
   const [formError, setFormError] = useState('')
   const [formSuccess, setFormSuccess] = useState('')
   const [formData, setFormData] = useState({
@@ -62,9 +63,10 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
       return
     }
     try {
+      const hash = await sha256(formData.password)
       const body = {
         email: formData.email,
-        password: formData.password,
+        password: hash,
         firstName: formData.firstName,
         lastName: formData.lastName,
       }
@@ -96,9 +98,10 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
   const login = async (e: React.SyntheticEvent) => {
     e.preventDefault()
     try {
+      const hash = await sha256(formData.password)
       const body = {
         email: formData.email,
-        password: formData.password,
+        password: hash,
       }
       const res = await fetch(`http://localhost:8080/login`, {
         method: 'POST',
@@ -108,8 +111,8 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
       if (res.status === 201) {
         const session = await res.json()
 
-        if (useCookie)
-          setCookie('token', session.token)
+        // if (useCookie)
+        setCookie('token', session.token)
         // console.log('Cookie set to token: ', session.token)
 
         setFormSuccess('Success with Login!')
@@ -162,15 +165,15 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
         </div>
 
         <div className="login__field">
-        <div className='register__field__email'>
-          <FormField
-            action='login'
-            type='email'
-            label='Email'
-            placeholder='Digite seu email'
-            value={formData.email}
-            onChange={e => handleInputChange(e, 'email')}
-          />
+          <div className='register__field__email'>
+            <FormField
+              action='login'
+              type='email'
+              label='Email'
+              placeholder='Digite seu email'
+              value={formData.email}
+              onChange={e => handleInputChange(e, 'email')}
+            />
           </div>
           {
             currentAction === 'register' ? <>
@@ -225,17 +228,17 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
                   onChange={e => handleInputChange(e, 'password')}
                 />
                 <div className='register__field__terms'>
-                  <input className='register__field__terms_checkbox' type='checkbox' checked onChange={() => {
+                  {/* <input className='register__field__terms_checkbox' type='checkbox' checked onChange={() => {
                     useCookie === true ? setUseCookie(true) : setUseCookie(false);
-                  }}></input>
-                  <div className='register__field__terms_text'>Lembrar de mim</div>
+                  }}></input> */}
+                  {/* <div className='register__field__terms_text'>Lembrar de mim</div> */}
                 </div>
               </>
           }
         </div>
         {formError ? <div role="alert" className="errorMessage">{formError}</div> : <div className="hide"></div>}
         {formSuccess ? <div role="alert" className="successMessage">{formSuccess}</div> : <div className="hide"></div>}
-        <button style={{ fontSize: `${loginFont}rem` }}  type="submit" className='login__button'>{currentAction === 'login' ? "Entrar" : "Cadastrar"}</button>
+        <button style={{ fontSize: `${loginFont}rem` }} type="submit" className='login__button'>{currentAction === 'login' ? "Entrar" : "Cadastrar"}</button>
       </form>
     </>
   )

@@ -32,13 +32,13 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
     const fetchDataAsync = async () => {
       const logged = await sessionAuth();
       setLoggedIn(logged);
-      setIsLoading(false);
-
+      
       if (logged) {
         const admin = await adminAuth();
         setIsAdmin(admin);
       }
-      console.log("admin:", isAdmin)
+
+      setIsLoading(false);
     }
 
     fetchDataAsync();
@@ -47,7 +47,6 @@ function Header({ currentAction, setCurrentAction, headerFontSize, logged }: Hea
   const logOut = () => {
     deleteCookie('token');
     setLoggedIn(false);
-    localStorage.removeItem('logged');
     // window.location.reload()
   }
 

@@ -5,6 +5,7 @@ import { requireJwtMiddleware } from "../server/requiteJwt.middleware";
 import { Session } from "../models/session.models";
 import { UserDBData } from "../models/form.models";
 import { prisma } from "../services/prisma.service";
+import { updateUserInfo } from "../controllers/user.controller";
 
 const router = Router();
 
@@ -37,8 +38,22 @@ router.get('/user/info', async (req, res) => {
     }
 })
 
-router.put('/user/info', async (req, res) => {
-
+router.use('/update', requireJwtMiddleware);
+router.put('/update', async (req, res) => {
+    const session: Session = res.locals.session;
+    const user: UserDBData | null = await prisma.user.findUnique({
+        where: { id: session.id },
+    })
+    if (user != null) {
+        const result = await updateUserInfo(user, req.body);
+        if (result.status === 200) {
+            res.status(201).json(result.loggedUser);
+        } else {
+            res.status(400).json(result.error);
+        }
+    } else {
+        res.status(400).json('User not found.');
+    }
 }) 
 
 export default router

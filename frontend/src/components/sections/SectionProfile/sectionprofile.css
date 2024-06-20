@@ -74,7 +74,8 @@
     width: 95%;
     padding: 0.6rem;
     border-radius: 0.5rem;
-    border: 1px solid;
+    border: 0;
+    background-color: rgb(219, 219, 219);
 }
 
 .update__field__password_input {
@@ -178,6 +179,7 @@
     border-radius: 6px;
     height: 90%;
     width: 7rem;
+    cursor: pointer;
 }
 
 .requests_title {

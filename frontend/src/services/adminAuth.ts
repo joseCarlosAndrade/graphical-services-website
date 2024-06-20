@@ -14,7 +14,6 @@ const adminAuth = async () => {
             return true
         } else {
             console.error(resObject.message)
-            window.location.href = "/graphical-services-website#/";
             return false
         }
     } catch (error) {

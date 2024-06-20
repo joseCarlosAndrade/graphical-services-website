@@ -1,12 +1,12 @@
 import React from 'react'
 import './sectionprofile.css';
 import { useEffect, useState } from 'react';
-import { getUserInfo, sessionAuth } from '../../../services';
+import { getUserInfo } from '../../../services';
 import { FormField } from '../../index'
 import { profileDefaultImg } from '../../../assets/index'
-import { UserDBData } from '../../../types/userModel';
-import { requestData, requestModel } from '../../../types/requestModel';
-import { saveFile } from '../../../utils';
+import { requestData } from '../../../types/requestModel';
+import { getCookie, saveFile } from '../../../utils';
+import { sha256 } from 'crypto-hash';
 
 interface SectionProfileProps {
   currentAction: string
@@ -17,7 +17,6 @@ interface SectionProfileProps {
 function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionProfileProps) {
   const [selector, setSelector] = useState('editProfile'); // can be 'editProfile' or 'seeRequests'
 
-  const [useCookie, setUseCookie] = useState(true);
   const [formError, setFormError] = useState('')
   const [formSuccess, setFormSuccess] = useState('')
   const [formData, setFormData] = useState({
@@ -82,6 +81,40 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
 
   const updateProfile = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      setFormError('The two passwords do not match')
+      return
+    }
+    try {
+      let hash;
+      if (formData.password)
+        hash = await sha256(formData.password)
+      const body = {
+        email: formData.email,
+        password: hash,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+      }
+      const token = getCookie('token');
+      const res = await fetch(`http://localhost:8080/update`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'X-JWT-Token': token || '' },
+        body: JSON.stringify(body),
+      })
+      console.log(res);
+      if (res.status === 201) {
+        // setting in localstorage just to maintain header in logged state 
+        localStorage.setItem('logged', JSON.stringify(true));
+        setFormSuccess('Updated profile successfully');
+        delay(3000);
+        window.location.reload();
+      } else {
+        const message = await res.json()
+        setFormError(message)
+      }
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const [editActive, setEditActive] = useState(true);
@@ -96,18 +129,18 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
 
         <div className="profile__container">
           <div role="menubar" className='profile__buttons'>
-            <button style={{ fontSize: `${pageFont}rem` }} 
-              className={`profile__buttons_selector ${editActive ? `profile__buttons_active` : ''}`} 
+            <button style={{ fontSize: `${pageFont}rem` }}
+              className={`profile__buttons_selector ${editActive ? `profile__buttons_active` : ''}`}
               onClick={() => {
                 setSelector('editProfile');
                 setEditActive(true);
 
-                }}>Edit Profile</button>
-            <button style={{ fontSize: `${pageFont}rem` }} 
-              className={`profile__buttons_selector ${editActive ? '': `profile__buttons_active`}`}
+              }}>Edit Profile</button>
+            <button style={{ fontSize: `${pageFont}rem` }}
+              className={`profile__buttons_selector ${editActive ? '' : `profile__buttons_active`}`}
               onClick={() => {
-              setSelector('seeRequests');
-              setEditActive(false);
+                setSelector('seeRequests');
+                setEditActive(false);
 
               }}>See Your Requests</button>
           </div>
@@ -116,14 +149,11 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
               <>
                 <form className="update" onSubmit={updateProfile}>
                   <div className="update__field">
-                    <FormField
-                      action='update'
-                      type='email'
-                      label='Email'
-                      placeholder='Enter your email'
-                      value={formData.email}
-                      onChange={e => handleInputChange(e, 'email')}
-                    />
+                    <div className="update__field__email">
+                      <div className="update__field__email_text">Email</div>
+                      <input className="update__field__email_input" placeholder='Digite o seu email' readOnly
+                        value={formData.email}></input>
+                    </div>
                     <FormField
                       action='update'
                       type='name_first'
@@ -171,12 +201,11 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
                         <div className='requests__field_item-container'>
                           <div className='requests_title'>{request.title}</div>
                           {/* <div>{request.url}</div> */}
-                          {request.price > 0 ? 
-                          <div className='requests_price'>R$ {request.price}</div> :
-                          <div className='requests_price no-quote'>Não cotado ainda! Aguardar</div>}
-                          
+                          {request.price > 0 ?
+                            <div className='requests_price'>R$ {request.price}</div> :
+                            <div className='requests_price no-quote'>Não cotado ainda! Aguardar</div>}
                         </div>
-                        <button onClick={()=>saveFile(request.url)} >Baixar</button>
+                        <button onClick={() => saveFile(request.url)} >Baixar</button>
                       </div>
                     ))
                   ) : (

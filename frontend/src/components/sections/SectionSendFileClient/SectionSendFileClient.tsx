@@ -92,9 +92,9 @@ function SectionSendFileClient(props: SectionSendFileClientPageProps) {
             <select name="product-type" id="product-type" onChange={handleSelectChange}>
               <option value='' disabled selected>Selecione o produto</option>
               <option value='Agenda personalizada'>Agenda Personalizada</option>
+              <option value='Base de bolo'>Base de bolo</option>
               <option value='Caixa'>Caixa</option>
               <option value='Caixa de olo'>Caixa de bolo</option>
-              <option value='Base de bolo'>Base de bolo</option>
             </select>
           </div>
         </div>

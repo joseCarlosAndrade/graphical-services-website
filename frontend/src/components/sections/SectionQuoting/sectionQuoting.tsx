@@ -1,9 +1,8 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import './sectionquoting.css';
 import { useEffect, useState } from 'react';
 import { adminAuth, getAllUsers } from '../../../services';
-import { download, upload } from '../../../assets';
-import { RequestsModal, UserScrollable } from '../../index';
+import { RequestsModal } from '../../index';
 import { UserDBData } from '../../../types/userModel';
 
 interface SectionQuotingProps {
@@ -25,7 +24,7 @@ function SectionQuoting({ pageFont }: SectionQuotingProps) {
   useEffect(() => {
     let list = users.filter((user: UserDBData) => user.displayName.startsWith(searchValue));
     setSearchResult(list);
-  }, [searchValue])
+  }, [searchValue, users])
 
   const handleOpenRequestsModal = (id: string, userName: string, userEmail: string) => {
     setRequestUserId(id);
@@ -48,6 +47,7 @@ function SectionQuoting({ pageFont }: SectionQuotingProps) {
         setSearchResult(allUsers);
       } else {
         console.error(result);
+        window.location.href = "/graphical-services-website#/";
       }
     }
     load();

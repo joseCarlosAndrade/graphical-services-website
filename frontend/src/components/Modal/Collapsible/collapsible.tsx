@@ -100,7 +100,8 @@ const Collapsible: React.FC<CollapsibleProps> = ({
               <button className='sendQuoting--btn' onClick={() => {
                 setOfficialPrice(newPrice);
                 setIsPending(false);
-                updatePrice(id, newPrice)
+                updatePrice(id, newPrice);
+                window.location.reload();
               }}>Enviar!</button>
             </div>
           </div>

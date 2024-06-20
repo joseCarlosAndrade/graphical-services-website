@@ -3,8 +3,6 @@ header {
     z-index: 999;
     top: 0;
     width: 89%;
-    /* width: 100vw;
-    max-width: 100vw; */
     display: flex;
     flex-direction: row;
     background-color: var(--main-color);
@@ -31,7 +29,6 @@ header button {
     cursor: pointer;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
-
 }
 
 header button:hover {
@@ -50,10 +47,7 @@ header button:hover {
     display: none;
     width: 1.6rem;
     position: relative;
-    
 }
-
-
 
 .header--navbar--button-login {
     background-color: var(--button-color);
@@ -76,6 +70,10 @@ header button:hover {
         display: block;
         margin-right: 15px;
     }
+
+    header button {
+        margin: 0.6rem;
+    }
 }
 
 @media (max-width: 574px) {
@@ -92,7 +90,6 @@ header button:hover {
         background-color: var(--main-color);
         outline: 0;
         border: 0;
-        padding: 0.7rem;
         color: #e6e6e6;
         font-weight: bold;
         width: auto;
