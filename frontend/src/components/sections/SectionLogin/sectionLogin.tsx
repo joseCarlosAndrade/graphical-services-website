@@ -70,7 +70,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
         firstName: formData.firstName,
         lastName: formData.lastName,
       }
-      const res = await fetch(`http://${BACKEND_IP}:8080/signup`, {
+      const res = await fetch(`/api/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
@@ -103,7 +103,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
         email: formData.email,
         password: hash,
       }
-      const res = await fetch(`http://${BACKEND_IP}:8080/login`, {
+      const res = await fetch(`/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
