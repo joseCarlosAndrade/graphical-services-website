@@ -55,7 +55,7 @@ function LoginProvider({ iconSrc, loginProvider }: LoginProviderProps) {
           const body = {
             id_token: id_token
           }
-          const res = await fetch(`http://${BACKEND_IP}:8080/loginGoogle`, {
+          const res = await fetch(`/api/loginGoogle`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body),
