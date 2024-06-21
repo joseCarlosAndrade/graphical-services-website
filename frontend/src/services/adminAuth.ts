@@ -5,7 +5,7 @@ const adminAuth = async () => {
     try {
         const token = getCookie('token')
         // console.log('testing for token: ', token)
-        const res = await fetch(`http://${BACKEND_IP}:8080/admin/auth`, {
+        const res = await fetch(`${BACKEND_IP}/admin/auth`, {
             method: 'GET',
             headers: { 'X-JWT-Token': token || '' },
         });

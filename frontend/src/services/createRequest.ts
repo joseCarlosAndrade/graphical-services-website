@@ -16,7 +16,7 @@ const createRequest = async (request: requestModel) => {
         });
         const resObject = await res.json();
         if (res.status === 200) {
-            // console.log(resObject)
+            console.log(resObject)
             return resObject
         } else {
             console.error(resObject)

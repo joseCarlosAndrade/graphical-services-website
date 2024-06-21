@@ -10,6 +10,6 @@ app.use(routes);
 
 const server = app.listen(8080, '0.0.0.0', () =>
     console.log(`
-🚀 Server ready at: http://localhost:8080
+🚀 Server ready at: https://this.ip.i.dk:8080
 ⭐️ See sample requests: http://pris.ly/e/ts/rest-express#3-using-the-rest-api`),
 )
