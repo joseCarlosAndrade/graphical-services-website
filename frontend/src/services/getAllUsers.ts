@@ -5,7 +5,7 @@ const getAllUsers = async () => {
     try {
         const token = getCookie('token')
         // console.log('testing for token: ', token)
-        const res = await fetch(`http://${BACKEND_IP}:8080/admin/users`, {
+        const res = await fetch(`/api/admin/users`, {
             method: 'GET',
             headers: { 'X-JWT-Token': token || '' },
         });

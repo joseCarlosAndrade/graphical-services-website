@@ -5,7 +5,7 @@ const sessionAuth = async () => {
     try {
         const token = getCookie('token')
         // console.log('testing for token: ', token)
-        const res = await fetch(`http://${BACKEND_IP}:8080/protected`, {
+        const res = await fetch(`/api/protected`, {
             method: 'GET',
             headers: { 'X-JWT-Token': token || '' },
         });

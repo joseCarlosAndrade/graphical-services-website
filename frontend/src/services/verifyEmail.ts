@@ -11,7 +11,7 @@ const verifyEmail = async () => {
             oobCode: code
         }
         // console.log('sending oobCode: ', body)
-        const res = await fetch(`http://${BACKEND_IP}:8080/verify-email`, {
+        const res = await fetch(`/api/verify-email`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body),

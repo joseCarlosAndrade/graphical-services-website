@@ -5,7 +5,7 @@ const getUserInfo = async () => {
     try {
         const token = getCookie('token')
         // console.log('testing for token: ', token)
-        const res = await fetch(`http://${BACKEND_IP}:8080/user/info`, {
+        const res = await fetch(`/api/user/info`, {
             method: 'GET',
             headers: { 'X-JWT-Token': token || '' },
         });
