@@ -1,7 +1,5 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import './mobilemenu.css';
-import { BooleanModel } from 'aws-sdk/clients/gamelift';
 // import { HeaderProps } from '../Header/Header';
 
 export interface MobileMenuProps {

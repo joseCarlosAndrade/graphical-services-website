@@ -11,7 +11,7 @@ const sessionAuth = async () => {
         });
         const resObject = await res.json();
         if (res.status === 200) {
-            console.log(resObject)
+            // console.log(resObject)
             return true
         } else {
             console.error(resObject.message)

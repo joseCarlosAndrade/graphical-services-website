@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './accessibilitytab.css';
-import { lensDown, lensUp, darkThemeIcon, signLanguageIcon, accessIcon } from '../../assets';
+import { lensDown, lensUp, darkThemeIcon, accessIcon } from '../../assets';
 import { fontSizes } from '../../types/interfacePageProps';
 import { setCSSVar } from '../../utils';
 

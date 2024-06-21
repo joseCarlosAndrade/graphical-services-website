@@ -22,7 +22,7 @@ function RequestsModal({ userName, userId, userEmail, isOpen, hasCloseBtn, onClo
     const resultData = await getUserRequests(id);
     if (resultData) {
       setUserRequests(resultData)
-      console.log(resultData);
+      // console.log(resultData);
     } else {
       console.error("Something went wrong...");
     }
@@ -42,7 +42,7 @@ function RequestsModal({ userName, userId, userEmail, isOpen, hasCloseBtn, onClo
         modalElement.close();
       }
     }
-  }, [isModalOpen]);
+  }, [isModalOpen, userId]);
 
   const handleCloseModal = () => {
     if (onClose) {

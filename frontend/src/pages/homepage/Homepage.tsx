@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Header, Footer, SectionHomepage, AccessibilityTab } from '../../components';
 import { PageProps } from '../../types/interfacePageProps'
 

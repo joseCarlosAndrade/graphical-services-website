@@ -61,8 +61,12 @@ const Collapsible: React.FC<CollapsibleProps> = ({
     else setHeight(0);
   }, [isOpen]);
 
-  // Download a file form a url.
-  
+  const handleSendButton = async () => {
+    setOfficialPrice(newPrice);
+    setIsPending(false);
+    await updatePrice(id, newPrice);
+    window.location.reload();
+  }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewPrice(parseFloat(event.target.value));
@@ -97,12 +101,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({
             <div className={contentContainerClassName}>
               <button className='download--btn' onClick={() => saveFile(url)}>Baixar Arquivo</button>
               <input className='quoting--input' onChange={handleInputChange} placeholder='digite o valor' type="number"></input>
-              <button className='sendQuoting--btn' onClick={() => {
-                setOfficialPrice(newPrice);
-                setIsPending(false);
-                updatePrice(id, newPrice);
-                window.location.reload();
-              }}>Enviar!</button>
+              <button className='sendQuoting--btn' onClick={handleSendButton}>Enviar!</button>
             </div>
           </div>
         </div>

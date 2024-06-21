@@ -1,4 +1,3 @@
-import React, { ReactNode } from 'react'
 import './sectionwhoarewe.css'
 import { agenda, caja } from '../../../assets';
 

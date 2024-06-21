@@ -2,7 +2,6 @@ import { getCookie } from "../utils/cookie";
 import { BACKEND_IP } from "./backendapi";
 
 const adminAuth = async () => {
-    console.log("IP DO BACKEND: ", BACKEND_IP);
     try {
         const token = getCookie('token')
         // console.log('testing for token: ', token)
@@ -12,7 +11,7 @@ const adminAuth = async () => {
         });
         const resObject = await res.json();
         if (res.status === 200) {
-            console.log(resObject.message)
+            // console.log(resObject.message)
             return true
         } else {
             console.error(resObject.message)

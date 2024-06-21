@@ -1,7 +1,7 @@
 import { Header, Footer, SectionProductsPage, AccessibilityTab } from '../../components';
 import { PageProps } from '../../types/interfacePageProps';
 import { agenda, caja, cajaTorta, baseTorta, search } from '../../assets';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { setCSSVar } from './../../utils';
 import './productspage.css';
 
