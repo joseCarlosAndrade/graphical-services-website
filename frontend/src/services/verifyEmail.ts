@@ -1,4 +1,5 @@
 import { setCookie } from "../utils/cookie";
+import { BACKEND_IP } from "./backendapi";
 
 const delay = (ms: any) => new Promise(res => setTimeout(res, ms));
 const verifyEmail = async () => {
@@ -10,7 +11,7 @@ const verifyEmail = async () => {
             oobCode: code
         }
         // console.log('sending oobCode: ', body)
-        const res = await fetch(`http://localhost:8080/verify-email`, {
+        const res = await fetch(`http://${BACKEND_IP}:8080/verify-email`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body),

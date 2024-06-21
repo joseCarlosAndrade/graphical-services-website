@@ -1,7 +1,7 @@
 import React from 'react'
 import './sectionprofile.css';
 import { useEffect, useState } from 'react';
-import { getUserInfo } from '../../../services';
+import { BACKEND_IP, getUserInfo } from '../../../services';
 import { FormField } from '../../index'
 import { profileDefaultImg } from '../../../assets/index'
 import { requestData } from '../../../types/requestModel';
@@ -96,7 +96,7 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
         lastName: formData.lastName,
       }
       const token = getCookie('token');
-      const res = await fetch(`http://localhost:8080/update`, {
+      const res = await fetch(`http://${BACKEND_IP}:8080/update`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'X-JWT-Token': token || '' },
         body: JSON.stringify(body),

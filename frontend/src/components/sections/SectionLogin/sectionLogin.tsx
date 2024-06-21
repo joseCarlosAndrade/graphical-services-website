@@ -4,7 +4,7 @@ import { google } from '../../../assets';
 import { useEffect, useState } from 'react';
 import { FormField, LoginProvider } from '../../index'
 import { setCookie } from '../../../utils/cookie';
-import { sessionAuth } from '../../../services';
+import { BACKEND_IP, sessionAuth } from '../../../services';
 import { sha256 } from 'crypto-hash';
 
 interface SectionLoginProps {
@@ -70,7 +70,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
         firstName: formData.firstName,
         lastName: formData.lastName,
       }
-      const res = await fetch(`http://localhost:8080/signup`, {
+      const res = await fetch(`http://${BACKEND_IP}:8080/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
@@ -103,7 +103,7 @@ function SectionLogin({ currentAction, setCurrentAction, loginFont }: SectionLog
         email: formData.email,
         password: hash,
       }
-      const res = await fetch(`http://localhost:8080/login`, {
+      const res = await fetch(`http://${BACKEND_IP}:8080/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),

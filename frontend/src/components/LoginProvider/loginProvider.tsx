@@ -1,7 +1,7 @@
 import React from 'react'
 import './loginProvider.css';
 import { GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from '../../services';
+import { BACKEND_IP, auth } from '../../services';
 import { setCookie } from '../../utils';
 
 interface LoginProviderProps {
@@ -55,7 +55,7 @@ function LoginProvider({ iconSrc, loginProvider }: LoginProviderProps) {
           const body = {
             id_token: id_token
           }
-          const res = await fetch(`http://localhost:8080/loginGoogle`, {
+          const res = await fetch(`http://${BACKEND_IP}:8080/loginGoogle`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body),

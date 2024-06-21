@@ -1,4 +1,5 @@
 import { getCookie } from "../utils/cookie";
+import { BACKEND_IP } from "./backendapi";
 
 const updatePrice = async (id: string, price : number) => {
     try {
@@ -7,7 +8,7 @@ const updatePrice = async (id: string, price : number) => {
         const body = {
             newPrice: price
         }
-        const res = await fetch(`http://localhost:8080/admin/request/${id}`, {
+        const res = await fetch(`http://${BACKEND_IP}:8080/admin/request/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json', 'X-JWT-Token': token || '' },
             body: JSON.stringify(body),

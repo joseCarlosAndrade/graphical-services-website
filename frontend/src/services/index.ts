@@ -5,4 +5,5 @@ export { default as adminAuth } from './adminAuth'
 export { default as getAllUsers } from './getAllUsers'
 export { default as getUserInfo } from './getUser'
 export { default as updatePrice } from './updatePrice'
+export * from './backendapi';
 export { auth } from './firebase'

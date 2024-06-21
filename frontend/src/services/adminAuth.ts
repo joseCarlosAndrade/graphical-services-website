@@ -1,10 +1,12 @@
 import { getCookie } from "../utils/cookie";
+import { BACKEND_IP } from "./backendapi";
 
 const adminAuth = async () => {
+    console.log("IP DO BACKEND: ", BACKEND_IP);
     try {
         const token = getCookie('token')
         // console.log('testing for token: ', token)
-        const res = await fetch(`http://localhost:8080/admin/auth`, {
+        const res = await fetch(`http://${BACKEND_IP}:8080/admin/auth`, {
             method: 'GET',
             headers: { 'X-JWT-Token': token || '' },
         });
