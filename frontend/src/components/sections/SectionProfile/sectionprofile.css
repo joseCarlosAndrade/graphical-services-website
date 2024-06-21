@@ -162,6 +162,8 @@
     background-color: rgb(219, 219, 219);
     padding: 2rem;
     border-radius: 0 15px 15px 15px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .requests__field_item {
@@ -216,6 +218,10 @@
 
         width: 90vw;
         font-size: small;
+    }
+
+    .requests__field {
+        width:  82%;
     }
 
     .update__field {

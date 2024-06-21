@@ -196,7 +196,8 @@ function SectionProfile({ currentAction, setCurrentAction, pageFont }: SectionPr
               <>
                 <div className='requests__field'>
                   {userRequests.length > 0 ? (
-                    userRequests.map((request: requestData) => (
+                    
+                    userRequests.slice(0).reverse().map((request: requestData) => (
                       <div className='requests__field_item' role="listitem" key={request.id}>
                         <div className='requests__field_item-container'>
                           <div className='requests_title'>{request.title}</div>
